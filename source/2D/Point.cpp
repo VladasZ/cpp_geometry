@@ -20,24 +20,19 @@ Point::Point(Direction direction, float length) {
         case Direction::Right: x =  length; y =  0;      break;
         case Direction::Up:    x =  0;      y = -length; break;
         case Direction::Down:  x =  0;      y =  length; break;
-        default: break;
     }
 }
 
-Point Point::on_circle(float radius, float angle, const Point &center) {
-	return { (radius / 2) * cos(angle) + center.x, (radius / 2) * sin(angle) + center.y };
+Point Point::on_circle(float radius, float angle, const Point& center) {
+    return { (radius / 2) * std::cos(angle) + center.x, (radius / 2) * std::sin(angle) + center.y };
 }
 
 float Point::angle() const {
-    return atan2(y, x);
-}
-
-bool Point::is_zero() const {
-    return x == 0 && y == 0;
+    return std::atan2(y, x);
 }
 
 float Point::length() const {
-    return static_cast<float>(sqrt(x * x + y * y));
+    return static_cast<float>(std::sqrt(x * x + y * y));
 }
 
 Point Point::with_length(float length) const {
