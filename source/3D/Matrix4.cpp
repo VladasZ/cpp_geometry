@@ -20,7 +20,7 @@ Matrix4::Matrix4() : Matrix4 {
 } { }
 
 Matrix4::Matrix4(Float value) {
-    for (int i = 0; i < Matrix4::size; i++)
+    for (size_t i = 0; i < Matrix4::size; i++)
         *(&data[0][0] + i) = value;
 }
 
@@ -202,7 +202,7 @@ std::string Matrix4::to_string() const {
 
     static const uint8_t row_count = static_cast<uint8_t>(sqrt(Matrix4::size));
 
-    for (int i = 0; i < Matrix4::size; i++) {
+    for (size_t i = 0; i < Matrix4::size; i++) {
         if (i % row_count == 0)
             result += "\n";
         result += std::to_string(*(&data[0][0] + i)) + " ";

@@ -8,7 +8,6 @@
 
 #include "Color.hpp"
 
-using namespace std;
 using namespace ui;
 
 Color::Color(Color const& obj) {
@@ -33,7 +32,7 @@ Color Color::with_alpha(float alpha) const {
 }
 
 bool Color::is_transparent() const {
-    return this->a <= 0.02;
+    return this->a <= 0.02f;
 }
 
 const Color Color::black      = { 0   , 0   , 0    };

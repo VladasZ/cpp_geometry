@@ -6,6 +6,8 @@
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
+#include <cstring>
+
 #include "Size.hpp"
 
 using namespace ui;
@@ -31,5 +33,5 @@ Size Size::operator * (float value) const {
 }
 
 bool Size::operator == (const Size& size) const {
-	return this->width == size.width && this->height == size.height;
+    return !static_cast<bool>(memcmp(this, &size, sizeof(Size)));
 }
