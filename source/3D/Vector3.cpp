@@ -35,6 +35,21 @@ Vector3& Vector3::normalize() {
     return this->operator*=(ratio);
 }
 
+Vector3 Vector3::operator + (const Vector3& vec) const {
+	return {
+		x + vec.x,
+		y + vec.y,
+		z + vec.z
+	};
+}
+
+Vector3& Vector3::operator += (const Vector3& vec) {
+	x += vec.x;
+	y += vec.y;
+	z += vec.z;
+	return *this;
+}
+
 Vector3 Vector3::operator - (const Vector3& vec) const {
 	return {
 		x - vec.x,
@@ -65,6 +80,28 @@ Vector3& Vector3::operator *= (Float value) {
 	return *this;
 }
 
+Vector3 Vector3::operator / (Float value) const {
+	return {
+	x / value,
+	y / value,
+	z / value
+	};
+}
+
+Vector3& Vector3::operator /= (Float value) {
+	x /= value;
+	y /= value;
+	z /= value;
+	return *this;
+}
+
 std::string Vector3::to_string() const {
 	return std::string() + "[ " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + " ]";
+}
+
+Vector3 Vector3::middle_point(const std::vector<Vector3>& points) {
+	Vector3 result;
+	for (const auto& point : points)
+		result += point;
+	return result / points.size();
 }

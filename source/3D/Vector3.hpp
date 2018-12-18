@@ -9,6 +9,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 class Vector3 {
     
@@ -30,12 +31,20 @@ public:
 
     Vector3& normalize();
 
+	Vector3  operator +  (const Vector3& vec) const;
+	Vector3& operator += (const Vector3& vec);
+
 	Vector3  operator -  (const Vector3& vec) const;
 	Vector3& operator -= (const Vector3& vec);
 
 	Vector3  operator *  (Float value) const;
 	Vector3& operator *= (Float value);
 
+	Vector3  operator /  (Float value) const;
+	Vector3& operator /= (Float value);
+
 	std::string to_string() const;
+
+	static Vector3 middle_point(const std::vector<Vector3>& points);
 };
 
