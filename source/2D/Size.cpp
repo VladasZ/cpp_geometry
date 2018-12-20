@@ -6,6 +6,7 @@
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
+#include <string>
 #include <cstring>
 
 #include "Size.hpp"
@@ -24,6 +25,10 @@ float Size::ratio() const {
 	return width / height;
 }
 
+bool Size::is_negative() const {
+    return width < 0 || height < 0;
+}
+
 Size Size::operator / (float value) const {
 	return { this->width / value, this->height / value };
 }
@@ -34,4 +39,10 @@ Size Size::operator * (float value) const {
 
 bool Size::operator == (const Size& size) const {
     return !static_cast<bool>(memcmp(this, &size, sizeof(Size)));
+}
+
+const char* Size::to_string() const {
+    static std::string value;
+    value = std::string() + "width: " + std::to_string(width) + " height: " + std::to_string(height);
+    return value.c_str();
 }

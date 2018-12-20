@@ -46,5 +46,7 @@ namespace ui {
 
         Point operator *  (float value) const;
         void  operator *= (float value);
+
+        const char* to_string() const;
     };
 }

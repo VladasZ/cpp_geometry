@@ -7,6 +7,7 @@
 //
 
 #include <cmath>
+#include <string>
 
 #include "Point.hpp"
 
@@ -69,4 +70,10 @@ Point Point::operator * (float value) const {
 void Point::operator *= (float value) {
     x *= value;
     y *= value;
+}
+
+const char* Point::to_string() const {
+    static std::string value;
+    value = std::string() + "x: " + std::to_string(x) + " y: " + std::to_string(y);
+    return value.c_str();
 }

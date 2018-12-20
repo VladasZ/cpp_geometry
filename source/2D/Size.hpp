@@ -24,10 +24,14 @@ namespace ui {
                 
         Point center() const;
 		float ratio()  const;
+
+        bool is_negative() const;
                 
 		Size operator / (float value) const;
 		Size operator * (float value) const;
         
 		bool operator == (const Size& size) const;
+
+        const char* to_string() const;
     };
 }
