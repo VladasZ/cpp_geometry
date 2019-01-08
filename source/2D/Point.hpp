@@ -17,36 +17,36 @@ enum Direction {
 
 namespace ui {
 
-    class Point {
+class Point {
 
-    public:
+public:
 
-		float x = 0;
-		float y = 0;
+    float x = 0;
+    float y = 0;
 
-        Point() = default;
-        Point(float x, float y);
-        Point(Direction direction, float length = 1);
+    Point() = default;
+    Point(float x, float y);
+    Point(Direction direction, float length = 1);
 
-        static Point on_circle(float radius, float angle, const Point& center);
+    static Point on_circle(float radius, float angle, const Point& center);
 
-        float angle()   const;
-        bool  is_zero() const;
-        float length()  const;
+    float angle()   const;
+    bool  is_zero() const;
+    float length()  const;
 
-        Point with_length(float length) const;
+    Point with_length(float length) const;
 
-        Direction directionX() const;
+    Direction directionX() const;
 
-        Point operator +  (const Point& point) const;
-        void  operator += (const Point& point);
+    Point operator +  (const Point& point) const;
+    void  operator += (const Point& point);
 
-        Point operator -  (const Point& point) const;
-        void  operator -= (const Point& point);
+    Point operator -  (const Point& point) const;
+    void  operator -= (const Point& point);
 
-        Point operator *  (float value) const;
-        void  operator *= (float value);
+    Point operator *  (float value) const;
+    void  operator *= (float value);
 
-        const char* to_string() const;
-    };
+    const char* to_string() const;
+};
 }

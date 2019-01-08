@@ -62,22 +62,22 @@ float Rect::max_y() const {
 Point Rect::center() const {
     return {
         origin.x + size.width  / 2,
-                origin.y + size.height / 2
+        origin.y + size.height / 2
     };
 }
 
 bool Rect::contains(const Point& point) const {
     return point.x >= origin.x              &&
-            point.y >= origin.y              &&
-            point.x <= origin.x + size.width &&
-            point.y <= origin.y + size.height;
+           point.y >= origin.y              &&
+           point.x <= origin.x + size.width &&
+           point.y <= origin.y + size.height;
 }
 
 bool Rect::contains_with_edge(const Point& point, float edge) const {
     return point.x >= origin.x               - edge &&
-            point.y >= origin.y               - edge &&
-            point.x <= origin.x + size.width  + edge &&
-            point.y <= origin.y + size.height + edge;
+           point.y >= origin.y               - edge &&
+           point.x <= origin.x + size.width  + edge &&
+           point.y <= origin.y + size.height + edge;
 }
 
 Size Rect::fit_size(const Size& size) const {
