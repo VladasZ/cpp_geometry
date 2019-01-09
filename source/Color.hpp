@@ -20,14 +20,13 @@ public:
     float a = 0;
 
     Color() = default;
-    Color(Color const& obj);
     Color(float r, float g, float b, float a = 1);
-
-    Color& operator = (Color const& obj);
 
     Color with_alpha(float alpha) const;
 
     bool is_transparent() const;
+
+    static Color random();
 
     static const Color black;
     static const Color white;
