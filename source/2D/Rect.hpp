@@ -45,6 +45,7 @@ public:
     float max_y() const;
 
     Point center() const;
+    void set_center(const Point& center);
 
     bool contains(const Point& point) const;
     bool contains_with_edge(const Point& point, float edge) const;

@@ -66,6 +66,11 @@ Point Rect::center() const {
     };
 }
 
+void Rect::set_center(const Point& center) {
+    origin.x = center.x - size.width  / 2;
+    origin.y = center.y - size.height / 2;
+}
+
 bool Rect::contains(const Point& point) const {
     return point.x >= origin.x              &&
            point.y >= origin.y              &&
