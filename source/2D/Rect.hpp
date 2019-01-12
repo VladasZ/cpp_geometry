@@ -11,23 +11,19 @@
 #include "Point.hpp"
 #include "Size.hpp"
 
-namespace ui {
+enum class Edge {
+    Top         = 0b00000001,
+    Bottom      = 0b00000010,
+    Left        = 0b00000100,
+    Right       = 0b00001000,
+    TopLeft     = Top    | Left,
+    TopRight    = Top    | Right,
+    BottomLeft  = Bottom | Left,
+    BottomRight = Bottom | Right,
+    None        = 0
+};
 
 class Rect {
-
-public:
-
-    enum class Edge {
-        Top         = 0b00000001,
-        Bottom      = 0b00000010,
-        Left        = 0b00000100,
-        Right       = 0b00001000,
-        TopLeft     = Top    | Left,
-        TopRight    = Top    | Right,
-        BottomLeft  = Bottom | Left,
-        BottomRight = Bottom | Right,
-        None        = 0
-    };
 
 public:
 
@@ -58,5 +54,3 @@ public:
 
     const char* to_string() const;
 };
-
-}

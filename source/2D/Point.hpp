@@ -15,8 +15,6 @@ enum Direction {
     Down
 };
 
-namespace ui {
-
 class Point {
 
 public:
@@ -49,4 +47,3 @@ public:
 
     const char* to_string() const;
 };
-}

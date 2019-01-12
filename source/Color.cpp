@@ -1,6 +1,6 @@
 //
 //  Color.cpp
-//  ui
+//  geometry
 //
 //  Created by Vladas Zakrevskis on 8/28/17.
 //  Copyright © 2017 VladasZ. All rights reserved.
@@ -10,8 +10,6 @@
 #include <vector>
 
 #include "Color.hpp"
-
-using namespace ui;
 
 Color::Color(float r, float g, float b, float a) : r(r), g(g), b(b), a(a) { }
 

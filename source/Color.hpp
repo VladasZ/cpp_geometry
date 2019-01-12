@@ -1,14 +1,12 @@
 //
 //  Color.hpp
-//  ui
+//  geometry
 //
 //  Created by Vladas Zakrevskis on 8/28/17.
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
 #pragma once
-
-namespace ui {
 
 class Color {
 
@@ -42,7 +40,3 @@ public:
     static const Color light_gray;
     static const Color clear;
 };
-
-using C = Color;
-
-}
