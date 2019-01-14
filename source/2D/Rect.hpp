@@ -16,10 +16,13 @@ enum class Edge {
     Bottom      = 0b00000010,
     Left        = 0b00000100,
     Right       = 0b00001000,
-    TopLeft     = Top    | Left,
-    TopRight    = Top    | Right,
-    BottomLeft  = Bottom | Left,
-    BottomRight = Bottom | Right,
+    CenterV     = 0b00010000,
+    CenterH     = 0b00100000,
+    Center      = CenterV | CenterH,
+    TopLeft     = Top     | Left,
+    TopRight    = Top     | Right,
+    BottomLeft  = Bottom  | Left,
+    BottomRight = Bottom  | Right,
     None        = 0
 };
 
