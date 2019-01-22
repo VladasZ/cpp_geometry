@@ -37,10 +37,10 @@ public:
 
 	Matrix4 inversed() const;
     
-    Matrix4  operator * (const Matrix4& mat) const;
-    Matrix4& operator *=(const Matrix4& mat);
+    Matrix4  operator * (const Matrix4&) const;
+    Matrix4& operator *=(const Matrix4&);
 
-	Vector3  operator * (const Vector3& vec) const;
+    Vector3  operator * (const Vector3&) const;
 
 	std::string to_string() const;
 

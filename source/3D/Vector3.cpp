@@ -7,6 +7,7 @@
 //
 
 #include <math.h>
+#include <string>
 
 #include "Vector3.hpp"
 
@@ -95,8 +96,19 @@ Vector3& Vector3::operator /= (Float value) {
 	return *this;
 }
 
-std::string Vector3::to_string() const {
-	return std::string() + "[ " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + " ]";
+const char* Vector3::to_string() const {
+    static std::string result;
+    result = std::string() + "[ " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + " ]";
+    return result.c_str();
+}
+
+const char* Vector3::to_string(const std::vector<Vector3>& points) {
+    static std::string result;
+    result = "";
+    for (const auto& point : points)
+        result += std::string() + point.to_string() + "\n";
+    result.pop_back();
+    return result.c_str();
 }
 
 Vector3 Vector3::middle_point(const std::vector<Vector3>& points) {

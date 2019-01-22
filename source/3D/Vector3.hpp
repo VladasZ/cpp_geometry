@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include <string>
 #include <vector>
 
 class Vector3 {
@@ -26,25 +25,27 @@ public:
 
     Float length() const;
     
-    Vector3 cross(const Vector3& vec) const;
-    Float dot(const Vector3& vec) const;
+    Vector3 cross(const Vector3&) const;
+    Float dot(const Vector3&) const;
 
     Vector3& normalize();
 
-    Vector3  operator +  (const Vector3& vec) const;
-    Vector3& operator += (const Vector3& vec);
+    Vector3  operator +  (const Vector3&) const;
+    Vector3& operator += (const Vector3&);
 
-    Vector3  operator -  (const Vector3& vec) const;
-    Vector3& operator -= (const Vector3& vec);
+    Vector3  operator -  (const Vector3&) const;
+    Vector3& operator -= (const Vector3&);
 
-    Vector3  operator *  (Float value) const;
-    Vector3& operator *= (Float value);
+    Vector3  operator *  (Float) const;
+    Vector3& operator *= (Float);
 
-    Vector3  operator /  (Float value) const;
-    Vector3& operator /= (Float value);
+    Vector3  operator /  (Float) const;
+    Vector3& operator /= (Float);
 
-    std::string to_string() const;
+    const char* to_string() const;
 
-    static Vector3 middle_point(const std::vector<Vector3>& points);
+    static const char* to_string(const std::vector<Vector3>&);
+
+    static Vector3 middle_point(const std::vector<Vector3>&);
 };
 
