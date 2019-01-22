@@ -104,7 +104,7 @@ const char* Vector3::to_string() const {
 
 const char* Vector3::to_string(const std::vector<Vector3>& points) {
     static std::string result;
-    result = "";
+    result.clear();
     for (const auto& point : points)
         result += std::string() + point.to_string() + "\n";
     result.pop_back();
