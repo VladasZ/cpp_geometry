@@ -241,6 +241,33 @@ Matrix4 Matrix4::rotation(Float angle, const Vector3& in) {
     return {};//glm::rotate(glm::mat4(), angle, {in.x, in.y, in.z});
 }
 
+Matrix4 Matrix4::rotation_x(Float angle) {
+    return {
+        1,          0,           0, 0,
+        0, cos(angle), -sin(angle), 0,
+        0, sin(angle),  cos(angle), 0,
+        0,          0,           0, 1,
+    };
+}
+
+Matrix4 Matrix4::rotation_y(Float angle) {
+    return {
+         cos(angle), 0, sin(angle), 0,
+                  0, 1,          0, 0,
+        -sin(angle), 0, cos(angle), 0,
+                  0, 0,          0, 1,
+    };
+}
+
+Matrix4 Matrix4::rotation_z(Float angle) {
+    return {
+        cos(angle), -sin(angle), 0, 0,
+        sin(angle),  cos(angle), 0, 0,
+                 0,           0, 1, 0,
+                 0,           0, 0, 1,
+    };
+}
+
 Matrix4 Matrix4::perspective(Float fovy, Float aspect, Float zNear, Float zFar) {
 
     Float const tan_half_fovy = tan(fovy / 2.0f);

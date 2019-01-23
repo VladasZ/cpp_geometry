@@ -49,6 +49,9 @@ public:
     static Matrix4 scale(Float scale);
     static Matrix4 translation(const Vector3& location);
     static Matrix4 rotation(Float angle, const Vector3& axis);
+    static Matrix4 rotation_x(Float angle);
+    static Matrix4 rotation_y(Float angle);
+    static Matrix4 rotation_z(Float angle);
     static Matrix4 perspective(Float fovy, Float aspect, Float zNear, Float zFar);
 
 };
