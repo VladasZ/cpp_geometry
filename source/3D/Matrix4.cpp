@@ -197,6 +197,14 @@ Vector3 Matrix4::operator * (const Vector3& vec) const {
     };
 }
 
+Vector3 Matrix4::multiply_by_normal(const Vector3& vec) const {
+    return {
+        data[0][0] * vec.x + data[0][1] * vec.y + data[0][2] * vec.z,
+        data[1][0] * vec.x + data[1][1] * vec.y + data[1][2] * vec.z,
+        data[2][0] * vec.x + data[2][1] * vec.y + data[2][2] * vec.z
+    };
+}
+
 std::string Matrix4::to_string() const {
     std::string result;
 
