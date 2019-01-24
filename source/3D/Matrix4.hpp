@@ -27,7 +27,7 @@ public:
     
     Matrix4();
     Matrix4(Float value);
-    Matrix4(const std::initializer_list<Float>& list);
+    Matrix4(const std::initializer_list<Float>&);
     
     template <class CompatibleClass>
     Matrix4(const CompatibleClass& obj) {
@@ -46,12 +46,11 @@ public:
 
     std::string to_string() const;
 
-    static Matrix4 scale(Float scale);
-    static Matrix4 translation(const Vector3& location);
-    static Matrix4 rotation(Float angle, const Vector3& axis);
-    static Matrix4 rotation_x(Float angle);
-    static Matrix4 rotation_y(Float angle);
-    static Matrix4 rotation_z(Float angle);
+    static Matrix4 scale(Float);
+    static Matrix4 translation(const Vector3&);
+    static Matrix4 rotation_x(Float);
+    static Matrix4 rotation_y(Float);
+    static Matrix4 rotation_z(Float);
     static Matrix4 perspective(Float fovy, Float aspect, Float zNear, Float zFar);
 
 };

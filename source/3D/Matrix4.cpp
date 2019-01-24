@@ -13,11 +13,11 @@
 
 
 Matrix4::Matrix4() : Matrix4 {
-    1, 0, 0, 0,
-    0, 1, 0, 0,
-    0, 0, 1, 0,
-    0, 0, 0, 1
-} { }
+                         1, 0, 0, 0,
+                         0, 1, 0, 0,
+                         0, 0, 1, 0,
+                         0, 0, 0, 1
+                         } { }
 
 Matrix4::Matrix4(Float value) {
     for (size_t i = 0; i < Matrix4::size; i++)
@@ -36,117 +36,117 @@ Matrix4 Matrix4::inversed() const {
     float inv[16];
     float * m = reinterpret_cast<float *>(&result);
 
-    inv[0] = m[5] * m[10] * m[15] -
-             m[5] * m[11] * m[14] -
-             m[9] * m[6] * m[15] +
-             m[9] * m[7] * m[14] +
-             m[13] * m[6] * m[11] -
-             m[13] * m[7] * m[10];
+    inv[ 0] =  m[ 5] * m[10] * m[15] -
+               m[ 5] * m[11] * m[14] -
+               m[ 9] * m[ 6] * m[15] +
+               m[ 9] * m[ 7] * m[14] +
+               m[13] * m[ 6] * m[11] -
+               m[13] * m[ 7] * m[10];
 
-    inv[4] = -m[4] * m[10] * m[15] +
-              m[4] * m[11] * m[14] +
-              m[8] * m[6] * m[15] -
-              m[8] * m[7] * m[14] -
-              m[12] * m[6] * m[11] +
-              m[12] * m[7] * m[10];
+    inv[ 4] = -m[ 4] * m[10] * m[15] +
+               m[ 4] * m[11] * m[14] +
+               m[ 8] * m[ 6] * m[15] -
+               m[ 8] * m[ 7] * m[14] -
+               m[12] * m[ 6] * m[11] +
+               m[12] * m[ 7] * m[10];
 
-    inv[8] = m[4] * m[9] * m[15] -
-             m[4] * m[11] * m[13] -
-             m[8] * m[5] * m[15] +
-             m[8] * m[7] * m[13] +
-             m[12] * m[5] * m[11] -
-             m[12] * m[7] * m[9];
+    inv[ 8] =  m[ 4] * m[ 9] * m[15] -
+               m[ 4] * m[11] * m[13] -
+               m[ 8] * m[ 5] * m[15] +
+               m[ 8] * m[ 7] * m[13] +
+               m[12] * m[ 5] * m[11] -
+               m[12] * m[ 7] * m[ 9];
 
-    inv[12] = -m[4] * m[9] * m[14] +
-              m[4] * m[10] * m[13] +
-              m[8] * m[5] * m[14] -
-              m[8] * m[6] * m[13] -
-              m[12] * m[5] * m[10] +
-              m[12] * m[6] * m[9];
+    inv[12] = -m[ 4] * m[ 9] * m[14] +
+               m[ 4] * m[10] * m[13] +
+               m[ 8] * m[ 5] * m[14] -
+               m[ 8] * m[ 6] * m[13] -
+               m[12] * m[ 5] * m[10] +
+               m[12] * m[ 6] * m[ 9];
 
-    inv[1] = -m[1] * m[10] * m[15] +
-              m[1] * m[11] * m[14] +
-              m[9] * m[2] * m[15] -
-              m[9] * m[3] * m[14] -
-              m[13] * m[2] * m[11] +
-              m[13] * m[3] * m[10];
+    inv[ 1] = -m[ 1] * m[10] * m[15] +
+               m[ 1] * m[11] * m[14] +
+               m[ 9] * m[ 2] * m[15] -
+               m[ 9] * m[ 3] * m[14] -
+               m[13] * m[ 2] * m[11] +
+               m[13] * m[ 3] * m[10];
 
-    inv[5] = m[0] * m[10] * m[15] -
-             m[0] * m[11] * m[14] -
-             m[8] * m[2] * m[15] +
-             m[8] * m[3] * m[14] +
-             m[12] * m[2] * m[11] -
-             m[12] * m[3] * m[10];
+    inv[ 5] =  m[ 0] * m[10] * m[15] -
+               m[ 0] * m[11] * m[14] -
+               m[ 8] * m[ 2] * m[15] +
+               m[ 8] * m[ 3] * m[14] +
+               m[12] * m[ 2] * m[11] -
+               m[12] * m[ 3] * m[10];
 
-    inv[9] = -m[0] * m[9] * m[15] +
-              m[0] * m[11] * m[13] +
-              m[8] * m[1] * m[15] -
-              m[8] * m[3] * m[13] -
-              m[12] * m[1] * m[11] +
-              m[12] * m[3] * m[9];
+    inv[ 9] = -m[ 0] * m[ 9] * m[15] +
+               m[ 0] * m[11] * m[13] +
+               m[ 8] * m[ 1] * m[15] -
+               m[ 8] * m[ 3] * m[13] -
+               m[12] * m[ 1] * m[11] +
+               m[12] * m[ 3] * m[ 9];
 
-    inv[13] = m[0] * m[9] * m[14] -
-              m[0] * m[10] * m[13] -
-              m[8] * m[1] * m[14] +
-              m[8] * m[2] * m[13] +
-              m[12] * m[1] * m[10] -
-              m[12] * m[2] * m[9];
+    inv[13] =  m[ 0] * m[ 9] * m[14] -
+               m[ 0] * m[10] * m[13] -
+               m[ 8] * m[ 1] * m[14] +
+               m[ 8] * m[ 2] * m[13] +
+               m[12] * m[ 1] * m[10] -
+               m[12] * m[ 2] * m[ 9];
 
-    inv[2] = m[1] * m[6] * m[15] -
-             m[1] * m[7] * m[14] -
-             m[5] * m[2] * m[15] +
-             m[5] * m[3] * m[14] +
-             m[13] * m[2] * m[7] -
-             m[13] * m[3] * m[6];
+    inv[ 2] =  m[ 1] * m[ 6] * m[15] -
+               m[ 1] * m[ 7] * m[14] -
+               m[ 5] * m[ 2] * m[15] +
+               m[ 5] * m[ 3] * m[14] +
+               m[13] * m[ 2] * m[ 7] -
+               m[13] * m[ 3] * m[ 6];
 
-    inv[6] = -m[0] * m[6] * m[15] +
-              m[0] * m[7] * m[14] +
-              m[4] * m[2] * m[15] -
-              m[4] * m[3] * m[14] -
-              m[12] * m[2] * m[7] +
-              m[12] * m[3] * m[6];
+    inv[ 6] = -m[ 0] * m[ 6] * m[15] +
+               m[ 0] * m[ 7] * m[14] +
+               m[ 4] * m[ 2] * m[15] -
+               m[ 4] * m[ 3] * m[14] -
+               m[12] * m[ 2] * m[ 7] +
+               m[12] * m[ 3] * m[ 6];
 
-    inv[10] = m[0] * m[5] * m[15] -
-              m[0] * m[7] * m[13] -
-              m[4] * m[1] * m[15] +
-              m[4] * m[3] * m[13] +
-              m[12] * m[1] * m[7] -
-              m[12] * m[3] * m[5];
+    inv[10] =  m[ 0] * m[ 5] * m[15] -
+               m[ 0] * m[ 7] * m[13] -
+               m[ 4] * m[ 1] * m[15] +
+               m[ 4] * m[ 3] * m[13] +
+               m[12] * m[ 1] * m[ 7] -
+               m[12] * m[ 3] * m[ 5];
 
-    inv[14] = -m[0] * m[5] * m[14] +
-               m[0] * m[6] * m[13] +
-               m[4] * m[1] * m[14] -
-               m[4] * m[2] * m[13] -
-               m[12] * m[1] * m[6] +
-               m[12] * m[2] * m[5];
+    inv[14] = -m[ 0] * m[ 5] * m[14] +
+               m[ 0] * m[ 6] * m[13] +
+               m[ 4] * m[ 1] * m[14] -
+               m[ 4] * m[ 2] * m[13] -
+               m[12] * m[ 1] * m[ 6] +
+               m[12] * m[ 2] * m[ 5];
 
-    inv[3] = -m[1] * m[6] * m[11] +
-              m[1] * m[7] * m[10] +
-              m[5] * m[2] * m[11] -
-              m[5] * m[3] * m[10] -
-              m[9] * m[2] * m[7] +
-              m[9] * m[3] * m[6];
+    inv[ 3] = -m[ 1] * m[ 6] * m[11] +
+               m[ 1] * m[ 7] * m[10] +
+               m[ 5] * m[ 2] * m[11] -
+               m[ 5] * m[ 3] * m[10] -
+               m[ 9] * m[ 2] * m[ 7] +
+               m[ 9] * m[ 3] * m[ 6];
 
-    inv[7] = m[0] * m[6] * m[11] -
-             m[0] * m[7] * m[10] -
-             m[4] * m[2] * m[11] +
-             m[4] * m[3] * m[10] +
-             m[8] * m[2] * m[7] -
-             m[8] * m[3] * m[6];
+    inv[ 7] =  m[ 0] * m[ 6] * m[11] -
+               m[ 0] * m[ 7] * m[10] -
+               m[ 4] * m[ 2] * m[11] +
+               m[ 4] * m[ 3] * m[10] +
+               m[ 8] * m[ 2] * m[ 7] -
+               m[ 8] * m[ 3] * m[ 6];
 
-    inv[11] = -m[0] * m[5] * m[11] +
-               m[0] * m[7] * m[9] +
-               m[4] * m[1] * m[11] -
-               m[4] * m[3] * m[9] -
-               m[8] * m[1] * m[7] +
-               m[8] * m[3] * m[5];
+    inv[11] = -m[ 0] * m[ 5] * m[11] +
+               m[ 0] * m[ 7] * m[ 9] +
+               m[ 4] * m[ 1] * m[11] -
+               m[ 4] * m[ 3] * m[ 9] -
+               m[ 8] * m[ 1] * m[ 7] +
+               m[ 8] * m[ 3] * m[ 5];
 
-    inv[15] = m[0] * m[5] * m[10] -
-              m[0] * m[6] * m[9] -
-              m[4] * m[1] * m[10] +
-              m[4] * m[2] * m[9] +
-              m[8] * m[1] * m[6] -
-              m[8] * m[2] * m[5];
+    inv[15] =  m[ 0] * m[ 5] * m[10] -
+               m[ 0] * m[ 6] * m[ 9] -
+               m[ 4] * m[ 1] * m[10] +
+               m[ 4] * m[ 2] * m[ 9] +
+               m[ 8] * m[ 1] * m[ 6] -
+               m[ 8] * m[ 2] * m[ 5];
 
     float det = m[0] * inv[0] + m[1] * inv[4] + m[2] * inv[8] + m[3] * inv[12];
 
@@ -192,16 +192,16 @@ Matrix4& Matrix4::operator *=(const Matrix4& mat) {
 Vector3 Matrix4::operator * (const Vector3& vec) const {
     return {
         data[0][0] * vec.x + data[0][1] * vec.y + data[0][2] * vec.z + data[0][3] * 1,
-        data[1][0] * vec.x + data[1][1] * vec.y + data[1][2] * vec.z + data[1][3] * 1,
-        data[2][0] * vec.x + data[2][1] * vec.y + data[2][2] * vec.z + data[2][3] * 1
+                data[1][0] * vec.x + data[1][1] * vec.y + data[1][2] * vec.z + data[1][3] * 1,
+                data[2][0] * vec.x + data[2][1] * vec.y + data[2][2] * vec.z + data[2][3] * 1
     };
 }
 
 Vector3 Matrix4::multiply_by_normal(const Vector3& vec) const {
     return {
         data[0][0] * vec.x + data[0][1] * vec.y + data[0][2] * vec.z,
-        data[1][0] * vec.x + data[1][1] * vec.y + data[1][2] * vec.z,
-        data[2][0] * vec.x + data[2][1] * vec.y + data[2][2] * vec.z
+                data[1][0] * vec.x + data[1][1] * vec.y + data[1][2] * vec.z,
+                data[2][0] * vec.x + data[2][1] * vec.y + data[2][2] * vec.z
     };
 }
 
@@ -227,18 +227,14 @@ Matrix4 Matrix4::scale(Float scale) {
             0,     0,     0, 1
     };
 }
- 
+
 Matrix4 Matrix4::translation(const Vector3& location) {
     return {
-                 1,              0,              0, 0,
-                 0,              1,              0, 0,
-                 0,              0,              1, 0,
+                 1,          0,          0, 0,
+                 0,          1,          0, 0,
+                 0,          0,          1, 0,
         location.x, location.y, location.z, 1
     };
-}
-
-Matrix4 Matrix4::rotation(Float angle, const Vector3& in) {
-    return {};//glm::rotate(glm::mat4(), angle, {in.x, in.y, in.z});
 }
 
 Matrix4 Matrix4::rotation_x(Float angle) {
@@ -246,16 +242,16 @@ Matrix4 Matrix4::rotation_x(Float angle) {
         1,          0,           0, 0,
         0, cos(angle), -sin(angle), 0,
         0, sin(angle),  cos(angle), 0,
-        0,          0,           0, 1,
+        0,          0,           0, 1
     };
 }
 
 Matrix4 Matrix4::rotation_y(Float angle) {
     return {
-         cos(angle), 0, sin(angle), 0,
-                  0, 1,          0, 0,
-        -sin(angle), 0, cos(angle), 0,
-                  0, 0,          0, 1,
+        cos(angle), 0, sin(angle), 0,
+                 0, 1,          0, 0,
+       -sin(angle), 0, cos(angle), 0,
+                 0, 0,          0, 1
     };
 }
 
@@ -264,21 +260,21 @@ Matrix4 Matrix4::rotation_z(Float angle) {
         cos(angle), -sin(angle), 0, 0,
         sin(angle),  cos(angle), 0, 0,
                  0,           0, 1, 0,
-                 0,           0, 0, 1,
+                 0,           0, 0, 1
     };
 }
 
-Matrix4 Matrix4::perspective(Float fovy, Float aspect, Float zNear, Float zFar) {
+Matrix4 Matrix4::perspective(Float fovy, Float aspect, Float z_near, Float z_far) {
 
-    Float const tan_half_fovy = tan(fovy / 2.0f);
+    const auto tan_half_fovy = static_cast<Float>(tan(fovy / 2.0f));
 
     Matrix4 result(0.0f);
-    result.data[0][0] = 1.0f / (aspect * tan_half_fovy);
-    result.data[1][1] = 1.0f / (tan_half_fovy);
+    result.data[0][0] =  1.0f / (aspect * tan_half_fovy);
+    result.data[1][1] =  1.0f / (tan_half_fovy);
     result.data[2][3] = -1.0f;
 
-    result.data[2][2] = -(zFar + zNear) / (zFar - zNear);
-    result.data[3][2] = -(2.0f * zFar * zNear) / (zFar - zNear);
+    result.data[2][2] = -(z_far +        z_near) / (z_far - z_near);
+    result.data[3][2] = -(2.0f * z_far * z_near) / (z_far - z_near);
 
     return result;
 }

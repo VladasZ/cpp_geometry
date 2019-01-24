@@ -82,11 +82,11 @@ Vector3& Vector3::operator *= (Float value) {
 }
 
 Vector3 Vector3::operator / (Float value) const {
-	return {
-	x / value,
-	y / value,
-	z / value
-	};
+    return {
+        x / value,
+        y / value,
+        z / value
+    };
 }
 
 Vector3& Vector3::operator /= (Float value) {
