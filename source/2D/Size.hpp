@@ -18,6 +18,7 @@ public:
     float height = 0;
 
     Size() = default;
+    Size(float size);
     Size(float width, float height);
 
     Point center() const;

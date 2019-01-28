@@ -35,6 +35,7 @@ public:
 
     Rect() = default;
     Rect(const Size& size);
+    Rect(float size);
     Rect(float width, float height);
     Rect(float x, float y, float width, float height);
 

@@ -11,6 +11,10 @@
 
 #include "Size.hpp"
 
+Size::Size(float size) : width(size), height(size) {
+
+}
+
 Size::Size(float width, float height) : width(width), height(height) { 
 
 }
