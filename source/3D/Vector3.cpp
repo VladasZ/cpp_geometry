@@ -32,8 +32,7 @@ Vector3::Float Vector3::dot(const Vector3& vec) const {
 }
 
 Vector3& Vector3::normalize() {
-    auto ratio = 1 / length();
-    return this->operator*=(ratio);
+    return *this *= 1 / length();
 }
 
 Vector3 Vector3::operator + (const Vector3& vec) const {

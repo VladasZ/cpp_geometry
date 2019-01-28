@@ -24,6 +24,8 @@ public:
 
     bool is_transparent() const;
 
+    const float* data() const;
+
     static Color random();
 
     static const Color black;

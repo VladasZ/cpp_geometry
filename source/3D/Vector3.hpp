@@ -26,7 +26,7 @@ public:
     Float length() const;
     
     Vector3 cross(const Vector3&) const;
-    Float dot(const Vector3&) const;
+    Float     dot(const Vector3&) const;
 
     Vector3& normalize();
 

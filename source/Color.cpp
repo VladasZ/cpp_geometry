@@ -21,6 +21,10 @@ bool Color::is_transparent() const {
     return this->a <= 0.02f;
 }
 
+const float* Color::data() const {
+    return &r;
+}
+
 Color Color::random() {
     static const std::vector<Color> all = {
         black,
