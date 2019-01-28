@@ -39,6 +39,12 @@ Size Size::operator * (float value) const {
     return { this->width * value, this->height * value };
 }
 
+Size& Size::operator *= (float value) {
+    width  *= value;
+    height *= value;
+    return *this;
+}
+
 bool Size::operator == (const Size& size) const {
     return !static_cast<bool>(memcmp(this, &size, sizeof(Size)));
 }

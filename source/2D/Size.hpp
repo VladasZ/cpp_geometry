@@ -26,8 +26,9 @@ public:
 
     bool is_negative() const;
 
-    Size operator / (float value) const;
-    Size operator * (float value) const;
+    Size  operator /  (float value) const;
+    Size  operator *  (float value) const;
+    Size& operator *= (float value);
 
     bool operator == (const Size& size) const;
 
