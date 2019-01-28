@@ -32,7 +32,7 @@ public:
     template <class CompatibleClass>
     Matrix4(const CompatibleClass& obj) {
         static_assert(sizeof(Matrix4) == sizeof(CompatibleClass), "Matrix4 invalid initializer");
-        std::memcpy(&data[0][0], static_cast<void*>(&obj), sizeof(Matrix4));
+        std::memcpy(&data[0][0], static_cast<const void*>(&obj), sizeof(Matrix4));
     }
 
     Matrix4 inversed() const;
