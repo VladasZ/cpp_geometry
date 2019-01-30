@@ -161,7 +161,11 @@ Matrix4 Matrix4::inversed() const {
     return result;
 }
 
-Matrix4 Matrix4::operator *(const Matrix4& mat) const {
+Matrix4 Matrix4::operator *(const Matrix4& in) const {
+
+    const auto& data = in.data;
+    const auto& mat = *this;
+
     Matrix4 res;
     res.data[0][0] = data[0][0] * mat.data[0][0] + data[0][1] * mat.data[1][0] + data[0][2] * mat.data[2][0] + data[0][3] * mat.data[3][0];
     res.data[0][1] = data[0][0] * mat.data[0][1] + data[0][1] * mat.data[1][1] + data[0][2] * mat.data[2][1] + data[0][3] * mat.data[3][1];
