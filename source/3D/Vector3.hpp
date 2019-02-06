@@ -21,7 +21,7 @@ public:
     Float z = 0;
     
     Vector3() = default;
-    Vector3(Float x, Float y, Float z);
+    Vector3(Float x, Float y, Float z = 0);
 
     Float length() const;
     
