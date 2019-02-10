@@ -20,10 +20,10 @@ Vector3::Float Vector3::length() const {
 }
 
 Vector3 Vector3::cross(const Vector3& vec) const {
-	return {
-		y * vec.z - z * vec.y, 
-		z * vec.x - x * vec.z,
-		x * vec.y - y * vec.x
+    return {
+        y * vec.z - z * vec.y,
+        z * vec.x - x * vec.z,
+        x * vec.y - y * vec.x
 	};
 }
 
@@ -33,6 +33,11 @@ Vector3::Float Vector3::dot(const Vector3& vec) const {
 
 Vector3& Vector3::normalize() {
     return *this *= 1 / length();
+}
+
+Vector3 Vector3::normalized() const {
+    Vector3 result = *this;
+    return result *= 1 / length();
 }
 
 Vector3 Vector3::operator + (const Vector3& vec) const {
@@ -93,6 +98,19 @@ Vector3& Vector3::operator /= (Float value) {
 	y /= value;
 	z /= value;
 	return *this;
+}
+
+float Vector3::distance_to(const Vector3& vec) const {
+    const auto _x = x - vec.x;
+    const auto _y = y - vec.y;
+    const auto _z = z - vec.z;
+    return sqrt(_x * _x + _y * _y + _z * _z);
+}
+
+void Vector3::orbit_shift(const Point& shift) {
+
+
+
 }
 
 const char* Vector3::to_string() const {

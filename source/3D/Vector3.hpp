@@ -10,6 +10,8 @@
 
 #include <vector>
 
+#include "Point.hpp"
+
 class Vector3 {
     
 public:
@@ -29,6 +31,7 @@ public:
     Float     dot(const Vector3&) const;
 
     Vector3& normalize();
+    Vector3 normalized() const;
 
     Vector3  operator +  (const Vector3&) const;
     Vector3& operator += (const Vector3&);
@@ -41,6 +44,10 @@ public:
 
     Vector3  operator /  (Float) const;
     Vector3& operator /= (Float);
+
+    float distance_to(const Vector3&) const;
+
+    void orbit_shift(const Point&);
 
     const char* to_string() const;
 

@@ -46,11 +46,13 @@ public:
 
     std::string to_string() const;
 
-    static Matrix4 scale(Float);
-    static Matrix4 translation(const Vector3&);
-    static Matrix4 rotation_x(Float);
-    static Matrix4 rotation_y(Float);
-    static Matrix4 rotation_z(Float);
-    static Matrix4 perspective(Float fovy, Float aspect, Float zNear, Float zFar);
-
+    struct transform {
+        static Matrix4 scale(Float);
+        static Matrix4 translation(const Vector3&);
+        static Matrix4 rotation_x(Float);
+        static Matrix4 rotation_y(Float);
+        static Matrix4 rotation_z(Float);
+        static Matrix4 perspective(Float fovy, Float aspect, Float z_near, Float z_far);
+        static Matrix4 look_at(const Vector3& eye, const Vector3& center, const Vector3& up);
+    };
 };

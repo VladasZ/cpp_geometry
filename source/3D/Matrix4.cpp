@@ -16,8 +16,7 @@ Matrix4::Matrix4() : Matrix4 {
                          1, 0, 0, 0,
                          0, 1, 0, 0,
                          0, 0, 1, 0,
-                         0, 0, 0, 1
-                         } { }
+                         0, 0, 0, 1  } { }
 
 Matrix4::Matrix4(Float value) {
     for (size_t i = 0; i < Matrix4::size; i++)
@@ -223,7 +222,7 @@ std::string Matrix4::to_string() const {
     return result;
 }
 
-Matrix4 Matrix4::scale(Float scale) {
+Matrix4 Matrix4::transform::scale(Float scale) {
     return  {
         scale,     0,     0, 0,
             0, scale,     0, 0,
@@ -232,7 +231,7 @@ Matrix4 Matrix4::scale(Float scale) {
     };
 }
 
-Matrix4 Matrix4::translation(const Vector3& location) {
+Matrix4 Matrix4::transform::translation(const Vector3& location) {
     return {
                  1,          0,          0, 0,
                  0,          1,          0, 0,
@@ -241,34 +240,40 @@ Matrix4 Matrix4::translation(const Vector3& location) {
     };
 }
 
-Matrix4 Matrix4::rotation_x(Float angle) {
+Matrix4 Matrix4::transform::rotation_x(Float angle) {
+    const auto cos_x = cos(angle);
+    const auto sin_x = sin(angle);
     return {
-        1,          0,           0, 0,
-        0, cos(angle), -sin(angle), 0,
-        0, sin(angle),  cos(angle), 0,
-        0,          0,           0, 1
+        1,      0,     0, 0,
+        0,  cos_x, sin_x, 0,
+        0, -sin_x, cos_x, 0,
+        0,      0,     0, 1
     };
 }
 
-Matrix4 Matrix4::rotation_y(Float angle) {
+Matrix4 Matrix4::transform::rotation_y(Float angle) {
+    const auto cos_y = cos(angle);
+    const auto sin_y = sin(angle);
     return {
-        cos(angle), 0, sin(angle), 0,
-                 0, 1,          0, 0,
-       -sin(angle), 0, cos(angle), 0,
-                 0, 0,          0, 1
+        cos_y, 0, -sin_y, 0,
+            0, 1,      0, 0,
+        sin_y, 0,  cos_y, 0,
+            0, 0,      0, 1
     };
 }
 
-Matrix4 Matrix4::rotation_z(Float angle) {
+Matrix4 Matrix4::transform::rotation_z(Float angle) {
+    const auto cos_z = cos(angle);
+    const auto sin_z = sin(angle);
     return {
-        cos(angle), -sin(angle), 0, 0,
-        sin(angle),  cos(angle), 0, 0,
-                 0,           0, 1, 0,
-                 0,           0, 0, 1
+        cos_z, sin_z, 0, 0,
+       -sin_z, cos_z, 0, 0,
+            0,     0, 1, 0,
+            0,     0, 0, 1
     };
 }
 
-Matrix4 Matrix4::perspective(Float fovy, Float aspect, Float z_near, Float z_far) {
+Matrix4 Matrix4::transform::perspective(Float fovy, Float aspect, Float z_near, Float z_far) {
 
     const auto tan_half_fovy = static_cast<Float>(tan(fovy / 2.0f));
 
@@ -279,6 +284,30 @@ Matrix4 Matrix4::perspective(Float fovy, Float aspect, Float z_near, Float z_far
 
     result.data[2][2] = -(z_far +        z_near) / (z_far - z_near);
     result.data[3][2] = -(2.0f * z_far * z_near) / (z_far - z_near);
+
+    return result;
+}
+
+Matrix4 Matrix4::transform::look_at(const Vector3& eye, const Vector3& center, const Vector3& up) {
+
+    const auto f = (center - eye).normalized();
+    const auto s = (f.cross(up)).normalized();
+    const auto u = s.cross(f);
+
+    Matrix4 result;
+
+    result.data[0][0] =  s.x;
+    result.data[1][0] =  s.y;
+    result.data[2][0] =  s.z;
+    result.data[0][1] =  u.x;
+    result.data[1][1] =  u.y;
+    result.data[2][1] =  u.z;
+    result.data[0][2] = -f.x;
+    result.data[1][2] = -f.y;
+    result.data[2][2] = -f.z;
+    result.data[3][0] = -s.dot(eye);
+    result.data[3][1] = -u.dot(eye);
+    result.data[3][2] =  f.dot(eye);
 
     return result;
 }
