@@ -25,6 +25,8 @@ public:
     Vector3() = default;
     Vector3(Float x, Float y, Float z = 0);
 
+    Point point() const;
+
     Float length() const;
     
     Vector3 cross(const Vector3&) const;

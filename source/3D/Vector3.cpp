@@ -10,9 +10,14 @@
 #include <string>
 
 #include "Vector3.hpp"
+#include "Matrix4.hpp"
 
 Vector3::Vector3(Float x, Float y, Float z) : x(x), y(y), z(z) {
 
+}
+
+Point Vector3::point() const {
+    return { x, y };
 }
 
 Vector3::Float Vector3::length() const {
@@ -107,10 +112,31 @@ float Vector3::distance_to(const Vector3& vec) const {
     return sqrt(_x * _x + _y * _y + _z * _z);
 }
 
+#include <iostream>
+using namespace std;
+
 void Vector3::orbit_shift(const Point& shift) {
 
+//    const auto angle = point().angle();
+
+//    cout << "shift: " << shift.x << endl;
+//    cout << "current angle: " << angle << endl;
+
+//    const auto transform_y              = Matrix4::transform::rotation_y(shift.y);
+//    const auto transform_to_zero_angle  = Matrix4::transform::rotation_z(-angle);
+//    const auto transform_to_final_angle = Matrix4::transform::rotation_z((angle - shift.x));
 
 
+//    const auto final_transform = transform_y * transform_to_zero_angle;
+
+//    cout << "angle + shift: " << angle + shift.x << endl;
+
+//    *this = final_transform * *this;
+
+//    cout << "final angle: " << point().angle() << endl;
+//    cout << "-------------" << endl;
+
+    *this = Matrix4::transform::rotation_z(shift.x) * Matrix4::transform::rotation_x(shift.y) * *this;
 }
 
 const char* Vector3::to_string() const {
