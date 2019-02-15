@@ -10,6 +10,7 @@
 
 #include <vector>
 
+#include "Math.hpp"
 #include "Point.hpp"
 
 class Vector3 {
@@ -22,8 +23,8 @@ public:
     Float y = 0;
     Float z = 0;
     
-    Vector3() = default;
-    Vector3(Float x, Float y, Float z = 0);
+    constexpr Vector3() { }
+    constexpr Vector3(Float x, Float y, Float z = 0) : x(x), y(y), z(z) { }
 
     Point point() const;
 
@@ -47,7 +48,12 @@ public:
     Vector3  operator /  (Float) const;
     Vector3& operator /= (Float);
 
-    float distance_to(const Vector3&) const;
+    constexpr float distance_to(const Vector3& vec) const {
+        const auto _x = x - vec.x;
+        const auto _y = y - vec.y;
+        const auto _z = z - vec.z;
+        return math::sqrt(_x * _x + _y * _y + _z * _z);
+    }
 
     void orbit_shift(const Point&);
 

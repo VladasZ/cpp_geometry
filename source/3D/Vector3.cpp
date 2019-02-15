@@ -12,10 +12,6 @@
 #include "Vector3.hpp"
 #include "Matrix4.hpp"
 
-Vector3::Vector3(Float x, Float y, Float z) : x(x), y(y), z(z) {
-
-}
-
 Point Vector3::point() const {
     return { x, y };
 }
@@ -103,13 +99,6 @@ Vector3& Vector3::operator /= (Float value) {
 	y /= value;
 	z /= value;
 	return *this;
-}
-
-float Vector3::distance_to(const Vector3& vec) const {
-    const auto _x = x - vec.x;
-    const auto _y = y - vec.y;
-    const auto _z = z - vec.z;
-    return sqrt(_x * _x + _y * _y + _z * _z);
 }
 
 #include <iostream>
