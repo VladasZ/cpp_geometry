@@ -158,5 +158,5 @@ Vector3 Vector3::middle_point(const std::vector<Vector3>& points) {
 	Vector3 result;
 	for (const auto& point : points)
 		result += point;
-	return result / points.size();
+	return result / static_cast<float>(points.size());
 }
