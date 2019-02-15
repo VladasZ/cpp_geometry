@@ -9,6 +9,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 #include "Math.hpp"
 #include "Point.hpp"
@@ -57,10 +58,23 @@ public:
 
     void orbit_shift(const Point&);
 
-    const char* to_string() const;
+    std::string to_string() const;
 
-    static const char* to_string(const std::vector<Vector3>&);
+    template <class T>
+    static auto to_string(const T& points) {
+        std::string result;
+        for (auto& point : points)
+            result += std::string() + point.to_string() + "\n";
+        result.pop_back();
+        return result;
+    }
 
-    static Vector3 middle_point(const std::vector<Vector3>&);
+    template <class T>
+    static auto middle_point(const T& points) {
+        Vector3 result;
+        for (const auto& point : points)
+            result += point;
+        return result / static_cast<float>(points.size());
+    }
 };
 

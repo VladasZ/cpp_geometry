@@ -128,24 +128,6 @@ void Vector3::orbit_shift(const Point& shift) {
     *this = Matrix4::transform::rotation_z(shift.x) * Matrix4::transform::rotation_x(shift.y) * *this;
 }
 
-const char* Vector3::to_string() const {
-    static std::string result;
-    result = std::string() + "[ " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + " ]";
-    return result.c_str();
-}
-
-const char* Vector3::to_string(const std::vector<Vector3>& points) {
-    static std::string result;
-    result.clear();
-    for (const auto& point : points)
-        result += std::string() + point.to_string() + "\n";
-    result.pop_back();
-    return result.c_str();
-}
-
-Vector3 Vector3::middle_point(const std::vector<Vector3>& points) {
-	Vector3 result;
-	for (const auto& point : points)
-		result += point;
-	return result / static_cast<float>(points.size());
+std::string Vector3::to_string() const {
+    return std::string() + "[ " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + " ]";
 }
