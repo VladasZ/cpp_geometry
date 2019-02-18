@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <limits>
 #include <vector>
 #include <string>
 
@@ -70,11 +71,34 @@ public:
     }
 
     template <class T>
-    static auto middle_point(const T& points) {
+    static auto average_point(const T& points) {
         Vector3 result;
         for (const auto& point : points)
             result += point;
         return result / static_cast<float>(points.size());
     }
+
+    template <class T>
+    static Vector3 middle_point(const T& points) {
+        static const auto max_value = std::numeric_limits<Float>::max();
+        static const auto min_value = std::numeric_limits<Float>::min();
+
+        Float max_x = min_value, min_x = max_value;
+        Float max_y = min_value, min_y = max_value;
+        Float max_z = min_value, min_z = max_value;
+
+        for (const auto& point : points) {
+            if (point.x > max_x) max_x = point.x; if (point.x < min_x) min_x = point.x;
+            if (point.y > max_y) max_y = point.y; if (point.y < min_y) min_y = point.y;
+            if (point.z > max_z) max_z = point.z; if (point.z < min_z) min_z = point.z;
+        }
+
+        return {
+            (max_x - min_x) / 2,
+            (max_y - min_y) / 2,
+            (max_z - min_z) / 2
+        };
+    }
+
 };
 
