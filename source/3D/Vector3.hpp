@@ -59,6 +59,13 @@ public:
 
     void orbit_shift(const Point&);
 
+    template<class T>
+    void append_to_container(T& container) const {
+        container.push_back(x);
+        container.push_back(y);
+        container.push_back(z);
+    }
+
     std::string to_string() const;
 
     template <class T>
@@ -99,6 +106,5 @@ public:
             (max_z + min_z) / 2
         };
     }
-
 };
 

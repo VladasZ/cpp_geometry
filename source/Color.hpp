@@ -26,6 +26,15 @@ public:
 
     const float* data() const;
 
+    template<class T>
+    void append_to_container(T& container, bool with_alpha = false) {
+        container.push_back(r);
+        container.push_back(g);
+        container.push_back(b);
+        if (with_alpha)
+            container.push_back(a);
+    }
+
     static Color random();
 
     static const Color black;
