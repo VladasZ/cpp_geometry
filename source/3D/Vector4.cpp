@@ -15,6 +15,10 @@ Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) {
 
 }
 
+const Vector3& Vector4::vector3() const {
+    return reinterpret_cast<const Vector3&>(*this);
+}
+
 const char* Vector4::to_string() const {
     static std::string result;
     result = std::string() + "[ "

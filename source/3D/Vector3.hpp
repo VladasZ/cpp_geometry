@@ -28,7 +28,7 @@ public:
     constexpr Vector3() { }
     constexpr Vector3(Float x, Float y, Float z = 0) : x(x), y(y), z(z) { }
 
-    Point point() const;
+    const Point& point() const;
 
     Float length() const;
     

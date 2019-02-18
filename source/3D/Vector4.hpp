@@ -10,6 +10,8 @@
 
 #include <vector>
 
+#include "Vector3.hpp"
+
 class Vector4 {
     
 public:
@@ -24,7 +26,7 @@ public:
     Vector4() = default;
     Vector4(Float x, Float y, Float z, Float w);
 
-    Float length() const;
+    const Vector3& vector3() const;
 
     const char* to_string() const;
 };

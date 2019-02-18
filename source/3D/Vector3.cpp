@@ -12,8 +12,8 @@
 #include "Vector3.hpp"
 #include "Matrix4.hpp"
 
-Point Vector3::point() const {
-    return { x, y };
+const Point& Vector3::point() const {
+    return reinterpret_cast<const Point&>(*this);
 }
 
 Vector3::Float Vector3::length() const {
