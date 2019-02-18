@@ -94,9 +94,9 @@ public:
         }
 
         return {
-            (max_x - min_x) / 2,
-            (max_y - min_y) / 2,
-            (max_z - min_z) / 2
+            (max_x + min_x) / 2,
+            (max_y + min_y) / 2,
+            (max_z + min_z) / 2
         };
     }
 

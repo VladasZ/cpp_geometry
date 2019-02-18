@@ -9,6 +9,10 @@
 #include <math.h>
 #include <string>
 
+#include "glm/glm.hpp"
+#include "glm/gtx/transform.hpp"
+#include "glm/gtx/quaternion.hpp"
+
 #include "Vector4.hpp"
 
 Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) {
@@ -28,4 +32,14 @@ const char* Vector4::to_string() const {
             + std::to_string(w) +
             " ]";
     return result.c_str();
+}
+
+Vector4 Vector4::look_at_quaternion(const Vector3& eye, const Vector3& center, const Vector3& up) {
+    auto mat = glm::lookAt({   eye.x,    eye.y,    eye.z },
+                           {center.x, center.y, center.z },
+                 glm::vec3 {    up.x,     up.y,     up.z });
+
+    auto quat = glm::toQuat(mat);
+
+    return { quat.x, quat.y, quat.z, quat.w };
 }
