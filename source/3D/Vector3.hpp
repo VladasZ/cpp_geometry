@@ -26,6 +26,7 @@ public:
     Float z = 0;
     
     constexpr Vector3() { }
+    constexpr Vector3(const Point& point) : x(point.x) , y(point.y) { }
     constexpr Vector3(Float x, Float y, Float z = 0) : x(x), y(y), z(z) { }
 
     const Point& point() const;
