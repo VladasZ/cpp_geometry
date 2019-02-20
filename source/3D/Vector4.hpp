@@ -28,6 +28,8 @@ public:
 
     const Vector3& vector3() const;
 
+    void normalize();
+
     template<class T>
     void append_to_container(T& container) {
         container.push_back(x);

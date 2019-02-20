@@ -31,7 +31,7 @@ public:
     const Point& point() const;
 
     Float length() const;
-    
+
     Vector3 cross(const Vector3&) const;
     Float     dot(const Vector3&) const;
 

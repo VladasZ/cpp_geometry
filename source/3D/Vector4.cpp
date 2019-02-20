@@ -19,6 +19,10 @@ Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) {
 
 }
 
+void Vector4::normalize() {
+    reinterpret_cast<Vector3*>(this)->normalize();
+}
+
 const Vector3& Vector4::vector3() const {
     return reinterpret_cast<const Vector3&>(*this);
 }
