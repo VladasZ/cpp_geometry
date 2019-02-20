@@ -31,6 +31,7 @@ public:
     const Point& point() const;
 
     Float length() const;
+    void set_length(Float);
 
     Vector3 cross(const Vector3&) const;
     Float     dot(const Vector3&) const;
@@ -49,6 +50,12 @@ public:
 
     Vector3  operator /  (Float) const;
     Vector3& operator /= (Float);
+
+    Vector3  operator +  (Float) const;
+    Vector3& operator += (Float);
+
+    Vector3  operator -  (Float) const;
+    Vector3& operator -= (Float);
 
     constexpr float distance_to(const Vector3& vec) const {
         const auto _x = x - vec.x;

@@ -13,11 +13,16 @@
 #include "Matrix4.hpp"
 
 const Point& Vector3::point() const {
-    return reinterpret_cast<const Point&>(*this);
+    return reinterpret_cast<const Point&>(x);
 }
 
 Vector3::Float Vector3::length() const {
     return static_cast<Float>(sqrt(x * x + y * y + z * z));
+}
+
+void Vector3::set_length(Float length) {
+    const float ratio = length / this->length();
+    this->operator*=(ratio);
 }
 
 Vector3 Vector3::cross(const Vector3& vec) const {
@@ -33,7 +38,7 @@ Vector3::Float Vector3::dot(const Vector3& vec) const {
 }
 
 Vector3& Vector3::normalize() {
-    return *this *= 1 / length();
+    return this->operator*=(1 / length());
 }
 
 Vector3 Vector3::normalized() const {
@@ -101,31 +106,42 @@ Vector3& Vector3::operator /= (Float value) {
 	return *this;
 }
 
-#include <iostream>
-using namespace std;
+Vector3 Vector3::operator + (Float value) const {
+    return {
+        x + value,
+        y + value,
+        z + value
+    };
+}
+
+Vector3& Vector3::operator += (Float value) {
+    x += value;
+    y += value;
+    z += value;
+    return *this;
+}
+
+Vector3 Vector3::operator - (Float value) const {
+    return {
+        x - value,
+        y - value,
+        z - value
+    };
+}
+
+Vector3& Vector3::operator -= (Float value) {
+    x /= value;
+    y /= value;
+    z /= value;
+    return *this;
+}
 
 void Vector3::orbit_shift(const Point& shift) {
-
-//    const auto angle = point().angle();
-
-//    cout << "shift: " << shift.x << endl;
-//    cout << "current angle: " << angle << endl;
-
-//    const auto transform_y              = Matrix4::transform::rotation_y(shift.y);
-//    const auto transform_to_zero_angle  = Matrix4::transform::rotation_z(-angle);
-//    const auto transform_to_final_angle = Matrix4::transform::rotation_z((angle - shift.x));
-
-
-//    const auto final_transform = transform_y * transform_to_zero_angle;
-
-//    cout << "angle + shift: " << angle + shift.x << endl;
-
-//    *this = final_transform * *this;
-
-//    cout << "final angle: " << point().angle() << endl;
-//    cout << "-------------" << endl;
-
-    *this = Matrix4::transform::rotation_z(shift.x) * Matrix4::transform::rotation_x(shift.y) * *this;
+    *this = Matrix4::transform::rotation_z(shift.x) * *this;
+    const auto _length = length();
+    const auto step = _length * 2;
+    z += shift.y * step;
+    set_length(_length);
 }
 
 std::string Vector3::to_string() const {
