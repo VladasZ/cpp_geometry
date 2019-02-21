@@ -231,6 +231,15 @@ Matrix4 Matrix4::transform::scale(Float scale) {
     };
 }
 
+Matrix4 Matrix4::transform::scale(const Vector3& scale) {
+    return  {
+        scale.x,       0,       0, 0,
+              0, scale.y,       0, 0,
+              0,       0, scale.z, 0,
+              0,       0,       0, 1
+    };
+}
+
 Matrix4 Matrix4::transform::translation(const Vector3& location) {
     return {
                  1,          0,          0, 0,

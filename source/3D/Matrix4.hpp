@@ -48,6 +48,7 @@ public:
 
     struct transform {
         static Matrix4 scale(Float);
+        static Matrix4 scale(const Vector3&);
         static Matrix4 translation(const Vector3&);
         static Matrix4 rotation_x(Float);
         static Matrix4 rotation_y(Float);
