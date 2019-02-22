@@ -17,8 +17,12 @@ Color Color::with_alpha(float alpha) const {
 	return { r, g, b, alpha };
 }
 
-bool Color::is_transparent() const {
-    return this->a <= 0.02f;
+bool Color::is_clear() const {
+    return a <= 0.02f;
+}
+
+bool Color::is_opaque() const {
+    return a >= 1;
 }
 
 const float* Color::data() const {

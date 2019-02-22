@@ -22,7 +22,8 @@ public:
 
     Color with_alpha(float alpha) const;
 
-    bool is_transparent() const;
+    bool is_clear() const;
+    bool is_opaque() const;
 
     const float* data() const;
 
