@@ -55,5 +55,6 @@ public:
         static Matrix4 rotation_z(Float);
         static Matrix4 perspective(Float fovy, Float aspect, Float z_near, Float z_far);
         static Matrix4 look_at(const Vector3& eye, const Vector3& center, const Vector3& up);
+        static Matrix4 model_look_at(const Vector3& target);
     };
 };
