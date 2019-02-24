@@ -10,6 +10,7 @@
 #include <algorithm>
 
 #include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtx/euler_angles.hpp"
 
 #include "Matrix4.hpp"
@@ -27,9 +28,11 @@ Matrix4::Matrix4(Float value) {
 }
 
 Matrix4::Matrix4(const std::initializer_list<Float>& list) {
-    if (list.size() != Matrix4::size)
-        throw "Matrix4 invalid initializer";
-    std::copy(list.begin(), list.end(), &data[0][0]);
+    if (list.size() != Matrix4::size) throw "Matrix4 invalid initializer";
+    auto pointer = list.begin();
+    for (unsigned int row = 0; row < 4; row++)
+        for (unsigned int column = 0; column < 4; column++)
+            data[column][row] = *(pointer++);
 }
 
 Matrix4 Matrix4::inversed() const {
@@ -197,17 +200,17 @@ Matrix4& Matrix4::operator *=(const Matrix4& mat) {
 
 Vector3 Matrix4::operator * (const Vector3& vec) const {
     return {
-        data[0][0] * vec.x + data[0][1] * vec.y + data[0][2] * vec.z + data[0][3] * 1,
-        data[1][0] * vec.x + data[1][1] * vec.y + data[1][2] * vec.z + data[1][3] * 1,
-        data[2][0] * vec.x + data[2][1] * vec.y + data[2][2] * vec.z + data[2][3] * 1
+        data[0][0] * vec.x + data[1][0] * vec.y + data[2][0] * vec.z + data[3][0] * 1,
+        data[0][1] * vec.x + data[1][1] * vec.y + data[2][1] * vec.z + data[3][1] * 1,
+        data[0][2] * vec.x + data[1][2] * vec.y + data[2][2] * vec.z + data[3][2] * 1
     };
 }
 
 Vector3 Matrix4::multiply_by_normal(const Vector3& vec) const {
     return {
-        data[0][0] * vec.x + data[0][1] * vec.y + data[0][2] * vec.z,
-        data[1][0] * vec.x + data[1][1] * vec.y + data[1][2] * vec.z,
-        data[2][0] * vec.x + data[2][1] * vec.y + data[2][2] * vec.z
+        data[0][0] * vec.x + data[1][0] * vec.y + data[2][0] * vec.z,
+        data[0][1] * vec.x + data[1][1] * vec.y + data[2][1] * vec.z,
+        data[0][2] * vec.x + data[1][2] * vec.y + data[2][2] * vec.z
     };
 }
 
@@ -245,10 +248,10 @@ Matrix4 Matrix4::transform::scale(const Vector3& scale) {
 
 Matrix4 Matrix4::transform::translation(const Vector3& location) {
     return {
-                 1,          0,          0, 0,
-                 0,          1,          0, 0,
-                 0,          0,          1, 0,
-        location.x, location.y, location.z, 1
+        1, 0, 0, location.x,
+        0, 1, 0, location.y,
+        0, 0, 1, location.z,
+        0, 0, 0, 1
     };
 }
 

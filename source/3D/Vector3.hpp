@@ -29,6 +29,22 @@ public:
     constexpr Vector3(const Point& point) : x(point.x) , y(point.y) { }
     constexpr Vector3(Float x, Float y, Float z = 0) : x(x), y(y), z(z) { }
 
+    template <class CompatibleClass>
+    Vector3(const CompatibleClass& obj) {
+        x = obj.x;
+        y = obj.y;
+        z = obj.z;
+    }
+
+    template <class CompatibleClass>
+    CompatibleClass to_compatible() const {
+        CompatibleClass result { };
+        result.x = x;
+        result.y = y;
+        result.z = z;
+        return result;
+    }
+
     const Point& point() const;
 
     Float length() const;

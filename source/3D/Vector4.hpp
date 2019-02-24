@@ -26,6 +26,24 @@ public:
     Vector4() = default;
     Vector4(Float x, Float y, Float z, Float w);
 
+    template <class CompatibleClass>
+    Vector4(const CompatibleClass& obj) {
+        x = obj.x;
+        y = obj.y;
+        z = obj.z;
+        w = obj.w;
+    }
+
+    template <class CompatibleClass>
+    CompatibleClass to_compatible() const {
+        CompatibleClass result { };
+        result.x = x;
+        result.y = y;
+        result.z = z;
+        result.w = w;
+        return result;
+    }
+
     const Vector3& vector3() const;
 
     void normalize();
