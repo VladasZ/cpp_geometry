@@ -6,7 +6,7 @@
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
-#include <math.h>
+#include <cmath>
 #include <string>
 
 #include "Vector3.hpp"
@@ -20,9 +20,16 @@ Vector3::Float Vector3::length() const {
     return static_cast<Float>(sqrt(x * x + y * y + z * z));
 }
 
-void Vector3::set_length(Float length) {
-    const float ratio = length / this->length();
-    this->operator*=(ratio);
+void Vector3::set_length(Float _length) {
+    *this *= _length / length();
+}
+
+Vector3::Float Vector3::xy_angle() const {
+    return std::atan2(y, x);
+}
+
+Vector3::Float Vector3::xz_angle() const {
+    return std::atan2(z, x);
 }
 
 Vector3 Vector3::cross(const Vector3& vec) const {
@@ -38,7 +45,7 @@ Vector3::Float Vector3::dot(const Vector3& vec) const {
 }
 
 Vector3& Vector3::normalize() {
-    return this->operator*=(1 / length());
+    return *this *= 1 / length();
 }
 
 Vector3 Vector3::normalized() const {

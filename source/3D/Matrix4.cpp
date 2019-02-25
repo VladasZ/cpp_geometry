@@ -9,10 +9,6 @@
 #include <math.h>
 #include <algorithm>
 
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtx/euler_angles.hpp"
-
 #include "Matrix4.hpp"
 
 
@@ -328,15 +324,9 @@ Matrix4 Matrix4::transform::look_at(const Vector3& eye, const Vector3& center, c
 }
 
 Matrix4 Matrix4::transform::model_look_at(const Vector3& target) {
-
-    const auto rotation_x     = std::atan2(target.y, -target.z);
-    const auto cos_rotation_x = std::cos(rotation_x);
-
-    const auto rotation_y = target.z <= 0 ?
-                           -std::atan2(target.x * cos_rotation_x, -target.z) :
-                            std::atan2(target.x * cos_rotation_x,  target.z);
-
-    const auto rotation_z = std::atan2(cos_rotation_x, std::sin(rotation_x) * std::sin(rotation_y));
-
-    return glm::eulerAngleXYZ(rotation_x, rotation_y, rotation_z);
+    const auto rotation_z      = Matrix4::transform::rotation_z(-target.xy_angle());
+    const auto rotation_back_z = Matrix4::transform::rotation_z(target.xy_angle());
+    const auto rotated_target  = rotation_back_z * target;
+    const auto rotation_y      = Matrix4::transform::rotation_y(rotated_target.xz_angle());
+    return rotation_z * rotation_y;
 }

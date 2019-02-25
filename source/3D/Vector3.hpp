@@ -50,6 +50,9 @@ public:
     Float length() const;
     void set_length(Float);
 
+    Float xy_angle() const;
+    Float xz_angle() const;
+
     Vector3 cross(const Vector3&) const;
     Float     dot(const Vector3&) const;
 
