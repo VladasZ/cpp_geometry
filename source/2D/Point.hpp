@@ -26,6 +26,12 @@ public:
     Point(float x, float y);
     Point(Direction direction, float length = 1);
 
+    template <class CompatibleClass>
+    Point(const CompatibleClass& obj) {
+        x = obj.x;
+        y = obj.y;
+    }
+
     static Point on_circle(float radius, float angle, const Point& center);
 
     float angle()   const;
