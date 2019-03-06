@@ -15,6 +15,8 @@
 
 #include "Vector4.hpp"
 
+using namespace gm;
+
 Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) {
 
 }

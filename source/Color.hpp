@@ -8,6 +8,8 @@
 
 #pragma once
 
+namespace gm {
+
 class Color {
 
 public:
@@ -52,3 +54,5 @@ public:
     static const Color light_gray;
     static const Color clear;
 };
+
+}

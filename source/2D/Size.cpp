@@ -11,6 +11,8 @@
 
 #include "Size.hpp"
 
+using namespace gm;
+
 Size::Size(float size) : width(size), height(size) {
 
 }

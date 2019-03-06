@@ -12,6 +12,8 @@
 
 #include "Vector3.hpp"
 
+namespace gm {
+
 class Vector4 {
     
 public:
@@ -61,3 +63,4 @@ public:
     static Vector4 look_at_quaternion(const Vector3& eye, const Vector3& center, const Vector3& up);
 };
 
+}

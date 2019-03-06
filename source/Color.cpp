@@ -11,6 +11,8 @@
 
 #include "Color.hpp"
 
+using namespace gm;
+
 Color::Color(float r, float g, float b, float a) : r(r), g(g), b(b), a(a) { }
 
 Color Color::with_alpha(float alpha) const {

@@ -11,6 +11,8 @@
 #include "Point.hpp"
 #include "Size.hpp"
 
+namespace gm {
+
 enum class Edge {
     Top         = 0b00000001,
     Bottom      = 0b00000010,
@@ -58,3 +60,5 @@ public:
 
     const char* to_string() const;
 };
+
+}

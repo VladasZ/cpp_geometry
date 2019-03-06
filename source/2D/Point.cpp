@@ -11,6 +11,8 @@
 
 #include "Point.hpp"
 
+using namespace gm;
+
 Point::Point(float x, float y) : x(x), y(y) { }
 
 Point::Point(Direction direction, float length) {

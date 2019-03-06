@@ -8,6 +8,8 @@
 
 #pragma once
 
+namespace gm {
+
 enum Direction {
     Right,
     Left,
@@ -62,3 +64,5 @@ public:
 
     const char* to_string() const;
 };
+
+}

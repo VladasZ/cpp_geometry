@@ -10,6 +10,8 @@
 
 #include "Point.hpp"
 
+namespace gm {
+
 class Size {
 
 public:
@@ -34,3 +36,5 @@ public:
 
     const char* to_string() const;
 };
+
+}

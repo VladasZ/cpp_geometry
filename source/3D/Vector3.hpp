@@ -15,6 +15,8 @@
 #include "Math.hpp"
 #include "Point.hpp"
 
+namespace gm {
+
 class Vector3 {
     
 public:
@@ -135,3 +137,4 @@ public:
     }
 };
 
+}

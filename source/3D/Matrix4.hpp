@@ -15,6 +15,8 @@
 
 #include "Vector3.hpp"
 
+namespace gm {
+
 class Matrix4 {
     
 public:
@@ -58,3 +60,5 @@ public:
         static Matrix4 model_look_at(const Vector3& target);
     };
 };
+
+}

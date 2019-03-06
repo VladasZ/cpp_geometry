@@ -6,12 +6,12 @@
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
-#include <iostream> // REMOVE
-using namespace  std;
-
 #include "stdint.h"
+#include <string>
 
 #include "Rect.hpp"
+
+using namespace gm;
 
 Rect::Rect(const Size& _size) : size(_size) {
 

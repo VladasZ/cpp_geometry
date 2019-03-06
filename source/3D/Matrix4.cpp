@@ -11,6 +11,8 @@
 
 #include "Matrix4.hpp"
 
+using namespace gm;
+
 
 Matrix4::Matrix4() : Matrix4 {
                          1, 0, 0, 0,
