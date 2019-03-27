@@ -34,8 +34,6 @@ public:
         y = obj.y;
     }
 
-    static Point on_circle(float radius, float angle, const Point& center);
-
     float angle()   const;
     bool  is_zero() const;
     float length()  const;
@@ -63,6 +61,11 @@ public:
     }
 
     const char* to_string() const;
+
+public:
+
+    static Point on_circle(float radius, float angle, const Point& center);
+
 };
 
 }

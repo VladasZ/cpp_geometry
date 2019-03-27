@@ -24,10 +24,6 @@ Point::Point(Direction direction, float length) {
     }
 }
 
-Point Point::on_circle(float radius, float angle, const Point& center) {
-    return { (radius / 2) * std::cos(angle) + center.x, (radius / 2) * std::sin(angle) + center.y };
-}
-
 float Point::angle() const {
     return std::atan2(y, x);
 }
@@ -85,4 +81,8 @@ const char* Point::to_string() const {
     static std::string value;
     value = std::string() + "x: " + std::to_string(x) + " y: " + std::to_string(y);
     return value.c_str();
+}
+
+Point Point::on_circle(float radius, float angle, const Point& center) {
+    return { (radius / 2) * std::cos(angle) + center.x, (radius / 2) * std::sin(angle) + center.y };
 }
