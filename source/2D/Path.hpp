@@ -34,7 +34,7 @@ public:
 
 public:
 
-    static Path *circleWith(const Point &center, float radius, int precision = 50);
+    static Path *circle_with(const Point &center, float radius, int precision = 50);
 
 };
 

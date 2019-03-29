@@ -42,7 +42,7 @@ const void* Path::data() const {
     return _points.data();
 }
 
-Path* Path::circleWith(const Point &center, float radius, int precision) {
+Path* Path::circle_with(const Point &center, float radius, int precision) {
     auto path = new Path();
     float angle_step = math::tau<float> / precision;
     for (int i = 0; i < precision; i++)
