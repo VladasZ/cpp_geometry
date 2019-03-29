@@ -31,6 +31,14 @@ const float* Color::data() const {
     return &r;
 }
 
+std::string Color::to_string() const {
+    return std::string() +
+            "r: " + std::to_string(r) +
+            " g: " + std::to_string(g) +
+            " b: " + std::to_string(b) +
+            " a: " + std::to_string(a);
+}
+
 Color Color::random() {
     static const std::vector<Color> all = {
         black,

@@ -9,6 +9,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 #include "Rect.hpp"
 
@@ -30,11 +31,14 @@ public:
     void add_point(const Point& point);
 
     const Points points() const;
-    const void*    data() const;
+    const float*   data() const;
+    const std::vector<float> floats_vector() const;
 
 public:
 
     static Path *circle_with(const Point &center, float radius, int precision = 50);
+
+    std::string to_string() const;
 
 };
 

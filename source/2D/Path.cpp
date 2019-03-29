@@ -38,8 +38,12 @@ const Path::Points Path::points() const {
     return _points;
 }
 
-const void* Path::data() const {
-    return _points.data();
+const float* Path::data() const {
+    return reinterpret_cast<const float*>(_points.data());
+}
+
+const std::vector<float> Path::floats_vector() const {
+    return { data(), data() + _points.size() * sizeof(Point) / sizeof(float) };
 }
 
 Path* Path::circle_with(const Point &center, float radius, int precision) {
@@ -48,4 +52,12 @@ Path* Path::circle_with(const Point &center, float radius, int precision) {
     for (int i = 0; i < precision; i++)
         path->add_point(Point::on_circle(radius, angle_step * i, center));
     return path;
+}
+
+std::string Path::to_string() const {
+    std::string result;
+    for (const auto& point : _points)
+        result += std::string() + point.to_string() + "\n";
+    result.pop_back();
+    return result;
 }

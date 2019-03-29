@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <string>
+
 namespace gm {
 
 class Color {
@@ -37,6 +39,8 @@ public:
         if (with_alpha)
             container.push_back(a);
     }
+
+    std::string to_string() const;
 
     static Color random();
 
