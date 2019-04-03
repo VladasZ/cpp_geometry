@@ -17,7 +17,12 @@ namespace gm {
 
 class Path {
 
+public:
+
     using Points = std::vector<Point>;
+    using Ptr = std::shared_ptr<Path>;
+
+private:
 
     Points _points;
 
@@ -30,6 +35,7 @@ public:
     void add_point(float x, float y);
     void add_point(const Point& point);
 
+    size_t size() const;
     const Points points() const;
     const float*   data() const;
     const std::vector<float> floats_vector() const;

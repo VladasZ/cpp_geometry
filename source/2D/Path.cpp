@@ -34,6 +34,10 @@ void Path::add_point(const Point& point) {
     _points.push_back(point);
 }
 
+size_t Path::size() const {
+    return _points.size();
+}
+
 const Path::Points Path::points() const {
     return _points;
 }
