@@ -1,6 +1,6 @@
 //
 //  Math.hpp
-//  ui
+//  geometry
 //
 //  Created by Vladas Zakrevskis on 2/15/19.
 //  Copyright © 2019 VladasZ. All rights reserved.
@@ -11,7 +11,7 @@
 #include <limits>
 #include <cstdint>
 
-namespace math {
+namespace gm::math {
 
 template <class T> constexpr T pi       = T { 3.14159265358979323846 };
 template <class T> constexpr T tau      = T { 6.28318530717958647692 };

@@ -12,7 +12,7 @@
 #include <vector>
 #include <string>
 
-#include "Math.hpp"
+#include "GmMath.hpp"
 #include "Point.hpp"
 
 namespace gm {
@@ -31,11 +31,18 @@ public:
     constexpr Vector3(const Point& point) : x(point.x) , y(point.y) { }
     constexpr Vector3(Float x, Float y, Float z = 0) : x(x), y(y), z(z) { }
 
-    template <class CompatibleClass>
-    Vector3(const CompatibleClass& obj) {
-        x = obj.x;
-        y = obj.y;
-        z = obj.z;
+    template <class CompatibleType>
+    Vector3(const CompatibleType& value) {
+        if constexpr (std::is_fundamental_v<CompatibleType>) {
+            x = value;
+            y = value;
+            z = value;
+        }
+        else {
+            x = value.x;
+            y = value.y;
+            z = value.z;
+        }
     }
 
     template <class CompatibleClass>
@@ -83,7 +90,7 @@ public:
         const auto _x = x - vec.x;
         const auto _y = y - vec.y;
         const auto _z = z - vec.z;
-        return math::sqrt(_x * _x + _y * _y + _z * _z);
+        return gm::math::sqrt(_x * _x + _y * _y + _z * _z);
     }
 
     void orbit_shift(const Point&);

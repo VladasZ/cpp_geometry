@@ -8,7 +8,7 @@
 
 
 #include "Path.hpp"
-#include "Math.hpp"
+#include "GmMath.hpp"
 
 using namespace gm;
 
