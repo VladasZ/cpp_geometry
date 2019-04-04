@@ -38,7 +38,7 @@ size_t Path::size() const {
     return _points.size();
 }
 
-const Path::Points Path::points() const {
+Path::Points& Path::points() {
     return _points;
 }
 

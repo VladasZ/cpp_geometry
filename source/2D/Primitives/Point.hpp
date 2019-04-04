@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <type_traits>
+
 namespace gm {
 
 enum Direction {
@@ -28,10 +30,16 @@ public:
     Point(float x, float y);
     Point(Direction direction, float length = 1);
 
-    template <class CompatibleClass>
-    Point(const CompatibleClass& obj) {
-        x = obj.x;
-        y = obj.y;
+    template <class CompatibleType>
+    Point(const CompatibleType& value) {
+        if constexpr (std::is_fundamental_v<CompatibleType>) {
+            x = value;
+            y = value;
+        }
+        else {
+            x = value.x;
+            y = value.y;
+        }
     }
 
     float angle()   const;

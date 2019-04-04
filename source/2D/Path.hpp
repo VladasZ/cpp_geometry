@@ -22,11 +22,18 @@ public:
     using Points = std::vector<Point>;
     using Ptr = std::shared_ptr<Path>;
 
+    enum DrawMode {
+        Lines,
+        LineStrip,
+    };
+
 private:
 
     Points _points;
 
 public:
+
+    DrawMode draw_mode = LineStrip;
 
     Path() = default;
     Path(Points&&);
@@ -36,7 +43,7 @@ public:
     void add_point(const Point& point);
 
     size_t size() const;
-    const Points points() const;
+    Points& points();
     const float*   data() const;
     const std::vector<float> floats_vector() const;
 
