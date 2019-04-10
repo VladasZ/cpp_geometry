@@ -50,6 +50,10 @@ const std::vector<float> Path::floats_vector() const {
     return { data(), data() + _points.size() * sizeof(Point) / sizeof(float) };
 }
 
+void Path::clear() {
+    _points.clear();
+}
+
 Path* Path::circle_with(const Point &center, float radius, int precision) {
     auto path = new Path();
     float angle_step = math::tau<float> / precision;

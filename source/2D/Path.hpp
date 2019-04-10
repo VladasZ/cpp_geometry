@@ -47,6 +47,8 @@ public:
     const float*   data() const;
     const std::vector<float> floats_vector() const;
 
+    void clear();
+
 public:
 
     static Path *circle_with(const Point &center, float radius, int precision = 50);
