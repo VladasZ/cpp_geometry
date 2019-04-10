@@ -1,5 +1,5 @@
 //
-//  ComplexNumber.hpp
+//  DSP.hpp
 //  geometry
 //
 //  Created by Vladas Zakrevskis on 4/10/19.
@@ -8,23 +8,6 @@
 
 #pragma once
 
-#include <string>
-
 namespace gm {
-
-class ComplexNumber {
-
-public:
-
-    float real = 0;
-    float imag = 0;
-
-    ComplexNumber() = default;
-    ComplexNumber(float real, float imag);
-
-    float vector() const;
-
-    std::string to_string() const;
-};
 
 }
