@@ -6,4 +6,9 @@
 //  Copyright © 2019 VladasZ. All rights reserved.
 //
 
-#include "DSP.hpp"
+
+#include "DSPTools.hpp"
+
+using namespace gm;
+
+
