@@ -16,8 +16,9 @@ class DSP {
 
 public:
 
+    template<class Container>
     [[maybe_unused]]
-    static std::vector<uint64_t> find_peaks(const std::vector<float>& data) {
+    static auto find_peaks(const Container& data) {
         std::vector<uint64_t> result;
 
         for (size_t i = 1; i < data.size() - 1; i++) {

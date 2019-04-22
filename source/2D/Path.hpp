@@ -44,7 +44,7 @@ public:
 
     size_t size() const;
     Points& points();
-    const float*   data() const;
+    const float* data() const;
     const std::vector<float> floats_vector() const;
 
     void clear();
