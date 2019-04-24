@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <string>
 #include <type_traits>
 
 namespace gm {
@@ -68,7 +69,7 @@ public:
         container.push_back(y);
     }
 
-    const char* to_string() const;
+    std::string to_string() const;
 
 public:
 

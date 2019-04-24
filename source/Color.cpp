@@ -33,7 +33,7 @@ const float* Color::data() const {
 
 std::string Color::to_string() const {
     return std::string() +
-            "r: " + std::to_string(r) +
+             "r: " + std::to_string(r) +
             " g: " + std::to_string(g) +
             " b: " + std::to_string(b) +
             " a: " + std::to_string(a);
@@ -64,9 +64,9 @@ const Color Color::white      = { 1   , 1   , 1    };
 const Color Color::red        = { 1   , 0   , 0    };
 const Color Color::green      = { 0   , 1   , 0    };
 const Color Color::blue       = { 0   , 0   , 0.8f };
-const Color Color::light_blue = { 0   , 0   , 1    };
+const Color Color::light_blue = { 0   , 0.7f, 1    };
 const Color Color::yellow     = { 1   , 1   , 0    };
-const Color Color::orange     = { 1   , 0.5f, 0    };
+const Color Color::orange     = { 1   , 0.6f, 0    };
 const Color Color::purple     = { 1   , 0   , 1    };
 const Color Color::turquoise  = { 0   , 1   , 1    };
 const Color Color::gray       = { 0.5f, 0.5f, 0.5f };

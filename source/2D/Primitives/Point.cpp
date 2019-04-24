@@ -77,10 +77,8 @@ void Point::operator /= (float value) {
     y /= value;
 }
 
-const char* Point::to_string() const {
-    static std::string value;
-    value = std::string() + "x: " + std::to_string(x) + " y: " + std::to_string(y);
-    return value.c_str();
+std::string Point::to_string() const {
+    return std::string() + "x: " + std::to_string(x) + " y: " + std::to_string(y);
 }
 
 Point Point::on_circle(float radius, float angle, const Point& center) {
