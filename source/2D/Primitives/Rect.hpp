@@ -36,27 +36,27 @@ public:
     Size  size;
 
     Rect() = default;
-    Rect(const Size& size);
+    Rect(const Size&);
     Rect(float size);
     Rect(float width, float height);
     Rect(float x, float y, float width, float height);
 
-    void set_edge(Edge edge, Point point);
+    void set_edge(Edge, Point);
 
     float max_x() const;
     float max_y() const;
 
     Point center() const;
-    void set_center(const Point& center);
+    void set_center(const Point&);
 
-    bool contains(const Point& point) const;
-    bool contains_with_edge(const Point& point, float edge) const;
+    bool contains(const Point&) const;
+    bool contains_with_edge(const Point&, float) const;
 
-    Size fit_size(const Size& size) const;
+    Size fit_size(const Size&) const;
 
     Rect with_zero_origin() const;
 
-    Rect& operator = (const Rect& r2);
+    Rect& operator = (const Rect&);
 
     const char* to_string() const;
 };

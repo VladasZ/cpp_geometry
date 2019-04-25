@@ -26,7 +26,7 @@ public:
     ComplexNumber(float value) : real(value), imag(value) { }
     ComplexNumber(float real, float imag) : real(real), imag(imag) { }
 
-    float vector() const {
+    float modulus() const {
         return sqrtf(real * real + imag * imag);
     }
 
