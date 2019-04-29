@@ -23,7 +23,6 @@ public:
     float imag = 0;
 
     ComplexNumber() = default;
-    ComplexNumber(float value) : real(value), imag(value) { }
     ComplexNumber(float real, float imag) : real(real), imag(imag) { }
 
     float modulus() const {
