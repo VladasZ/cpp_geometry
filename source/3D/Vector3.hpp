@@ -18,31 +18,30 @@
 namespace gm {
 
 class Vector3 {
+
+    template <class T>
+    static constexpr inline bool _is_vector3_compatible =
+            std::is_same_v<decltype(std::declval<T>().x), float> &&
+            std::is_same_v<decltype(std::declval<T>().y), float> &&
+            std::is_same_v<decltype(std::declval<T>().z), float>;
     
 public:
-
-    using Float = float;
     
-    Float x = 0;
-    Float y = 0;
-    Float z = 0;
+    float x = 0;
+    float y = 0;
+    float z = 0;
     
-    constexpr Vector3() { }
-    constexpr Vector3(const Point& point) : x(point.x) , y(point.y) { }
-    constexpr Vector3(Float x, Float y, Float z = 0) : x(x), y(y), z(z) { }
+    constexpr Vector3() = default;
+    constexpr Vector3(float value)                   : x(value) ,  y(value),   z(value) { }
+    constexpr Vector3(const Point& point)            : x(point.x), y(point.y), z(0)     { }
+    constexpr Vector3(float x, float y, float z = 0) : x(x),       y(y),       z(z)     { }
 
     template <class CompatibleType>
-    Vector3(const CompatibleType& value) {
-        if constexpr (std::is_fundamental_v<CompatibleType>) {
-            x = value;
-            y = value;
-            z = value;
-        }
-        else {
-            x = value.x;
-            y = value.y;
-            z = value.z;
-        }
+    constexpr Vector3(const CompatibleType& value) {
+        static_assert(_is_vector3_compatible<CompatibleType>, "Type is incompatible with Vector3");
+        x = value.x;
+        y = value.y;
+        z = value.z;
     }
 
     template <class CompatibleClass>
@@ -56,14 +55,14 @@ public:
 
     const Point& point() const;
 
-    Float length() const;
-    void set_length(Float);
+    float length() const;
+    void set_length(float);
 
-    Float xy_angle() const;
-    Float xz_angle() const;
+    float xy_angle() const;
+    float xz_angle() const;
 
     Vector3 cross(const Vector3&) const;
-    Float     dot(const Vector3&) const;
+    float     dot(const Vector3&) const;
 
     Vector3& normalize();
     Vector3 normalized() const;
@@ -74,17 +73,20 @@ public:
     Vector3  operator -  (const Vector3&) const;
     Vector3& operator -= (const Vector3&);
 
-    Vector3  operator *  (Float) const;
-    Vector3& operator *= (Float);
+    Vector3  operator *  (const Vector3&) const;
+    Vector3& operator *= (const Vector3&);
 
-    Vector3  operator /  (Float) const;
-    Vector3& operator /= (Float);
+    Vector3  operator *  (float) const;
+    Vector3& operator *= (float);
 
-    Vector3  operator +  (Float) const;
-    Vector3& operator += (Float);
+    Vector3  operator /  (float) const;
+    Vector3& operator /= (float);
 
-    Vector3  operator -  (Float) const;
-    Vector3& operator -= (Float);
+    Vector3  operator +  (float) const;
+    Vector3& operator += (float);
+
+    Vector3  operator -  (float) const;
+    Vector3& operator -= (float);
 
     constexpr float distance_to(const Vector3& vec) const {
         const auto _x = x - vec.x;
@@ -123,12 +125,12 @@ public:
 
     template <class T>
     static Vector3 middle_point(const T& points) {
-        static const auto max_value = std::numeric_limits<Float>::max();
-        static const auto min_value = std::numeric_limits<Float>::min();
+        static const auto max_value = std::numeric_limits<float>::max();
+        static const auto min_value = std::numeric_limits<float>::min();
 
-        Float max_x = min_value, min_x = max_value;
-        Float max_y = min_value, min_y = max_value;
-        Float max_z = min_value, min_z = max_value;
+        float max_x = min_value, min_x = max_value;
+        float max_y = min_value, min_y = max_value;
+        float max_z = min_value, min_z = max_value;
 
         for (const auto& point : points) {
             if (point.x > max_x) max_x = point.x; if (point.x < min_x) min_x = point.x;

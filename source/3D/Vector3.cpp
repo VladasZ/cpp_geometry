@@ -18,19 +18,19 @@ const Point& Vector3::point() const {
     return reinterpret_cast<const Point&>(x);
 }
 
-Vector3::Float Vector3::length() const {
-    return static_cast<Float>(sqrt(x * x + y * y + z * z));
+float Vector3::length() const {
+    return static_cast<float>(sqrt(x * x + y * y + z * z));
 }
 
-void Vector3::set_length(Float _length) {
+void Vector3::set_length(float _length) {
     *this *= _length / length();
 }
 
-Vector3::Float Vector3::xy_angle() const {
+float Vector3::xy_angle() const {
     return std::atan2(y, x);
 }
 
-Vector3::Float Vector3::xz_angle() const {
+float Vector3::xz_angle() const {
     return std::atan2(z, x);
 }
 
@@ -42,7 +42,7 @@ Vector3 Vector3::cross(const Vector3& vec) const {
 	};
 }
 
-Vector3::Float Vector3::dot(const Vector3& vec) const {
+float Vector3::dot(const Vector3& vec) const {
 	return x * vec.x + y * vec.y + z * vec.z;
 }
 
@@ -85,7 +85,22 @@ Vector3& Vector3::operator -= (const Vector3& vec) {
 	return *this;
 }
 
-Vector3 Vector3::operator * (Float value) const {
+Vector3 Vector3::operator * (const Vector3& vec) const {
+    return {
+        x * vec.x,
+        y * vec.y,
+        z * vec.z
+    };
+}
+
+Vector3& Vector3::operator *= (const Vector3& vec) {
+    x *= vec.x;
+    y *= vec.y;
+    z *= vec.z;
+    return *this;
+}
+
+Vector3 Vector3::operator * (float value) const {
 	return {
 		x * value,
 		y * value,
@@ -93,14 +108,14 @@ Vector3 Vector3::operator * (Float value) const {
 	};
 }
 
-Vector3& Vector3::operator *= (Float value) {
+Vector3& Vector3::operator *= (float value) {
 	x *= value;
 	y *= value;
 	z *= value;
 	return *this;
 }
 
-Vector3 Vector3::operator / (Float value) const {
+Vector3 Vector3::operator / (float value) const {
     return {
         x / value,
         y / value,
@@ -108,14 +123,14 @@ Vector3 Vector3::operator / (Float value) const {
     };
 }
 
-Vector3& Vector3::operator /= (Float value) {
+Vector3& Vector3::operator /= (float value) {
 	x /= value;
 	y /= value;
 	z /= value;
 	return *this;
 }
 
-Vector3 Vector3::operator + (Float value) const {
+Vector3 Vector3::operator + (float value) const {
     return {
         x + value,
         y + value,
@@ -123,14 +138,14 @@ Vector3 Vector3::operator + (Float value) const {
     };
 }
 
-Vector3& Vector3::operator += (Float value) {
+Vector3& Vector3::operator += (float value) {
     x += value;
     y += value;
     z += value;
     return *this;
 }
 
-Vector3 Vector3::operator - (Float value) const {
+Vector3 Vector3::operator - (float value) const {
     return {
         x - value,
         y - value,
@@ -138,7 +153,7 @@ Vector3 Vector3::operator - (Float value) const {
     };
 }
 
-Vector3& Vector3::operator -= (Float value) {
+Vector3& Vector3::operator -= (float value) {
     x /= value;
     y /= value;
     z /= value;
