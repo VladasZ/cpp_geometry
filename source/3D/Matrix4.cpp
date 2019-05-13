@@ -20,12 +20,12 @@ Matrix4::Matrix4() : Matrix4 {
                          0, 0, 1, 0,
                          0, 0, 0, 1  } { }
 
-Matrix4::Matrix4(Float value) {
+Matrix4::Matrix4(float value) {
     for (size_t i = 0; i < Matrix4::size; i++)
         *(&data[0][0] + i) = value;
 }
 
-Matrix4::Matrix4(const std::initializer_list<Float>& list) {
+Matrix4::Matrix4(const std::initializer_list<float>& list) {
     if (list.size() != Matrix4::size) throw "Matrix4 invalid initializer";
     auto pointer = list.begin();
     for (unsigned int row = 0; row < 4; row++)
@@ -226,7 +226,7 @@ std::string Matrix4::to_string() const {
     return result;
 }
 
-Matrix4 Matrix4::transform::scale(Float scale) {
+Matrix4 Matrix4::transform::scale(float scale) {
     return  {
         scale,     0,     0, 0,
             0, scale,     0, 0,
@@ -253,7 +253,7 @@ Matrix4 Matrix4::transform::translation(const Vector3& location) {
     };
 }
 
-Matrix4 Matrix4::transform::rotation_x(Float angle) {
+Matrix4 Matrix4::transform::rotation_x(float angle) {
     const auto cos_x = cos(angle);
     const auto sin_x = sin(angle);
     return {
@@ -264,7 +264,7 @@ Matrix4 Matrix4::transform::rotation_x(Float angle) {
     };
 }
 
-Matrix4 Matrix4::transform::rotation_y(Float angle) {
+Matrix4 Matrix4::transform::rotation_y(float angle) {
     const auto cos_y = cos(angle);
     const auto sin_y = sin(angle);
     return {
@@ -275,7 +275,7 @@ Matrix4 Matrix4::transform::rotation_y(Float angle) {
     };
 }
 
-Matrix4 Matrix4::transform::rotation_z(Float angle) {
+Matrix4 Matrix4::transform::rotation_z(float angle) {
     const auto cos_z = cos(angle);
     const auto sin_z = sin(angle);
     return {
@@ -286,9 +286,9 @@ Matrix4 Matrix4::transform::rotation_z(Float angle) {
     };
 }
 
-Matrix4 Matrix4::transform::perspective(Float fovy, Float aspect, Float z_near, Float z_far) {
+Matrix4 Matrix4::transform::perspective(float fovy, float aspect, float z_near, float z_far) {
 
-    const auto tan_half_fovy = static_cast<Float>(tan(fovy / 2.0f));
+    const auto tan_half_fovy = static_cast<float>(tan(fovy / 2.0f));
 
     Matrix4 result(0.0f);
     result.data[0][0] =  1.0f / (aspect * tan_half_fovy);
