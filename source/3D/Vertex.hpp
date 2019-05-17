@@ -20,11 +20,12 @@ public:
     using Indices = std::vector<Index>;
     using Array   = std::vector<Vertex>;
 
-    Vector3 position;
-    Vector3 normal;
+    const Vector3 position;
+    const Vector3 normal;
+    const Point uv;
 
     Vertex() = default;
-    Vertex(const Vector3& position, const Vector3& normal);
+    Vertex(const Vector3& position, const Vector3& normal = { }, const Point& uv = { });
 
     std::string to_string() const;
 };

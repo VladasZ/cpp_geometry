@@ -10,7 +10,7 @@
 
 using namespace gm;
 
-Vertex::Vertex(const Vector3& position, const Vector3& normal) : position(position), normal(normal) {
+Vertex::Vertex(const Vector3& position, const Vector3& normal, const Point& uv) : position(position), normal(normal), uv(uv) {
 
 }
 

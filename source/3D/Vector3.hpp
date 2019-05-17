@@ -3,7 +3,7 @@
 //  geometry
 //
 //  Created by Vladas Zakrevskis on 9/13/18.
-//  Copyright © 2017 VladasZ. All rights reserved.
+//  Copyright © 2018 VladasZ. All rights reserved.
 //
 
 #pragma once
