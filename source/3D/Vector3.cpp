@@ -169,5 +169,5 @@ void Vector3::orbit_shift(const Point& shift) {
 }
 
 std::string Vector3::to_string() const {
-    return std::string() + "[ " + std::to_string(x) + "f, " + std::to_string(y) + "f, " + std::to_string(z) + "f ]";
+    return std::string() + "{ " + std::to_string(x) + "f, " + std::to_string(y) + "f, " + std::to_string(z) + "f }";
 }
