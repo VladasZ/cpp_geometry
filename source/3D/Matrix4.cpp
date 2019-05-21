@@ -37,7 +37,7 @@ Matrix4 Matrix4::inversed() const {
     Matrix4 result = *this;
 
     float inv[16];
-    float * m = reinterpret_cast<float *>(&result);
+    float* m = reinterpret_cast<float*>(&result);
 
     inv[ 0] =  m[ 5] * m[10] * m[15] -
                m[ 5] * m[11] * m[14] -
@@ -153,9 +153,6 @@ Matrix4 Matrix4::inversed() const {
 
     float det = m[0] * inv[0] + m[1] * inv[4] + m[2] * inv[8] + m[3] * inv[12];
 
-    if (det == 0)
-        throw std::string() + "Matrix4. Determinant equal 0";
-
     det = 1.0f / det;
 
     for (int i = 0; i < 16; i++)
@@ -203,6 +200,16 @@ Vector3 Matrix4::operator * (const Vector3& vec) const {
         data[0][2] * vec.x + data[1][2] * vec.y + data[2][2] * vec.z + data[3][2] * 1
     };
 }
+
+Vector4 Matrix4::operator * (const Vector4& vec) const {
+    return {
+        data[0][0] * vec.x + data[1][0] * vec.y + data[2][0] * vec.z + data[3][0] * vec.w,
+        data[0][1] * vec.x + data[1][1] * vec.y + data[2][1] * vec.z + data[3][1] * vec.w,
+        data[0][2] * vec.x + data[1][2] * vec.y + data[2][2] * vec.z + data[3][2] * vec.w,
+        data[0][3] * vec.x + data[1][3] * vec.y + data[2][3] * vec.z + data[3][3] * vec.w,
+    };
+}
+
 
 Vector3 Matrix4::multiply_by_normal(const Vector3& vec) const {
     return {

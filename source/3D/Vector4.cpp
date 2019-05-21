@@ -17,7 +17,7 @@
 
 using namespace gm;
 
-Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) {
+Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {
 
 }
 

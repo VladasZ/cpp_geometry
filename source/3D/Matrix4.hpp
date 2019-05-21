@@ -14,6 +14,7 @@
 #include <initializer_list>
 
 #include "Vector3.hpp"
+#include "Vector4.hpp"
 
 namespace gm {
 
@@ -30,7 +31,7 @@ public:
     Matrix4(const std::initializer_list<float>&);
     
     template <class CompatibleClass>
-    Matrix4(const CompatibleClass& obj) {
+    explicit Matrix4(const CompatibleClass& obj) {
         static_assert(sizeof(Matrix4) == sizeof(CompatibleClass), "Matrix4 invalid initializer");
         std::memcpy(&data[0][0], static_cast<const void*>(&obj), sizeof(Matrix4));
     }
@@ -41,6 +42,7 @@ public:
     Matrix4& operator *=(const Matrix4&);
 
     Vector3  operator * (const Vector3&) const;
+    Vector4  operator * (const Vector4&) const;
 
     Vector3 multiply_by_normal(const Vector3&) const;
 

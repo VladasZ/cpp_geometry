@@ -17,19 +17,17 @@ namespace gm {
 class Vector4 {
     
 public:
-
-    using Float = float;
     
-    Float x = 0;
-    Float y = 0;
-    Float z = 0;
-    Float w = 0;
+    float x = 0;
+    float y = 0;
+    float z = 0;
+    float w = 0;
 
     Vector4() = default;
-    Vector4(Float x, Float y, Float z, Float w);
+    Vector4(float x, float y, float z, float w = 1);
 
     template <class CompatibleClass>
-    Vector4(const CompatibleClass& obj) {
+    explicit Vector4(const CompatibleClass& obj) {
         x = obj.x;
         y = obj.y;
         z = obj.z;
