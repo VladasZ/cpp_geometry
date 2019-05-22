@@ -10,15 +10,18 @@
 
 using namespace gm;
 
-LineSegment::LineSegment(const Vector3& begin, const Vector3& end) : begin(begin), end(end) {
+LineSegment::LineSegment(const Vector3& begin, const Vector3& end) : orig(begin), dir(end) {
 
 }
 
 float LineSegment::length() const {
-    return begin.distance_to(end);
+    return orig.distance_to(dir);
 }
 
-Vector3 LineSegment::direction() const {
-    return end - begin;
+Vector3 LineSegment::direction_vector() const {
+    return dir - orig;
 }
 
+std::string LineSegment::to_string() const {
+    return orig.to_string() + "\n" + dir.to_string();
+}

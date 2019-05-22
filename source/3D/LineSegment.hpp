@@ -16,16 +16,16 @@ class LineSegment {
 
 public:
 
-    Vector3 begin;
-    Vector3 end;
+    Vector3 orig;
+    Vector3 dir;
 
-    LineSegment() = default;
     LineSegment(const Vector3&, const Vector3&);
 
     float length() const;
 
-    Vector3 direction() const;
+    Vector3 direction_vector() const;
 
+    std::string to_string() const;
 };
 
 }
