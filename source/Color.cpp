@@ -15,6 +15,10 @@ using namespace gm;
 
 Color::Color(float r, float g, float b, float a) : r(r), g(g), b(b), a(a) { }
 
+void Color::set_alpha(float alpha) {
+    this->a = alpha;
+}
+
 Color Color::with_alpha(float alpha) const {
 	return { r, g, b, alpha };
 }

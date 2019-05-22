@@ -24,7 +24,9 @@ public:
     Color() = default;
     Color(float r, float g, float b, float a = 1);
 
-    Color with_alpha(float alpha) const;
+    void set_alpha(float);
+
+    Color with_alpha(float) const;
 
     bool is_clear() const;
     bool is_opaque() const;

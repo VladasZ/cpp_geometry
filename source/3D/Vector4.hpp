@@ -56,6 +56,8 @@ public:
         container.push_back(w);
     }
 
+    Vector4& operator /= (float);
+
     const char* to_string() const;
 
     static Vector4 look_at_quaternion(const Vector3& eye, const Vector3& center, const Vector3& up);
