@@ -25,8 +25,11 @@ public:
 
     Box(float size = 1);
     Box(float, float, float);
+    Box(const Vector3& min, const Vector3& max);
 
-    bool intersects_ray(const Ray&, float &t) const;
+    bool intersects_ray(const Ray&) const;
+
+    std::string to_string() const;
 
 };
 

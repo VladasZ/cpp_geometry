@@ -26,6 +26,8 @@ class Vector3 {
             std::is_same_v<decltype(std::declval<T>().z), float>;
     
 public:
+
+    using ValueType = float;
     
     float x = 0;
     float y = 0;
