@@ -25,7 +25,7 @@ public:
     const Point uv;
 
     Vertex() = default;
-    Vertex(const Vector3& position, const Vector3& normal = { }, const Point& uv = { });
+    Vertex(const Vector3& position, const Vector3& normal = { 0, 0, 1 }, const Point& uv = { });
 
     std::string to_string() const;
 };
