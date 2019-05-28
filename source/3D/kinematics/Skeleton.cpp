@@ -22,3 +22,20 @@ void Skeleton::add_bone(Bone* bone) {
     end_bode = bone;
 
 }
+
+std::vector<Bone*> Skeleton::all_bones() const {
+    std::vector<Bone*> result;
+
+    if (root_bone == nullptr)
+        return result;
+
+    Bone* bone = root_bone;
+
+    do {
+        result.push_back(bone);
+        bone = bone->child();
+    }
+    while (bone);
+
+    return result;
+}

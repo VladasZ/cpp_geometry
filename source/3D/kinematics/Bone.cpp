@@ -39,7 +39,7 @@ Vector3 Bone::begin() const {
 }
 
 Vector3 Bone::end() const {
-    return begin() + _direction * _length;
+    return begin() + _direction.with_length(_length);
 }
 
 Vector3 Bone::center() const {

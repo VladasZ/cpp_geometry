@@ -60,6 +60,8 @@ public:
     float length() const;
     void set_length(float);
 
+    Vector3 with_length(float) const;
+
     float xy_angle() const;
     float xz_angle() const;
 

@@ -23,6 +23,8 @@ public:
 
     void add_bone(Bone*);
 
+    std::vector<Bone*> all_bones() const;
+
 };
 
 }

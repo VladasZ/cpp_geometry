@@ -26,6 +26,10 @@ void Vector3::set_length(float _length) {
     *this *= _length / length();
 }
 
+Vector3 Vector3::with_length(float _length) const  {
+    return *this * _length / length();
+}
+
 float Vector3::xy_angle() const {
     return std::atan2(y, x);
 }
