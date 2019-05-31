@@ -12,6 +12,8 @@ using namespace gm;
 
 void Skeleton::add_bone(Bone* bone) {
 
+    _all_bones.push_back(bone);
+
     if (root_bone == nullptr) {
         root_bone = bone;
         end_bode = bone;
@@ -20,44 +22,37 @@ void Skeleton::add_bone(Bone* bone) {
 
     end_bode->add_child(bone);
     end_bode = bone;
-
 }
 
-std::vector<Bone*> Skeleton::all_bones() const {
-    std::vector<Bone*> result;
-
-    if (root_bone == nullptr)
-        return result;
-
-    Bone* bone = root_bone;
-
-    do {
-        result.push_back(bone);
-        bone = bone->child();
-    }
-    while (bone);
-
-    return result;
+const std::vector<Bone*>& Skeleton::all_bones() const {
+    return _all_bones;
 }
 
 float Skeleton::length() const {
-    if (root_bone == nullptr)
-        return 0;
-
     float result = 0;
-
-    Bone* bone = root_bone;
-
-    do {
+    for (auto bone : all_bones())
         result += bone->length();
-        bone = bone->child();
-    }
-    while (bone);
-
     return result;
 }
 
-void Skeleton::reach_to(const Vector3& position) {
+void Skeleton::reach_to(const Vector3& target) {
+
+    if (target.length() > length()) {
+        for (auto bone : all_bones())
+            bone->set_direction(target);
+        return;
+    }
+
+    std::vector<BoneData> data;
+
     for (auto bone : all_bones())
-        bone->set_direction(position);
+        data.emplace_back(bone->begin(), bone->end(), bone->length());
+
+    _backwards_reach(data, target);
+
+}
+
+void Skeleton::_backwards_reach(std::vector<BoneData>& data, const Vector3& target) {
+
+
 }

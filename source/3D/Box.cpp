@@ -45,10 +45,10 @@ bool Box::intersects_ray(const Ray& ray) const {
 
     const Vector3 bounds[2] = { min, max };
 
-    auto tmin  = (bounds[    ray.sign[0]].x - ray.orig.x) * ray.invdir.x;
-    auto tmax  = (bounds[1 - ray.sign[0]].x - ray.orig.x) * ray.invdir.x;
-    auto tymin = (bounds[    ray.sign[1]].y - ray.orig.y) * ray.invdir.y;
-    auto tymax = (bounds[1 - ray.sign[1]].y - ray.orig.y) * ray.invdir.y;
+    auto tmin  = (bounds[    ray.sign[0]].x - ray.begin.x) * ray.invdir.x;
+    auto tmax  = (bounds[1 - ray.sign[0]].x - ray.begin.x) * ray.invdir.x;
+    auto tymin = (bounds[    ray.sign[1]].y - ray.begin.y) * ray.invdir.y;
+    auto tymax = (bounds[1 - ray.sign[1]].y - ray.begin.y) * ray.invdir.y;
 
     if ((tmin > tymax) || (tymin > tmax))
         return false;
@@ -58,8 +58,8 @@ bool Box::intersects_ray(const Ray& ray) const {
     if (tymax < tmax)
         tmax = tymax;
 
-    auto tzmin = (bounds[    ray.sign[2]].z - ray.orig.z) * ray.invdir.z;
-    auto tzmax = (bounds[1 - ray.sign[2]].z - ray.orig.z) * ray.invdir.z;
+    auto tzmin = (bounds[    ray.sign[2]].z - ray.begin.z) * ray.invdir.z;
+    auto tzmax = (bounds[1 - ray.sign[2]].z - ray.begin.z) * ray.invdir.z;
 
     if ((tmin > tzmax) || (tzmin > tmax))
         return false;

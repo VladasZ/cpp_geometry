@@ -16,8 +16,8 @@ class LineSegment {
 
 public:
 
-    Vector3 orig;
-    Vector3 dir;
+    Vector3 begin;
+    Vector3 end;
 
     LineSegment(const Vector3&, const Vector3&);
 

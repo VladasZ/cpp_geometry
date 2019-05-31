@@ -9,10 +9,13 @@
 #pragma once
 
 #include "Bone.hpp"
+#include "BoneData.hpp"
 
 namespace gm {
 
 class Skeleton {
+
+    std::vector<Bone*> _all_bones;
 
 public:
 
@@ -23,11 +26,15 @@ public:
 
     void add_bone(Bone*);
 
-    std::vector<Bone*> all_bones() const;
+    const std::vector<Bone*>& all_bones() const;
 
     float length() const;
 
     void reach_to(const Vector3&);
+
+private:
+
+    void _backwards_reach(std::vector<BoneData>&, const Vector3&);
 };
 
 }
