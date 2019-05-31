@@ -39,3 +39,25 @@ std::vector<Bone*> Skeleton::all_bones() const {
 
     return result;
 }
+
+float Skeleton::length() const {
+    if (root_bone == nullptr)
+        return 0;
+
+    float result = 0;
+
+    Bone* bone = root_bone;
+
+    do {
+        result += bone->length();
+        bone = bone->child();
+    }
+    while (bone);
+
+    return result;
+}
+
+void Skeleton::reach_to(const Vector3& position) {
+    for (auto bone : all_bones())
+        bone->set_direction(position);
+}

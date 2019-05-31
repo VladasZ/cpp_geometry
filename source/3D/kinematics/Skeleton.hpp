@@ -25,6 +25,9 @@ public:
 
     std::vector<Bone*> all_bones() const;
 
+    float length() const;
+
+    void reach_to(const Vector3&);
 };
 
 }
