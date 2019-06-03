@@ -12,47 +12,36 @@ using namespace gm;
 
 void Skeleton::add_bone(Bone* bone) {
 
-    _all_bones.push_back(bone);
+    if (bones.size())
+        bones.back()->add_child(bone);
 
-    if (root_bone == nullptr) {
-        root_bone = bone;
-        end_bode = bone;
-        return;
-    }
-
-    end_bode->add_child(bone);
-    end_bode = bone;
-}
-
-const std::vector<Bone*>& Skeleton::all_bones() const {
-    return _all_bones;
+    bones.push_back(bone);
 }
 
 float Skeleton::length() const {
     float result = 0;
-    for (auto bone : all_bones())
-        result += bone->length();
+    for (auto bone : bones)
+        result += bone->lenght();
     return result;
 }
 
 void Skeleton::reach_to(const Vector3& target) {
 
     if (target.length() > length()) {
-        for (auto bone : all_bones())
-            bone->set_direction(target);
+
+
+
         return;
     }
 
-    std::vector<BoneData> data;
-
-    for (auto bone : all_bones())
-        data.emplace_back(bone->begin(), bone->end(), bone->length());
-
-    _backwards_reach(data, target);
+    //_backwards_reach(target);
 
 }
 
-void Skeleton::_backwards_reach(std::vector<BoneData>& data, const Vector3& target) {
+#include <iostream>
+using namespace std;
 
+void Skeleton::_backwards_reach(const Vector3& target) {
 
+    cout << target.to_string() << endl;
 }
