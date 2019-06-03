@@ -24,6 +24,9 @@ public:
     Vector3 begin() const override;
     Vector3 end() const override;
 
+    void set_begin(const Vector3&) override;
+    void set_end(const Vector3&) override;
+
     void reach_begin(const Vector3&);
     void reach_end(const Vector3&);
 

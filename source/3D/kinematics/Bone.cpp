@@ -23,6 +23,14 @@ Vector3 Bone::end() const {
     return _end;
 }
 
+void Bone::set_begin(const Vector3& begin) {
+    _begin = begin;
+}
+
+void Bone::set_end(const Vector3& end) {
+    _end = end;
+}
+
 void Bone::reach_begin(const Vector3& target) {
     _begin = (target - _end).with_length(_length) + _end;
 }

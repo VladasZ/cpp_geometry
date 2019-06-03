@@ -16,6 +16,8 @@ class Skeleton {
 
 public:
 
+    const size_t iterations = 20;
+
     std::vector<Bone*> bones;
 
     void add_bone(Bone*);
@@ -24,7 +26,10 @@ public:
 
     void reach_to(const Vector3&);
 
-    void _backwards_reach(const Vector3&);
+private:
+
+    void _backward_reach(const Vector3&);
+    void _forward_reach(const Vector3&);
 };
 
 }

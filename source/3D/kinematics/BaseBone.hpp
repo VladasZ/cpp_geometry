@@ -23,11 +23,10 @@ protected:
     Bone* _parent = nullptr;
     Bone* _child = nullptr;
 
-public:
-
     _BaseBone(float length) : _length(length) { }
-
     virtual ~_BaseBone() { }
+
+public:
 
     float lenght() const { return _length; }
 
@@ -40,11 +39,23 @@ public:
     virtual Vector3 begin() const = 0;
     virtual Vector3 end() const = 0;
 
+    virtual void set_begin(const Vector3&) = 0;
+    virtual void set_end(const Vector3&) = 0;
+
+    void set_z(float z) {
+        set_begin(begin().with_z(z));
+        set_end(end().with_z(z));
+    }
+
     LineSegment line_segment() const { return  { begin(), end() }; }
 
     void add_child(Bone* bone) {
         bone->_parent = reinterpret_cast<Bone*>(this);
         _child = bone;
+    }
+
+    std::string to_string() const {
+        return begin().to_string() + " " + end().to_string();
     }
 
 };
