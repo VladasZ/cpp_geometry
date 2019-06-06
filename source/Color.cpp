@@ -74,5 +74,6 @@ const Color Color::orange     = { 1   , 0.6f, 0    };
 const Color Color::purple     = { 1   , 0   , 1    };
 const Color Color::turquoise  = { 0   , 1   , 1    };
 const Color Color::gray       = { 0.5f, 0.5f, 0.5f };
+const Color Color::brown      = { 0.7f, 0.4f, 0.2f };
 const Color Color::light_gray = { 0.8f, 0.8f, 0.8f };
 const Color Color::clear      = { 0   , 0   , 0, 0 };
