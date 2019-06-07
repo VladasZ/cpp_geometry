@@ -16,6 +16,8 @@ class Skeleton {
 
 public:
 
+    Vector3 origin;
+
     const size_t iterations = 20;
 
     std::vector<Bone*> bones;

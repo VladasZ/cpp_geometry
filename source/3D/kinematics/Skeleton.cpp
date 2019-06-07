@@ -25,9 +25,9 @@ float Skeleton::length() const {
 
 void Skeleton::reach_to(const Vector3& target) {
 
-    if (target.length() > length()) {
+    if (target.distance_to(origin) > length()) {
 
-        bones.front()->set_begin({ });
+        bones.front()->set_begin(origin);
         bones.front()->reach_end(target);
 
         for (auto bone : bones) {
@@ -41,7 +41,7 @@ void Skeleton::reach_to(const Vector3& target) {
     }
 
     for (auto bone : bones) {
-        bone->set_z(20);
+        bone->set_z(2000);
     }
 
     for (size_t i = 0; i < iterations; i++) {
@@ -60,7 +60,7 @@ void Skeleton::_backward_reach(const Vector3& target) {
         }
         if (bone->is_root()) {
             bone->set_end(bone->child()->begin());
-            bone->reach_begin({ });
+            bone->reach_begin(origin);
             continue;
         }
         bone->set_end(bone->child()->begin());
@@ -71,7 +71,7 @@ void Skeleton::_backward_reach(const Vector3& target) {
 void Skeleton::_forward_reach(const Vector3& target) {
     for (auto bone : bones) {
         if (bone->is_root()) {
-            bone->set_begin({ });
+            bone->set_begin(origin);
             bone->reach_end(bone->child()->begin());
             continue;
         }
