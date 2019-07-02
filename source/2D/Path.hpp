@@ -20,7 +20,7 @@ class Path {
 public:
 
     using Points = std::vector<Point>;
-    using Ptr = std::shared_ptr<Path>;
+    //using Ptr = std::shared_ptr<Path>;
 
     enum DrawMode {
         Lines,
