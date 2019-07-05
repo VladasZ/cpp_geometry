@@ -32,6 +32,19 @@ float Point::length() const {
     return static_cast<float>(std::sqrt(x * x + y * y));
 }
 
+void Point::invert() {
+	x = -x;
+	y = -y;
+}
+
+void Point::invert_x() {
+	x = -x;
+}
+
+void Point::invert_y() {
+	y = -y;
+}
+
 Point Point::with_length(float length) const {
     const float ratio = length / this->length();
 	return { x * ratio, y * ratio };

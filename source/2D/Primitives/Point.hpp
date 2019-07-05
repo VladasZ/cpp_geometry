@@ -47,6 +47,10 @@ public:
     bool  is_zero() const;
     float length()  const;
 
+	void invert();
+	void invert_x();
+	void invert_y();
+
     Point with_length(float length) const;
 
     Direction directionX() const;
