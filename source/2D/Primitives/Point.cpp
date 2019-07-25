@@ -13,8 +13,6 @@
 
 using namespace gm;
 
-Point::Point(float x, float y) : x(x), y(y) { }
-
 Point::Point(Direction direction, float length) {
     switch (direction) {
         case Direction::Left:  x = -length; y =  0;      break;
@@ -26,6 +24,10 @@ Point::Point(Direction direction, float length) {
 
 float Point::angle() const {
     return std::atan2(y, x);
+}
+
+bool Point::is_zero() const {
+	return x == 0.0f && y == 0.0f;
 }
 
 float Point::length() const {

@@ -13,14 +13,6 @@
 
 using namespace gm;
 
-Size::Size(float size) : width(size), height(size) {
-
-}
-
-Size::Size(float width, float height) : width(width), height(height) { 
-
-}
-
 Point Size::center() const {
     return { width / 2, height / 2 };
 }

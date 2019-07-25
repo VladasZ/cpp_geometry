@@ -28,20 +28,10 @@ public:
     float y = 0;
 
     Point() = default;
-    Point(float x, float y);
-    Point(Direction direction, float length = 1);
+    template <class T> Point(const T& value);
+	template <class T> Point(T x, T y);
 
-    template <class CompatibleType>
-    Point(const CompatibleType& value) {
-        if constexpr (std::is_fundamental_v<CompatibleType>) {
-            x = value;
-            y = value;
-        }
-        else {
-            x = value.x;
-            y = value.y;
-        }
-    }
+	Point(Direction direction, float length = 1);
 
     float angle()   const;
     bool  is_zero() const;
@@ -80,5 +70,23 @@ public:
     static Point on_circle(float radius, float angle, const Point& center);
 
 };
+
+template <class T>
+Point::Point(const T& value) {
+	if constexpr (std::is_fundamental_v<T>) {
+		x = value;
+		y = value;
+	}
+	else {
+		x = value.x;
+		y = value.y;
+	}
+}
+
+template <class T>
+Point::Point(T x, T y) {
+	this->x = static_cast<float>(x);
+	this->y = static_cast<float>(y);
+}
 
 }

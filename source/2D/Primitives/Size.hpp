@@ -20,8 +20,8 @@ public:
     float height = 0;
 
     Size() = default;
-    Size(float size);
-    Size(float width, float height);
+	template <class T> Size(T size);
+	template <class T> Size(T width, T height);
 
     Point center() const;
     float ratio()  const;
@@ -36,5 +36,17 @@ public:
 
     const char* to_string() const;
 };
+
+template <class T>
+Size::Size(T size) {
+	this->width = static_cast<float>(size);
+	this->height = static_cast<float>(size);
+}
+
+template <class T>
+Size::Size(T width, T height) {
+	this->width = static_cast<float>(width);
+	this->height = static_cast<float>(height);
+}
 
 }

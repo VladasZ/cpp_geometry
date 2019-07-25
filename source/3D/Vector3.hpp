@@ -38,9 +38,9 @@ public:
     constexpr Vector3(const Point& point)            : x(point.x), y(point.y), z(0)     { }
     constexpr Vector3(float x, float y, float z = 0) : x(x),       y(y),       z(z)     { }
 
-    template <class CompatibleType>
-    constexpr Vector3(const CompatibleType& value) {
-        static_assert(_is_vector3_compatible<CompatibleType>, "Type is incompatible with Vector3");
+    template <class T>
+    constexpr Vector3(const T& value) {
+        static_assert(_is_vector3_compatible<T>, "Type is incompatible with Vector3");
         x = value.x;
         y = value.y;
         z = value.z;
