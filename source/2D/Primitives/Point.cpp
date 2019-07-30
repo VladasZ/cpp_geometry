@@ -52,6 +52,16 @@ Point Point::with_length(float length) const {
 	return { x * ratio, y * ratio };
 }
 
+void Point::set_length(float length) {
+	const float ratio = length / this->length();
+	x *= ratio;
+	y *= ratio;
+}
+
+void Point::add_length(float value) {
+	set_length(length() + value);
+}
+
 Direction Point::directionX() const {
     return x > 0 ? Direction::Right : Direction::Left;
 }

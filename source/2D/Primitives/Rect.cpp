@@ -53,6 +53,14 @@ void Rect::set_edge(Edge edge, Point point) {
     }
 }
 
+float Rect::min_x() const {
+	return origin.x;
+}
+
+float Rect::min_y() const {
+	return origin.y;
+}
+
 float Rect::max_x() const { 
     return origin.x + size.width;
 }

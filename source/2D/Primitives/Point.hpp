@@ -41,7 +41,9 @@ public:
 	void invert_x();
 	void invert_y();
 
-    Point with_length(float length) const;
+	Point with_length(float length) const;
+	void set_length(float length);
+	void add_length(float value);
 
     Direction directionX() const;
 

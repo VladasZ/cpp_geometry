@@ -43,6 +43,8 @@ public:
 
     void set_edge(Edge, Point);
 
+	float min_x() const;
+	float min_y() const;
     float max_x() const;
     float max_y() const;
 
