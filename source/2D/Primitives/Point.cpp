@@ -62,6 +62,19 @@ void Point::add_length(float value) {
 	set_length(length() + value);
 }
 
+void Point::trim(float max_lenght) {
+    if (length() < max_lenght) {
+        return;
+    }
+    set_length(max_lenght);
+}
+
+Point Point::trimmed(float max_length) const {
+    Point result = *this;
+    result.trim(max_length);
+    return result;
+}
+
 Direction Point::directionX() const {
     return x > 0 ? Direction::Right : Direction::Left;
 }

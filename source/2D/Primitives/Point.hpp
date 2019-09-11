@@ -42,8 +42,12 @@ public:
 	void invert_y();
 
 	Point with_length(float length) const;
+    
 	void set_length(float length);
 	void add_length(float value);
+    
+    void trim(float max_lenght);
+    Point trimmed(float max_length) const;
 
     Direction directionX() const;
 
