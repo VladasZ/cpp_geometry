@@ -27,7 +27,7 @@ float Point::angle() const {
 }
 
 bool Point::is_zero() const {
-	return x == 0.0f && y == 0.0f;
+	return x == 0 && y == 0;
 }
 
 float Point::length() const {

@@ -28,8 +28,12 @@ public:
     float y = 0;
 
     Point() = default;
-    template <class T> Point(const T& value);
-	template <class T> Point(T x, T y);
+    
+    template <class T>
+    explicit Point(const T& value);
+    
+	template <class T>
+    Point(T x, T y);
 
 	Point(Direction direction, float length = 1);
 
