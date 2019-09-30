@@ -261,8 +261,8 @@ Matrix4 Matrix4::transform::translation(const Vector3& location) {
 }
 
 Matrix4 Matrix4::transform::rotation_x(float angle) {
-    const auto cos_x = cos(angle);
-    const auto sin_x = sin(angle);
+    const float cos_x = cos(angle);
+    const float sin_x = sin(angle);
     return {
         1,      0,     0, 0,
         0,  cos_x, sin_x, 0,
@@ -272,8 +272,8 @@ Matrix4 Matrix4::transform::rotation_x(float angle) {
 }
 
 Matrix4 Matrix4::transform::rotation_y(float angle) {
-    const auto cos_y = cos(angle);
-    const auto sin_y = sin(angle);
+    const float cos_y = cos(angle);
+    const float sin_y = sin(angle);
     return {
         cos_y, 0, -sin_y, 0,
             0, 1,      0, 0,
@@ -283,8 +283,8 @@ Matrix4 Matrix4::transform::rotation_y(float angle) {
 }
 
 Matrix4 Matrix4::transform::rotation_z(float angle) {
-    const auto cos_z = cos(angle);
-    const auto sin_z = sin(angle);
+    const float cos_z = cos(angle);
+    const float sin_z = sin(angle);
     return {
         cos_z, sin_z, 0, 0,
        -sin_z, cos_z, 0, 0,
