@@ -12,6 +12,3 @@ project(geometry)
 
 add_catalog_recursive(${PROJECT_SOURCE_DIR} / SOURCE)
 add_library(${PROJECT_NAME} ${SOURCE})
-
-conan_basic_setup()
-conan_target_link_libraries(${PROJECT_NAME})

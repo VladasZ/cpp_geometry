@@ -6,7 +6,6 @@
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
-#include <cstdlib>
 #include <vector>
 
 #include "Color.hpp"

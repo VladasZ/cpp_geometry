@@ -48,6 +48,7 @@ public:
 
     template <class CompatibleClass>
     CompatibleClass to_compatible() const {
+        static_assert(_is_vector3_compatible<CompatibleClass>, "Type is incompatible with Vector3");
         CompatibleClass result { };
         result.x = x;
         result.y = y;
