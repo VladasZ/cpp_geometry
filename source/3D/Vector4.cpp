@@ -25,6 +25,14 @@ const Vector3& Vector4::vector3() const {
     return reinterpret_cast<const Vector3&>(*this);
 }
 
+Vector4& Vector4::operator *= (float value) {
+    x *= value;
+    y *= value;
+    z *= value;
+    w *= value;
+    return *this;
+}
+
 Vector4& Vector4::operator /= (float value) {
     x /= value;
     y /= value;

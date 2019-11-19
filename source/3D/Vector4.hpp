@@ -56,6 +56,7 @@ public:
         container.push_back(w);
     }
 
+    Vector4& operator *= (float);
     Vector4& operator /= (float);
 
     const char* to_string() const;
