@@ -1,10 +1,7 @@
-cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.9.2 FATAL_ERROR)
 
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 	include(build/build_tools_generated.cmake)
 endif()
 
-project(geometry)
-
-add_catalog_recursive(${PROJECT_SOURCE_DIR} / SOURCE)
-add_library(${PROJECT_NAME} ${SOURCE})
+setup_project(geometry)
