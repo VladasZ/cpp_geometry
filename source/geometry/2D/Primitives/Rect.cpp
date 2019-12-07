@@ -97,7 +97,7 @@ bool Rect::contains_with_edge(const Point& point, float edge) const {
 
 Size Rect::fit_size(const Size& size) const {
 
-    float ratio = this->size.width / size.width;
+    float ratio;
 
     if (size.width > size.height)
         ratio = this->size.width / size.width;
