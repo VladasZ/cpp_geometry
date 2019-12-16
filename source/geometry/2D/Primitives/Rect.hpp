@@ -8,8 +8,10 @@
 
 #pragma once
 
-#include "Point.hpp"
+#include <array>
+
 #include "Size.hpp"
+#include "Point.hpp"
 
 namespace gm {
 
@@ -59,6 +61,8 @@ public:
     Rect with_zero_origin() const;
 
     Rect& operator = (const Rect&);
+
+    std::array<Rect, 4> edges() const;
 
     const char* to_string() const;
 };

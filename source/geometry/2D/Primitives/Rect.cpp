@@ -117,6 +117,15 @@ Rect& Rect::operator = (const Rect& r2) {
     return *this;
 }
 
+std::array<Rect, 4> Rect::edges() const {
+    return std::array<Rect, 4> {
+            Rect { origin.x                 , origin.y                  , size.width, 1           },
+            Rect { origin.x + size.width - 1, origin.y                  , 1         , size.height },
+            Rect { origin.x                 , origin.y + size.height - 1, size.width, 1           },
+            Rect { origin.x                 , origin.y                  ,          1, size.height }
+    };
+}
+
 const char* Rect::to_string() const {
     static std::string value;
     value = std::string() + origin.to_string() + " " + size.to_string();
