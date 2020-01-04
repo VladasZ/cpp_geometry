@@ -7,17 +7,17 @@
 //
 
 
-#include "Path.hpp"
+#include "PointsPath.hpp"
 #include "GmMath.hpp"
 
 using namespace gm;
 
 
-Path::Path(Points&& points) : _points(points) {
+PointsPath::PointsPath(Points&& points) : _points(points) {
 
 }
 
-Path::Path(const Rect& rect) {
+PointsPath::PointsPath(const Rect& rect) {
     _points = {
           rect.origin,
         { rect.origin.x,                    rect.origin.y + rect.size.width },
@@ -26,43 +26,43 @@ Path::Path(const Rect& rect) {
     };
 }
 
-void Path::add_point(float x, float y) {
+void PointsPath::add_point(float x, float y) {
     _points.emplace_back(x, y);
 }
 
-void Path::add_point(const Point& point) {
+void PointsPath::add_point(const Point& point) {
     _points.push_back(point);
 }
 
-size_t Path::size() const {
+size_t PointsPath::size() const {
     return _points.size();
 }
 
-Path::Points& Path::points() {
+PointsPath::Points& PointsPath::points() {
     return _points;
 }
 
-const float* Path::data() const {
+const float* PointsPath::data() const {
     return reinterpret_cast<const float*>(_points.data());
 }
 
-const std::vector<float> Path::floats_vector() const {
+const std::vector<float> PointsPath::floats_vector() const {
     return { data(), data() + _points.size() * sizeof(Point) / sizeof(float) };
 }
 
-void Path::clear() {
+void PointsPath::clear() {
     _points.clear();
 }
 
-Path* Path::circle_with(const Point &center, float radius, int precision) {
-    auto path = new Path();
+PointsPath* PointsPath::circle_with(const Point &center, float radius, int precision) {
+    auto path = new PointsPath();
     float angle_step = math::tau<float> / precision;
     for (int i = 0; i < precision; i++)
         path->add_point(Point::on_circle(radius, angle_step * i, center));
     return path;
 }
 
-std::string Path::to_string() const {
+std::string PointsPath::to_string() const {
     std::string result;
     for (const auto& point : _points)
         result += std::string() + point.to_string() + "\n";
