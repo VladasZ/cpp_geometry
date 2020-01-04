@@ -6,9 +6,10 @@
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
-#include <math.h>
+#include <cmath>
 #include <algorithm>
 
+#include "Log.hpp"
 #include "Matrix4.hpp"
 
 using namespace gm;
@@ -21,16 +22,21 @@ Matrix4::Matrix4() : Matrix4 {
                          0, 0, 0, 1  } { }
 
 Matrix4::Matrix4(float value) {
-    for (size_t i = 0; i < Matrix4::size; i++)
+    for (size_t i = 0; i < Matrix4::size; i++) {
         *(&data[0][0] + i) = value;
+    }
 }
 
 Matrix4::Matrix4(const std::initializer_list<float>& list) {
-    if (list.size() != Matrix4::size) throw "Matrix4 invalid initializer";
+    if (list.size() != Matrix4::size) {
+        Fatal("Matrix4 invalid initializer");
+    }
     auto pointer = list.begin();
-    for (unsigned int row = 0; row < 4; row++)
-        for (unsigned int column = 0; column < 4; column++)
+    for (unsigned int row = 0; row < 4; row++) {
+        for (unsigned int column = 0; column < 4; column++) {
             data[column][row] = *(pointer++);
+        }
+    }
 }
 
 Matrix4 Matrix4::inversed() const {
