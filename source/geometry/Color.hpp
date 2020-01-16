@@ -21,15 +21,15 @@ public:
     float b = 0;
     float a = 0;
 
-    Color() = default;
-    Color(float r, float g, float b, float a = 1);
+    constexpr Color() = default;
+    constexpr Color(float r, float g, float b, float a = 1.0f) : r(r), g(g), b(b), a(a) { }
 
     void set_alpha(float);
 
-    Color with_alpha(float) const;
+    constexpr Color with_alpha(float alpha) const { return { r, g, b, alpha }; }
 
-    bool is_clear() const;
-    bool is_opaque() const;
+    constexpr bool is_clear () const { return a <= 0.02f; }
+    constexpr bool is_opaque() const { return a >= 1;     }
 
     const float* data() const;
 
@@ -38,8 +38,9 @@ public:
         container.push_back(r);
         container.push_back(g);
         container.push_back(b);
-        if (with_alpha)
+        if (with_alpha) {
             container.push_back(a);
+        }
     }
 
     std::string to_string() const;
