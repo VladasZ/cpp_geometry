@@ -20,25 +20,29 @@ template <class T> constexpr T half_pi  = static_cast<T>(1.57079632679489661923)
 template <class T> constexpr T quart_pi = half_pi<T> / T{2};
 
 template <class T>
-[[maybe_unused]]
 constexpr static auto distance(T a, T b) {
     return std::max(a, b) - std::min(a, b);
+}
+
+template <class T>
+constexpr static auto clamp(T value, T min = T { 0 }, T max = T { 1 }) {
+    if (value < min) return min;
+    if (value > max) return max;
+                     return value;
 }
 
 namespace _helpers {
 
 template <class T>
-[[maybe_unused]]
 constexpr static T sqrt(T x, T curr, T prev) {
-    return curr == prev ? curr : _helpers::sqrt(x, (curr + x / curr) / T{2}, curr);
+    return curr == prev ? curr : _helpers::sqrt(x, (curr + x / curr) / T { 2 }, curr);
 }
 
 }
 
 template <class T>
-[[maybe_unused]]
 constexpr static auto sqrt(T x) {
-    return x >= 0 && x < std::numeric_limits<T>::infinity() ? _helpers::sqrt<T>(x, x, T{0}) : std::numeric_limits<T>::quiet_NaN();
+    return x >= 0 && x < std::numeric_limits<T>::infinity() ? _helpers::sqrt<T>(x, x, T { 0 }) : std::numeric_limits<T>::quiet_NaN();
 }
 
 }
