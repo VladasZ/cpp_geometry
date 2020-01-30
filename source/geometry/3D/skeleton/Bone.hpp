@@ -12,7 +12,7 @@
 
 namespace gm {
 
-class Bone : public _BaseBone<Bone> {
+class Bone : public BaseBone {
 
     Vector3 _begin;
     Vector3 _end;

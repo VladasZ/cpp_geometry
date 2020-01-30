@@ -1,29 +1,31 @@
 //
-//  Skeleton.cpp
+//  FabrikKinematics.cpp
 //  geometry
 //
 //  Created by Vladas Zakrevskis on 5/17/19.
 //  Copyright © 2019 VladasZ. All rights reserved.
 //
 
-#include "Skeleton.hpp"
+#include "FabrikKinematics.hpp"
 
 using namespace gm;
 
-void Skeleton::add_bone(Bone* bone) {
-    if (bones.size())
+void FabrikKinematics::add_bone(Bone* bone) {
+    if (bones.size()) {
         bones.back()->add_child(bone);
+    }
     bones.push_back(bone);
 }
 
-float Skeleton::length() const {
+float FabrikKinematics::length() const {
     float result = 0;
-    for (auto bone : bones)
+    for (auto bone : bones) {
         result += bone->lenght();
+    }
     return result;
 }
 
-void Skeleton::reach_to(const Vector3& target) {
+void FabrikKinematics::reach_to(const Vector3& target) {
 
     if (target.distance_to(origin) > length()) {
 
@@ -31,8 +33,9 @@ void Skeleton::reach_to(const Vector3& target) {
         bones.front()->reach_end(target);
 
         for (auto bone : bones) {
-            if (bone->is_root())
+            if (bone->is_root()) {
                 continue;
+            }
             bone->set_begin(bone->parent()->end());
             bone->reach_end(target);
         }
@@ -50,7 +53,7 @@ void Skeleton::reach_to(const Vector3& target) {
     }
 }
 
-void Skeleton::_backward_reach(const Vector3& target) {
+void FabrikKinematics::_backward_reach(const Vector3& target) {
     for (int i = static_cast<int>(bones.size()) - 1; i >= 0; i--) {
         auto bone = bones[static_cast<size_t>(i)];
         if (bone->is_end()) {
@@ -59,20 +62,20 @@ void Skeleton::_backward_reach(const Vector3& target) {
             continue;
         }
         if (bone->is_root()) {
-            bone->set_end(bone->child()->begin());
+            bone->set_end(bone->first_child()->begin());
             bone->reach_begin(origin);
             continue;
         }
-        bone->set_end(bone->child()->begin());
+        bone->set_end(bone->first_child()->begin());
         bone->reach_begin(bone->parent()->end());
     }
 }
 
-void Skeleton::_forward_reach(const Vector3& target) {
+void FabrikKinematics::_forward_reach(const Vector3& target) {
     for (auto bone : bones) {
         if (bone->is_root()) {
             bone->set_begin(origin);
-            bone->reach_end(bone->child()->begin());
+            bone->reach_end(bone->first_child()->begin());
             continue;
         }
         if (bone->is_end()) {
@@ -81,7 +84,7 @@ void Skeleton::_forward_reach(const Vector3& target) {
             continue;
         }
         bone->set_begin(bone->parent()->end());
-        bone->reach_end(bone->child()->begin());
+        bone->reach_end(bone->first_child()->begin());
     }
 }
 

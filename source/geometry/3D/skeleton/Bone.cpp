@@ -11,7 +11,7 @@
 using namespace gm;
 
 
-Bone::Bone(const Vector3& begin, const Vector3& end) : _BaseBone<Bone>(begin.distance_to(end)), _begin(begin), _end(end) {
+Bone::Bone(const Vector3& begin, const Vector3& end) : BaseBone(begin.distance_to(end)), _begin(begin), _end(end) {
 
 }
 

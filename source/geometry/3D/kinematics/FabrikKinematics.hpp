@@ -1,5 +1,5 @@
 //
-//  Skeleton.hpp
+//  FabrikKinematics.hpp
 //  geometry
 //
 //  Created by Vladas Zakrevskis on 5/17/19.
@@ -12,7 +12,7 @@
 
 namespace gm {
 
-class Skeleton {
+class FabrikKinematics {
 
 public:
 

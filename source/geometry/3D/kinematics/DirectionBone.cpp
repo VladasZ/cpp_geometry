@@ -10,7 +10,7 @@
 
 using namespace gm;
 
-DirectionBone::DirectionBone(float lenght, Vector3 direction) : _BaseBone<DirectionBone>(lenght), _direction(direction) {
+DirectionBone::DirectionBone(float lenght, Vector3 direction) : BaseBone(lenght), _direction(direction) {
 
 }
 
