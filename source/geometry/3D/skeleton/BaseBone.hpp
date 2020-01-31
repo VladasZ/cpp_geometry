@@ -13,6 +13,7 @@
 
 #include "Log.hpp"
 #include "Vector3.hpp"
+#include "Matrix4.hpp"
 #include "LineSegment.hpp"
 
 namespace gm {
@@ -24,8 +25,12 @@ namespace gm {
 
         const float _length;
 
-        float _y_rotation = 0.0f;
-        float _z_rotation = 0.0f;
+    public:
+
+        float y_rotation = 0.0f;
+        float z_rotation = 0.0f;
+
+    protected:
 
         BoneT* _parent = nullptr;
         std::vector<BoneT*> _childred;
@@ -55,11 +60,18 @@ namespace gm {
             return _parent->end();
         }
 
+        float rot() const {
+            if (is_root()) return y_rotation;
+            return _parent->rot() + y_rotation;
+        }
+
         virtual Vector3 end() const {
             if (is_root()) {
-                return { _length, 0, 0 };
+                return Matrix4::transform::rotation_y(rot()) * Vector3 { _length, 0, 0 };
             }
-            return _parent->end().adding_x(_length);
+            Vector3 result = _parent->end();
+            result.x += _length;
+            return Matrix4::transform::rotation_y(rot()) * result;
         }
 
         LineSegment line_segment() const { return { begin(), end() }; }

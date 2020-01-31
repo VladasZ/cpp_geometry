@@ -16,20 +16,20 @@ class DSP {
 
 public:
 
-    template<class Container>
-    [[maybe_unused]]
-    static auto find_peaks(const Container& data) {
-        std::vector<uint64_t> result;
+    template<class Container, class Value = typename Container::value_type>
+    static auto find_peaks(const Container& data, float threshold = 0.005f) {
+        std::vector<Value> result;
 
         for (size_t i = 1; i < data.size() - 1; i++) {
             const float a = data[i - 1];
             const float b = data[i    ];
             const float c = data[i + 1];
 
-            const float threshold_value = b - 0.005f;
+            const float threshold_value = b - threshold;
 
-            if (threshold_value > a && threshold_value > c)
+            if (threshold_value > a && threshold_value > c) {
                 result.push_back(i);
+            }
         }
 
         return result;

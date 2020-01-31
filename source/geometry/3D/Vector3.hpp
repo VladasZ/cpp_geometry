@@ -71,6 +71,10 @@ public:
     Vector3 adding_y(float) const;
     Vector3 adding_z(float) const;
 
+    Vector3 rotated_x(float) const;
+    Vector3 rotated_y(float) const;
+    Vector3 rotated_z(float) const;
+
     float xy_angle() const;
     float xz_angle() const;
 
@@ -136,8 +140,8 @@ public:
         return result / static_cast<float>(points.size());
     }
 
-    template <class T>
-    static Vector3 middle_point(const T& points) {
+    template <class ArrayT>
+    static Vector3 middle_point(const ArrayT& points) {
         static const auto max_value = std::numeric_limits<float>::max();
         static const auto min_value = std::numeric_limits<float>::min();
 
