@@ -10,7 +10,7 @@
 
 using namespace gm;
 
-void FabrikKinematics::add_bone(Bone* bone) {
+void FabrikKinematics::add_bone(ReachingBone* bone) {
     if (bones.size()) {
         bones.back()->add_child(bone);
     }

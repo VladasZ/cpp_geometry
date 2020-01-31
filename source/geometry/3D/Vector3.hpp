@@ -63,7 +63,13 @@ public:
 
     Vector3 with_length(float) const;
 
+    Vector3 with_x(float) const;
+    Vector3 with_y(float) const;
     Vector3 with_z(float) const;
+
+    Vector3 adding_x(float) const;
+    Vector3 adding_y(float) const;
+    Vector3 adding_z(float) const;
 
     float xy_angle() const;
     float xz_angle() const;

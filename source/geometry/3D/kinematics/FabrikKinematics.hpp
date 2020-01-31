@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Bone.hpp"
+#include "ReachingBone.hpp"
 
 namespace gm {
 
@@ -20,9 +20,9 @@ public:
 
     const size_t iterations = 20;
 
-    std::vector<Bone*> bones;
+    std::vector<ReachingBone*> bones;
 
-    void add_bone(Bone*);
+    void add_bone(ReachingBone*);
 
     float length() const;
 

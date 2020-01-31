@@ -13,7 +13,7 @@
 
 namespace gm {
 
-class DirectionBone : public BaseBone {
+class DirectionBone : public BaseBone<DirectionBone> {
 
     Vector3 _direction;
 
