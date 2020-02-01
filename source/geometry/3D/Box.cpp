@@ -50,24 +50,22 @@ bool Box::intersects_ray(const Ray& ray) const {
     auto tymin = (bounds[    ray.sign[1]].y - ray.begin.y) * ray.invdir.y;
     auto tymax = (bounds[1 - ray.sign[1]].y - ray.begin.y) * ray.invdir.y;
 
-    if ((tmin > tymax) || (tymin > tmax))
+    if ((tmin > tymax) || (tymin > tmax)) {
         return false;
+    }
 
-    if (tymin > tmin)
-        tmin = tymin;
-    if (tymax < tmax)
-        tmax = tymax;
+    if (tymin > tmin) tmin = tymin;
+    if (tymax < tmax) tmax = tymax;
 
     auto tzmin = (bounds[    ray.sign[2]].z - ray.begin.z) * ray.invdir.z;
     auto tzmax = (bounds[1 - ray.sign[2]].z - ray.begin.z) * ray.invdir.z;
 
-    if ((tmin > tzmax) || (tzmin > tmax))
+    if ((tmin > tzmax) || (tzmin > tmax)) {
         return false;
+    }
 
-    if (tzmin > tmin)
-        tmin = tzmin;
-    if (tzmax < tmax)
-        tmax = tzmax;
+    if (tzmin > tmin) tmin = tzmin;
+    if (tzmax < tmax) tmax = tzmax;
 
     return !(tmin < 0 && tmax < 0);
 }

@@ -84,6 +84,8 @@ public:
     Vector3& normalize();
     Vector3 normalized() const;
 
+    Vector3& flip_height();
+
     Vector3  operator +  (const Vector3&) const;
     Vector3& operator += (const Vector3&);
 
@@ -161,6 +163,14 @@ public:
             (max_z + min_z) / 2
         };
     }
+
+    template <class T>
+    static Vector3 force_convert(const T& object) {
+        Vector3 result;
+        memcpy(&result, &object, sizeof(Vector3));
+        return result;
+    }
+
 };
 
 }

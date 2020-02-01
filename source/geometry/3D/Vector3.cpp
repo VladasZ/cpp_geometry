@@ -71,6 +71,11 @@ Vector3 Vector3::normalized() const {
     return result *= 1 / length();
 }
 
+Vector3& Vector3::flip_height() {
+    std::swap(y, z);
+    return *this;
+}
+
 Vector3 Vector3::operator + (const Vector3& vec) const {
 	return {
 		x + vec.x,
