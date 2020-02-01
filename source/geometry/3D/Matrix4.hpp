@@ -8,8 +8,9 @@
 
 #pragma once
 
+#include <array>
+#include <string>
 #include <cstring>
-#include <string> 
 
 #include <initializer_list>
 
@@ -29,7 +30,7 @@ public:
     Matrix4();
     Matrix4(float value);
     Matrix4(const std::initializer_list<float>&);
-    
+
     template <class CompatibleClass>
     explicit Matrix4(const CompatibleClass& obj) {
         static_assert(sizeof(Matrix4) == sizeof(CompatibleClass), "Matrix4 invalid initializer");

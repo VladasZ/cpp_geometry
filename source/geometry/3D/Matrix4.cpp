@@ -29,7 +29,7 @@ Matrix4::Matrix4(float value) {
 
 Matrix4::Matrix4(const std::initializer_list<float>& list) {
     if (list.size() != Matrix4::size) {
-        Fatal("Matrix4 invalid initializer");
+        throw std::runtime_error("Matrix4 invalid initializer");
     }
     auto pointer = list.begin();
     for (unsigned int row = 0; row < 4; row++) {

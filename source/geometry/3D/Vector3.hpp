@@ -165,6 +165,13 @@ public:
     }
 
     template <class T>
+    static T force_create(const Vector3& vector) {
+        T result { };
+        memcpy(&result, &vector, sizeof(Vector3));
+        return result;
+    }
+
+    template <class T>
     static Vector3 force_convert(const T& object) {
         Vector3 result;
         memcpy(&result, &object, sizeof(Vector3));
