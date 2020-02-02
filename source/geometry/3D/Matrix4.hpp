@@ -19,7 +19,7 @@
 
 namespace gm {
 
-class Matrix4 {
+class Matrix4 : public cu::ForceInitializable<Matrix4> {
     
 public:
     
@@ -59,6 +59,7 @@ public:
         static Matrix4 perspective(float fovy, float aspect, float z_near, float z_far);
         static Matrix4 look_at(const Vector3& eye, const Vector3& center, const Vector3& up);
         static Matrix4 model_look_at(const Vector3& target);
+        static Matrix4 quaternion_rotation(const Vector4& quat);
     };
 };
 

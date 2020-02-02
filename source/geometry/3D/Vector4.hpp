@@ -14,7 +14,7 @@
 
 namespace gm {
 
-class Vector4 {
+class Vector4 : public cu::ForceInitializable<Vector4> {
     
 public:
     
@@ -60,6 +60,7 @@ public:
     Vector4& operator /= (float);
 
     const char* to_string() const;
+
 };
 
 }

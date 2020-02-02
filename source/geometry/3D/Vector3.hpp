@@ -12,12 +12,13 @@
 #include <vector>
 #include <string>
 
-#include "GmMath.hpp"
 #include "Point.hpp"
+#include "GmMath.hpp"
+#include "ForceInitializable.hpp"
 
 namespace gm {
 
-class Vector3 {
+class Vector3 : public cu::ForceInitializable<Vector3> {
 
     template <class T>
     static constexpr inline bool _is_vector3_compatible =
@@ -163,20 +164,6 @@ public:
             (max_y + min_y) / 2,
             (max_z + min_z) / 2
         };
-    }
-
-    template <class T>
-    static T force_create(const Vector3& vector) {
-        T result { };
-        memcpy(&result, &vector, sizeof(Vector3));
-        return result;
-    }
-
-    template <class T>
-    static Vector3 force_convert(const T& object) {
-        Vector3 result;
-        memcpy(&result, &object, sizeof(Vector3));
-        return result;
     }
 
 };

@@ -345,3 +345,11 @@ Matrix4 Matrix4::transform::model_look_at(const Vector3& target) {
     const auto rotation_y      = Matrix4::transform::rotation_y(rotated_target.xz_angle());
     return rotation_z * rotation_y;
 }
+
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtx/quaternion.hpp>
+
+Matrix4 Matrix4::transform::quaternion_rotation(const Vector4& quat) {
+    auto glm_quat = quat.force_create<glm::quat>();
+    return Matrix4::force_convert(glm::toMat4(glm_quat));
+}
