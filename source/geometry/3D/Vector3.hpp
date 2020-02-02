@@ -137,8 +137,9 @@ public:
     template <class T>
     static auto average_point(const T& points) {
         Vector3 result;
-        for (const auto& point : points)
+        for (const auto& point : points) {
             result += point;
+        }
         return result / static_cast<float>(points.size());
     }
 
