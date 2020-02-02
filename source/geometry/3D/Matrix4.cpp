@@ -346,10 +346,18 @@ Matrix4 Matrix4::transform::model_look_at(const Vector3& target) {
     return rotation_z * rotation_y;
 }
 
+#ifdef USING_GLM
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
+#endif
 
 Matrix4 Matrix4::transform::quaternion_rotation(const Vector4& quat) {
+#ifdef USING_GLM
     auto glm_quat = quat.force_create<glm::quat>();
     return Matrix4::force_convert(glm::toMat4(glm_quat));
+#else
+    return { };
+#endif
 }
+
+
