@@ -20,8 +20,8 @@ public:
     const float width;
     const float height;
 
-    const Vector3 min;
-    const Vector3 max;
+    const Vector3 min_bound;
+    const Vector3 max_bound;
 
     Box(float size = 1);
     Box(float, float, float);

@@ -14,12 +14,15 @@ namespace gm {
 
 class Ray : public LineSegment {
 
+    Vector3 _direction;
+    Vector3 _dirfrac;
+
 public:
 
-    Ray(const Vector3&, const Vector3&);
+    Ray(const Vector3& origin, const Vector3& end);
 
-    Vector3 invdir;
-    int sign[3];
+    Vector3 direction() const { return _direction; }
+    Vector3 dirfrac()   const { return _dirfrac;   }
 
 };
 

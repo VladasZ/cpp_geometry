@@ -10,13 +10,10 @@
 
 using namespace gm;
 
-Ray::Ray(const Vector3& orig, const Vector3& dir) : LineSegment(orig, dir) {
+Ray::Ray(const Vector3& origin, const Vector3& end) : LineSegment(origin, end) {
+    _direction = end - origin;
 
-    invdir.x = 1 / dir.x;
-    invdir.y = 1 / dir.y;
-    invdir.z = 1 / dir.z;
-
-    sign[0] = (invdir.x < 0);
-    sign[1] = (invdir.y < 0);
-    sign[2] = (invdir.z < 0);
+    _dirfrac.x = 1.0f / _direction.x;
+    _dirfrac.y = 1.0f / _direction.y;
+    _dirfrac.z = 1.0f / _direction.z;
 }
