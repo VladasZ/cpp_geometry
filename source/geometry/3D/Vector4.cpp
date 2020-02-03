@@ -17,8 +17,12 @@ Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {
 
 }
 
+float Vector4::length() const {
+    return sqrt(x * x + y * y + z * z + w * w);
+}
+
 void Vector4::normalize() {
-    reinterpret_cast<Vector3*>(this)->normalize();
+    this->operator*=(1 / length());
 }
 
 const Vector3& Vector4::vector3() const {
@@ -50,4 +54,21 @@ const char* Vector4::to_string() const {
             + std::to_string(w) +
             " ]";
     return result.c_str();
+}
+
+Vector4 Vector4::quaternion_rotating(float x, float y, float z, float angle) {
+
+    auto factor = sin(angle / 2.0);
+
+    // Calculate the x, y and z of the quaternion
+    auto _x = x * factor;
+    auto _y = y * factor;
+    auto _z = z * factor;
+
+    // Calcualte the w value by cos( theta / 2 )
+    float w = cos(angle / 2.0);
+
+    Vector4 result { x, y, z, w };
+    result.normalize();
+    return result;
 }

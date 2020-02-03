@@ -19,7 +19,7 @@ const Point& Vector3::point() const {
 }
 
 float Vector3::length() const {
-    return static_cast<float>(sqrt(x * x + y * y + z * z));
+    return sqrt(x * x + y * y + z * z);
 }
 
 void Vector3::set_length(float _length) {

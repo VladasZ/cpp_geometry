@@ -9,6 +9,11 @@
 #include <cmath>
 #include <algorithm>
 
+#ifdef USING_GLM
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtx/quaternion.hpp>
+#endif
+
 #include "Log.hpp"
 #include "Matrix4.hpp"
 
@@ -29,7 +34,7 @@ Matrix4::Matrix4(float value) {
 
 Matrix4::Matrix4(const std::initializer_list<float>& list) {
     if (list.size() != Matrix4::size) {
-        throw std::runtime_error("Matrix4 invalid initializer");
+        Fatal("Matrix4 invalid initializer");
     }
     auto pointer = list.begin();
     for (unsigned int row = 0; row < 4; row++) {
@@ -345,11 +350,6 @@ Matrix4 Matrix4::transform::model_look_at(const Vector3& target) {
     const auto rotation_y      = Matrix4::transform::rotation_y(rotated_target.xz_angle());
     return rotation_z * rotation_y;
 }
-
-#ifdef USING_GLM
-#include <glm/gtc/quaternion.hpp>
-#include <glm/gtx/quaternion.hpp>
-#endif
 
 Matrix4 Matrix4::transform::quaternion_rotation(const Vector4& quat) {
 #ifdef USING_GLM

@@ -46,6 +46,8 @@ public:
 
     const Vector3& vector3() const;
 
+    float length() const;
+
     void normalize();
 
     template<class T>
@@ -60,6 +62,8 @@ public:
     Vector4& operator /= (float);
 
     const char* to_string() const;
+
+    static Vector4 quaternion_rotating(float x, float y, float z, float angle);
 
 };
 
