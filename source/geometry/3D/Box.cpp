@@ -62,6 +62,10 @@ bool Box::intersects_ray(const Ray& ray) const {
     return tmin <= tmax;
 }
 
+Vector3 Box::dimensions() const {
+    return { length, width, height };
+}
+
 std::string Box::to_string() const {
     return std::string() +
             "length: " + std::to_string(length) +

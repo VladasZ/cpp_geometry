@@ -29,6 +29,8 @@ public:
 
     bool intersects_ray(const Ray&) const;
 
+    Vector3 dimensions() const;
+
     std::string to_string() const;
 
 };
