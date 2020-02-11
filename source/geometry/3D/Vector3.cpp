@@ -11,6 +11,7 @@
 
 #include "Vector3.hpp"
 #include "Matrix4.hpp"
+#include "StringUtils.hpp"
 
 using namespace gm;
 
@@ -40,14 +41,14 @@ float Vector3::xz_angle() const {
 
 Vector3 Vector3::cross(const Vector3& vec) const {
     return {
-        y * vec.z - z * vec.y,
-        z * vec.x - x * vec.z,
-        x * vec.y - y * vec.x
-	};
+            y * vec.z - z * vec.y,
+            z * vec.x - x * vec.z,
+            x * vec.y - y * vec.x
+    };
 }
 
 float Vector3::dot(const Vector3& vec) const {
-	return x * vec.x + y * vec.y + z * vec.z;
+    return x * vec.x + y * vec.y + z * vec.z;
 }
 
 Vector3& Vector3::normalize() {
@@ -65,40 +66,40 @@ Vector3& Vector3::flip_height() {
 }
 
 Vector3 Vector3::operator + (const Vector3& vec) const {
-	return {
-		x + vec.x,
-		y + vec.y,
-		z + vec.z
-	};
+    return {
+            x + vec.x,
+            y + vec.y,
+            z + vec.z
+    };
 }
 
 Vector3& Vector3::operator += (const Vector3& vec) {
-	x += vec.x;
-	y += vec.y;
-	z += vec.z;
-	return *this;
+    x += vec.x;
+    y += vec.y;
+    z += vec.z;
+    return *this;
 }
 
 Vector3 Vector3::operator - (const Vector3& vec) const {
-	return {
-		x - vec.x,
-		y - vec.y,
-		z - vec.z
-	};
+    return {
+            x - vec.x,
+            y - vec.y,
+            z - vec.z
+    };
 }
 
 Vector3& Vector3::operator -= (const Vector3& vec) {
-	x -= vec.x;
-	y -= vec.y;
-	z -= vec.z;
-	return *this;
+    x -= vec.x;
+    y -= vec.y;
+    z -= vec.z;
+    return *this;
 }
 
 Vector3 Vector3::operator * (const Vector3& vec) const {
     return {
-        x * vec.x,
-        y * vec.y,
-        z * vec.z
+            x * vec.x,
+            y * vec.y,
+            z * vec.z
     };
 }
 
@@ -110,40 +111,40 @@ Vector3& Vector3::operator *= (const Vector3& vec) {
 }
 
 Vector3 Vector3::operator * (float value) const {
-	return {
-		x * value,
-		y * value,
-		z * value
-	};
+    return {
+            x * value,
+            y * value,
+            z * value
+    };
 }
 
 Vector3& Vector3::operator *= (float value) {
-	x *= value;
-	y *= value;
-	z *= value;
-	return *this;
+    x *= value;
+    y *= value;
+    z *= value;
+    return *this;
 }
 
 Vector3 Vector3::operator / (float value) const {
     return {
-        x / value,
-        y / value,
-        z / value
+            x / value,
+            y / value,
+            z / value
     };
 }
 
 Vector3& Vector3::operator /= (float value) {
-	x /= value;
-	y /= value;
-	z /= value;
-	return *this;
+    x /= value;
+    y /= value;
+    z /= value;
+    return *this;
 }
 
 Vector3 Vector3::operator + (float value) const {
     return {
-        x + value,
-        y + value,
-        z + value
+            x + value,
+            y + value,
+            z + value
     };
 }
 
@@ -156,9 +157,9 @@ Vector3& Vector3::operator += (float value) {
 
 Vector3 Vector3::operator - (float value) const {
     return {
-        x - value,
-        y - value,
-        z - value
+            x - value,
+            y - value,
+            z - value
     };
 }
 
@@ -178,5 +179,8 @@ void Vector3::orbit_shift(const Point& shift) {
 }
 
 std::string Vector3::to_string() const {
-    return std::string() + "{ " + std::to_string(x) + "f, " + std::to_string(y) + "f, " + std::to_string(z) + "f }";
+    return std::string() +
+           "x: " + cu::String::from_float(x) +
+           " y: " + cu::String::from_float(y) +
+           " z: " + cu::String::from_float(z);
 }
