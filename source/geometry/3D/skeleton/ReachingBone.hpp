@@ -22,8 +22,8 @@ namespace gm {
         ReachingBone(const Vector3& begin, const Vector3& end);
 
         void set_z(float z) {
-            set_begin(begin().with_z(z));
-            set_end(end().with_z(z));
+            auto b = begin(); b.z = z; set_begin(b);
+            auto e = end();   e.z = z; set_end(e);
         }
 
         Vector3 begin() const override;

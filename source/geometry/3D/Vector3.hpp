@@ -19,12 +19,6 @@
 namespace gm {
 
 class Vector3 : public cu::ForceInitializable<Vector3> {
-
-    template <class T>
-    static constexpr inline bool _is_vector3_compatible =
-            std::is_same_v<decltype(std::declval<T>().x), float> &&
-            std::is_same_v<decltype(std::declval<T>().y), float> &&
-            std::is_same_v<decltype(std::declval<T>().z), float>;
     
 public:
 
@@ -41,7 +35,6 @@ public:
 
     template <class T>
     constexpr Vector3(const T& value) {
-        static_assert(_is_vector3_compatible<T>, "Type is incompatible with Vector3");
         x = value.x;
         y = value.y;
         z = value.z;
@@ -49,7 +42,6 @@ public:
 
     template <class CompatibleClass>
     CompatibleClass to_compatible() const {
-        static_assert(_is_vector3_compatible<CompatibleClass>, "Type is incompatible with Vector3");
         CompatibleClass result { };
         result.x = x;
         result.y = y;
@@ -63,18 +55,6 @@ public:
     void set_length(float);
 
     Vector3 with_length(float) const;
-
-    Vector3 with_x(float) const;
-    Vector3 with_y(float) const;
-    Vector3 with_z(float) const;
-
-    Vector3 adding_x(float) const;
-    Vector3 adding_y(float) const;
-    Vector3 adding_z(float) const;
-
-    Vector3 rotated_x(float) const;
-    Vector3 rotated_y(float) const;
-    Vector3 rotated_z(float) const;
 
     float xy_angle() const;
     float xz_angle() const;

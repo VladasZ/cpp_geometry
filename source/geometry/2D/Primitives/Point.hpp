@@ -13,90 +13,74 @@
 
 namespace gm {
 
-enum Direction {
-    Right,
-    Left,
-    Up,
-    Down
-};
+    enum Direction {
+        Right,
+        Left,
+        Up,
+        Down
+    };
 
-class Point {
+    class Point {
 
-public:
+    public:
 
-    float x = 0;
-    float y = 0;
+        float x = 0;
+        float y = 0;
 
-    Point() = default;
-    
-    template <class T>
-    explicit Point(const T& value);
-    
-	template <class T>
-    Point(T x, T y);
+        Point() = default;
 
-	Point(Direction direction, float length = 1);
+        template <class T>
+        Point(T x, T y) : x(static_cast<float>(x)), y(static_cast<float>(y)) { }
 
-    float angle()   const;
-    bool  is_zero() const;
-    float length()  const;
+        Point(Direction direction, float length = 1);
 
-	void invert();
-	void invert_x();
-	void invert_y();
+        float angle()   const;
+        bool  is_zero() const;
+        float length()  const;
 
-	Point with_length(float length) const;
-    
-	void set_length(float length);
-	void add_length(float value);
-    
-    void trim(float max_lenght);
-    Point trimmed(float max_length) const;
+        void invert();
+        void invert_x();
+        void invert_y();
 
-    Direction directionX() const;
+        Point with_length(float length) const;
 
-    Point operator +  (const Point& point) const;
-    void  operator += (const Point& point);
+        void set_length(float length);
+        void add_length(float value);
 
-    Point operator -  (const Point& point) const;
-    void  operator -= (const Point& point);
+        void trim(float max_lenght);
+        Point trimmed(float max_length) const;
 
-    Point operator *  (float value) const;
-    void  operator *= (float value);
+        Direction directionX() const;
 
-    Point operator /  (float value) const;
-    void  operator /= (float value);
+        Point operator +  (const Point& point) const;
+        void  operator += (const Point& point);
 
-    template<class T>
-    void append_to_container(T& container) {
-        container.push_back(x);
-        container.push_back(y);
-    }
+        Point operator -  (const Point& point) const;
+        void  operator -= (const Point& point);
 
-    std::string to_string() const;
+        Point operator *  (float value) const;
+        void  operator *= (float value);
 
-public:
+        Point operator /  (float value) const;
+        void  operator /= (float value);
 
-    static Point on_circle(float radius, float angle, const Point& center);
+        template<class T>
+        void append_to_container(T& container) {
+            container.push_back(x);
+            container.push_back(y);
+        }
 
-};
+        std::string to_string() const;
 
-template <class T>
-Point::Point(const T& value) {
-	if constexpr (std::is_fundamental_v<T>) {
-		x = value;
-		y = value;
-	}
-	else {
-		x = value.x;
-		y = value.y;
-	}
-}
+    public:
 
-template <class T>
-Point::Point(T x, T y) {
-	this->x = static_cast<float>(x);
-	this->y = static_cast<float>(y);
-}
+        static Point on_circle(float radius, float angle, const Point& center);
+
+        template <class T>
+        static Point convert(const T& object) {
+            return { static_cast<float>(object.x), static_cast<float>(object.y) };
+        }
+
+    };
 
 }

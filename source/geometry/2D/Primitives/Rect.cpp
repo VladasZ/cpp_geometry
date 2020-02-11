@@ -31,16 +31,19 @@ Rect::Rect(float x, float y, float width, float height) : origin({ x, y }), size
 
 void Rect::set_edge(Edge edge, Point point) {
 
-    if (edge == Edge::None)
+    if (edge == Edge::None) {
         return;
+    }
 
     auto value = static_cast<uint64_t>(edge);
 
-    if (value & static_cast<uint64_t>(Edge::Bottom))
+    if (value & static_cast<uint64_t>(Edge::Bottom)) {
         size.height = point.y - origin.y;
+    }
 
-    if (value & static_cast<uint64_t>(Edge::Right))
+    if (value & static_cast<uint64_t>(Edge::Right)) {
         size.width = point.x - origin.x;
+    }
 
     if (value & static_cast<uint64_t>(Edge::Top)) {
         size.height += origin.y - point.y;
@@ -99,10 +102,12 @@ Size Rect::fit_size(const Size& size) const {
 
     float ratio;
 
-    if (size.width > size.height)
+    if (size.width > size.height) {
         ratio = this->size.width / size.width;
-    else
+    }
+    else {
         ratio = this->size.height / size.height;
+    }
 
     return { size * ratio };
 }
@@ -111,11 +116,6 @@ Rect Rect::with_zero_origin() const {
     return { size };
 }
 
-Rect& Rect::operator = (const Rect& r2) {
-    origin = r2.origin;
-    size   = r2.size;
-    return *this;
-}
 
 std::array<Rect, 4> Rect::edges() const {
     return std::array<Rect, 4> {

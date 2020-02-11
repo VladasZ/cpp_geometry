@@ -12,41 +12,28 @@
 
 namespace gm {
 
-class Size {
+    class Size {
 
-public:
+    public:
 
-    float width  = 0;
-    float height = 0;
+        float width  = 0;
+        float height = 0;
 
-    Size() = default;
-	template <class T> Size(T size);
-	template <class T> Size(T width, T height);
+        Size() = default;
 
-    Point center() const;
-    float ratio()  const;
+        template <class T>
+        Size(T width, T height) : width(static_cast<float>(width)), height(static_cast<float>(height)) { }
 
-    bool is_negative() const;
+        Point center() const;
+        float ratio()  const;
 
-    Size  operator /  (float value) const;
-    Size  operator *  (float value) const;
-    Size& operator *= (float value);
+        bool is_negative() const;
 
-    bool operator == (const Size& size) const;
+        Size  operator /  (float value) const;
+        Size  operator *  (float value) const;
+        Size& operator *= (float value);
 
-    const char* to_string() const;
-};
-
-template <class T>
-Size::Size(T size) {
-	this->width = static_cast<float>(size);
-	this->height = static_cast<float>(size);
-}
-
-template <class T>
-Size::Size(T width, T height) {
-	this->width = static_cast<float>(width);
-	this->height = static_cast<float>(height);
-}
+        const char* to_string() const;
+    };
 
 }

@@ -39,10 +39,6 @@ Size& Size::operator *= (float value) {
     return *this;
 }
 
-bool Size::operator == (const Size& size) const {
-    return !static_cast<bool>(memcmp(this, &size, sizeof(Size)));
-}
-
 const char* Size::to_string() const {
     static std::string value;
     value = std::string() + "width: " + std::to_string(width) + " height: " + std::to_string(height);

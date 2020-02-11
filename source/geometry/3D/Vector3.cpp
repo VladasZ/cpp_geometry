@@ -30,18 +30,6 @@ Vector3 Vector3::with_length(float _length) const  {
     return *this * _length / length();
 }
 
-Vector3 Vector3::with_x(float x) const { auto result = *this; result.x = x; return result; }
-Vector3 Vector3::with_y(float y) const { auto result = *this; result.y = y; return result; }
-Vector3 Vector3::with_z(float z) const { auto result = *this; result.z = z; return result; }
-
-Vector3 Vector3::adding_x(float x) const { auto result = *this; result.x += x; return result; }
-Vector3 Vector3::adding_y(float y) const { auto result = *this; result.y += y; return result; }
-Vector3 Vector3::adding_z(float z) const { auto result = *this; result.z += z; return result; }
-
-Vector3 Vector3::rotated_x(float angle) const { return Matrix4::transform::rotation_x(angle) * *this; }
-Vector3 Vector3::rotated_y(float angle) const { return Matrix4::transform::rotation_y(angle) * *this; }
-Vector3 Vector3::rotated_z(float angle) const { return Matrix4::transform::rotation_z(angle) * *this;}
-
 float Vector3::xy_angle() const {
     return std::atan2(y, x);
 }
