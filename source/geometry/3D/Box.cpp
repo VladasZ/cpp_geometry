@@ -9,6 +9,7 @@
 #include "Log.hpp"
 #include "Box.hpp"
 #include "GmMath.hpp"
+#include "StringUtils.hpp"
 
 using namespace gm;
 
@@ -55,7 +56,7 @@ bool Box::intersects_ray(const Ray& ray) const {
 
     float tmax = min(min(max(t1, t2), max(t3, t4)), max(t5, t6));
 
-    if (tmax < 0) { return false; }
+    if (tmax < 0) return false;
 
     float tmin = max(max(min(t1, t2), min(t3, t4)), min(t5, t6));
 
@@ -68,7 +69,7 @@ Vector3 Box::dimensions() const {
 
 std::string Box::to_string() const {
     return std::string() +
-            "length: " + std::to_string(length) +
-            "width: "  + std::to_string(width)  +
-            "height: " + std::to_string(height);
+            "l: " + cu::String::from_float(length) +
+            " w: " + cu::String::from_float(width)  +
+            " h: " + cu::String::from_float(height);
 }
