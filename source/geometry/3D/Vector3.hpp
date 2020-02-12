@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include <limits>
 #include <vector>
 #include <string>
 
@@ -18,7 +17,14 @@
 
 namespace gm {
 
-class Vector3 : public cu::ForceInitializable<Vector3> {
+    enum class Axis {
+        X,
+        Y,
+        Z
+    };
+
+class Vector3 : public cu::ForceInitializable<Vector3>
+        {
     
 public:
 
@@ -29,12 +35,12 @@ public:
     float z = 0;
     
     constexpr Vector3() = default;
-    constexpr Vector3(float value)                   : x(value) ,  y(value),   z(value) { }
+    constexpr Vector3(float value)                   : x(value),   y(value),   z(value) { }
     constexpr Vector3(const Point& point)            : x(point.x), y(point.y), z(0)     { }
     constexpr Vector3(float x, float y, float z = 0) : x(x),       y(y),       z(z)     { }
 
     template <class T>
-    constexpr Vector3(const T& value) {
+    constexpr explicit Vector3(const T& value) {
         x = value.x;
         y = value.y;
         z = value.z;
@@ -109,8 +115,9 @@ public:
     template <class T>
     static auto to_string(const T& points) {
         std::string result;
-        for (auto& point : points)
+        for (auto& point : points) {
             result += std::string() + point.to_string() + "\n";
+        }
         result.pop_back();
         return result;
     }
