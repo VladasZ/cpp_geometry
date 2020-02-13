@@ -18,9 +18,8 @@
 namespace gm {
 
     enum class Axis {
-        X,
-        Y,
-        Z
+        None,
+        X, Y, Z
     };
 
 class Vector3 : public cu::ForceInitializable<Vector3>

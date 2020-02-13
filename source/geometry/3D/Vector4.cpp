@@ -58,17 +58,15 @@ const char* Vector4::to_string() const {
 
 Vector4 Vector4::quaternion_rotating(float x, float y, float z, float angle) {
 
-    auto factor = sin(angle / 2.0);
+    auto factor = sin(angle / 2.0f);
 
-    // Calculate the x, y and z of the quaternion
     auto _x = x * factor;
     auto _y = y * factor;
     auto _z = z * factor;
 
-    // Calcualte the w value by cos( theta / 2 )
-    float w = cos(angle / 2.0);
+    auto w = cos(angle / 2.0f);
 
-    Vector4 result { x, y, z, w };
+    Vector4 result { _x, _y, _z, w };
     result.normalize();
     return result;
 }
