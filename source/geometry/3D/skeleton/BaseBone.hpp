@@ -27,8 +27,7 @@ namespace gm {
 
     public:
 
-        float y_rotation = 0.0f;
-        float z_rotation = 0.0f;
+        Vector4 rotation_quat = { 1, 0, 0, 0 };
 
     protected:
 
@@ -53,25 +52,19 @@ namespace gm {
         bool is_root() const { return _parent == nullptr; }
         bool is_end()  const { return _childred.empty();  }
 
+
+        Vector4 absolute_rotation() const {
+            if (is_root()) return rotation_quat;
+            return _parent->absolute_rotation() * rotation_quat;
+        }
+
         virtual Vector3 begin() const {
-            if (is_root()) {
-                return { };
-            }
+            if (is_root()) return { };
             return _parent->end();
         }
 
-        float rot() const {
-            if (is_root()) return y_rotation;
-            return _parent->rot() + y_rotation;
-        }
-
         virtual Vector3 end() const {
-            if (is_root()) {
-                return Matrix4::transform::rotation_y(rot()) * Vector3 { _length, 0, 0 };
-            }
-            Vector3 result = _parent->end();
-            result.x += _length;
-            return Matrix4::transform::rotation_y(rot()) * result;
+            return begin() + Matrix4::transform::quaternion_rotation(absolute_rotation()) * Vector3 { _length, 0, 0 };
         }
 
         LineSegment line_segment() const { return { begin(), end() }; }

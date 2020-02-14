@@ -48,7 +48,7 @@ public:
 
     float length() const;
 
-    void normalize();
+    Vector4& normalize();
 
     template<class T>
     void append_to_container(T& container) {
@@ -60,6 +60,8 @@ public:
 
     Vector4& operator *= (float);
     Vector4& operator /= (float);
+
+    Vector4 operator * (const Vector4&) const;
 
     const char* to_string() const;
 

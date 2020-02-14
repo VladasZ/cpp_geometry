@@ -21,8 +21,9 @@ float Vector4::length() const {
     return sqrt(x * x + y * y + z * z + w * w);
 }
 
-void Vector4::normalize() {
+Vector4& Vector4::normalize() {
     this->operator*=(1 / length());
+    return *this;
 }
 
 const Vector3& Vector4::vector3() const {
@@ -43,6 +44,19 @@ Vector4& Vector4::operator /= (float value) {
     z /= value;
     w /= value;
     return *this;
+}
+
+Vector4 Vector4::operator*(const Vector4& other) const {
+
+    auto& q1 = *this;
+    auto& q2 = other;
+
+    auto x =  q1.x * q2.w + q1.y * q2.z - q1.z * q2.y + q1.w * q2.x;
+    auto y = -q1.x * q2.z + q1.y * q2.w + q1.z * q2.x + q1.w * q2.y;
+    auto z =  q1.x * q2.y - q1.y * q2.x + q1.z * q2.w + q1.w * q2.z;
+    auto w = -q1.x * q2.x - q1.y * q2.y - q1.z * q2.z + q1.w * q2.w;
+
+    return { x, y, z, w };
 }
 
 const char* Vector4::to_string() const {
