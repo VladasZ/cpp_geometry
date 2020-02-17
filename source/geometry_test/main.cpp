@@ -4,6 +4,6 @@
 
 int main() {
     auto mat = gm::Matrix4::transform::scale(10.0f);
-    Logvar(mat.to_string());
+    Logvar(mat);
     return 0;
 }

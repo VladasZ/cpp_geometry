@@ -6,12 +6,16 @@
 //  Copyright © 2019 VladasZ. All rights reserved.
 //
 
-#include <math.h>
+#include <cmath>
 #include <string>
 
 #include "Vector4.hpp"
 
 using namespace gm;
+
+Vector4::Vector4(const Vector3& vec3, float w) : Vector4(vec3.x, vec3.y, vec3.z, w) {
+
+}
 
 Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {
 
@@ -59,28 +63,27 @@ Vector4 Vector4::operator*(const Vector4& other) const {
     return { x, y, z, w };
 }
 
-const char* Vector4::to_string() const {
-    static std::string result;
-    result = std::string() + "[ "
-            + std::to_string(x) + ", "
-            + std::to_string(y) + ", "
-            + std::to_string(z) + ", "
-            + std::to_string(w) +
-            " ]";
-    return result.c_str();
-}
+Vector4 Vector4::transform::quaternion_rotating_x(float angle) {
+    Vector4 result { sin(angle / 2.0f), 0, 0, cos(angle / 2.0f) };
+    result.normalize();
+    return result;}
 
-Vector4 Vector4::quaternion_rotating(float x, float y, float z, float angle) {
+Vector4 Vector4::transform::quaternion_rotating_y(float angle) {
+    Vector4 result { 0, sin(angle / 2.0f), 0, cos(angle / 2.0f) };
+    result.normalize();
+    return result;}
 
-    auto factor = sin(angle / 2.0f);
-
-    auto _x = x * factor;
-    auto _y = y * factor;
-    auto _z = z * factor;
-
-    auto w = cos(angle / 2.0f);
-
-    Vector4 result { _x, _y, _z, w };
+Vector4 Vector4::transform::quaternion_rotating_z(float angle) {
+    Vector4 result { 0, 0, sin(angle / 2.0f), cos(angle / 2.0f) };
     result.normalize();
     return result;
+}
+
+std::string Vector4::to_string() const {
+    return std::string() + "[ "
+           + std::to_string(x) + ", "
+           + std::to_string(y) + ", "
+           + std::to_string(z) + ", "
+           + std::to_string(w) +
+           " ]";
 }

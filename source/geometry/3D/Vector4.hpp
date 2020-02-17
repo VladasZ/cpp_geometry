@@ -24,6 +24,7 @@ public:
     float w = 0;
 
     Vector4() = default;
+    Vector4(const Vector3& vec3, float w = 1);
     Vector4(float x, float y, float z, float w = 1);
 
     template <class CompatibleClass>
@@ -63,9 +64,13 @@ public:
 
     Vector4 operator * (const Vector4&) const;
 
-    const char* to_string() const;
+    std::string to_string() const;
 
-    static Vector4 quaternion_rotating(float x, float y, float z, float angle);
+    struct transform {
+        static Vector4 quaternion_rotating_x(float);
+        static Vector4 quaternion_rotating_y(float);
+        static Vector4 quaternion_rotating_z(float);
+    };
 
 };
 

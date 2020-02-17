@@ -22,8 +22,7 @@ namespace gm {
         X, Y, Z
     };
 
-class Vector3 : public cu::ForceInitializable<Vector3>
-        {
+class Vector3 : public cu::ForceInitializable<Vector3> {
     
 public:
 
