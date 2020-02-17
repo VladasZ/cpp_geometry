@@ -126,8 +126,6 @@ std::array<Rect, 4> Rect::edges() const {
     };
 }
 
-const char* Rect::to_string() const {
-    static std::string value;
-    value = std::string() + origin.to_string() + " " + size.to_string();
-    return value.c_str();
+std::string Rect::to_string() const {
+    return std::string() + origin.to_string() + " " + size.to_string();
 }

@@ -62,7 +62,7 @@ public:
 
     std::array<Rect, 4> edges() const;
 
-    const char* to_string() const;
+    std::string to_string() const;
 };
 
 }
