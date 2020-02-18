@@ -14,10 +14,10 @@
 
 namespace gm::math {
 
-    template <class T> constexpr T pi       = static_cast<T>(3.14159265358979323846);
-    template <class T> constexpr T tau      = static_cast<T>(6.28318530717958647692);
-    template <class T> constexpr T half_pi  = static_cast<T>(1.57079632679489661923);
-    template <class T> constexpr T quart_pi = half_pi<T> / T{2};
+    template <class T = float> constexpr T pi       = static_cast<T>(3.14159265358979323846);
+    template <class T = float> constexpr T tau      = static_cast<T>(6.28318530717958647692);
+    template <class T = float> constexpr T half_pi  = static_cast<T>(1.57079632679489661923);
+    template <class T = float> constexpr T quart_pi = half_pi<T> / T{2};
 
     template <class T>
     constexpr static auto distance(T a, T b) {

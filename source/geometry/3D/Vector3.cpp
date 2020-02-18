@@ -9,6 +9,7 @@
 #include <cmath>
 #include <string>
 
+#include "Log.hpp"
 #include "Vector3.hpp"
 #include "Matrix4.hpp"
 #include "StringUtils.hpp"
@@ -176,6 +177,20 @@ void Vector3::orbit_shift(const Point& shift) {
     const auto step = _length * 2;
     z += shift.y * step;
     set_length(_length);
+}
+
+float Vector3::get_axis(Axis axis) const {
+    if (axis == Axis::None)  Fatal("Cant get None axis");
+    if (axis == Axis::X) return x;
+    if (axis == Axis::Y) return y;
+    if (axis == Axis::Z) return z;
+}
+
+void Vector3::set_axis(Axis axis, float value) {
+    if (axis == Axis::None)           return;
+    if (axis == Axis::X) { x = value; return; }
+    if (axis == Axis::Y) { y = value; return; }
+    if (axis == Axis::Z) { z = value; return; }
 }
 
 std::string Vector3::to_string() const {

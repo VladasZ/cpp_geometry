@@ -85,5 +85,6 @@ std::string Vector4::to_string() const {
            + std::to_string(y) + ", "
            + std::to_string(z) + ", "
            + std::to_string(w) +
-           " ]";
+           " ] " +
+           "Length: " + std::to_string(length());
 }

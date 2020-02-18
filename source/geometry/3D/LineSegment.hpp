@@ -19,13 +19,17 @@ public:
     Vector3 begin;
     Vector3 end;
 
-    LineSegment(const Vector3&, const Vector3&);
+    constexpr LineSegment(const Vector3& begin, const Vector3& end) : begin(begin), end(end) { }
 
-    float length() const;
+    constexpr float length() const {
+        return begin.distance_to(end);
+    }
 
-    Vector3 direction_vector() const;
+    constexpr Vector3 direction_vector() const {
+        return end - begin;
+    }
 
-    std::string to_string() const;
+    virtual std::string to_string() const;
 };
 
 }

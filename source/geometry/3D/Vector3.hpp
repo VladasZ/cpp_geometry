@@ -101,6 +101,9 @@ public:
 
     void orbit_shift(const Point&);
 
+    float get_axis(Axis axis) const;
+    void set_axis(Axis axis, float value);
+
     template<class T>
     void append_to_container(T& container) const {
         container.push_back(x);

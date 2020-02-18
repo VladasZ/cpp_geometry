@@ -10,6 +10,8 @@
 
 #include <vector>
 
+#include "MetaHelpers.hpp"
+
 namespace gm {
 
 class DSP {
@@ -33,6 +35,13 @@ public:
         }
 
         return result;
+    }
+
+    template <auto& value, class Value = cu::remove_all_t<decltype(value)>>
+    static void filter(const Value& new_value) {
+        Value prev = value;
+        Value diff = prev - new_value;
+        value = prev + diff * 0.9;
     }
 };
 
