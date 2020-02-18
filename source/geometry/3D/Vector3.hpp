@@ -71,26 +71,23 @@ public:
 
     Vector3& flip_height();
 
-    Vector3  operator +  (const Vector3&) const;
-    Vector3& operator += (const Vector3&);
+    constexpr Vector3 operator +  (const Vector3& v) const { return { x +  v.x, y +  v.y, z +  v.z }; }
+    constexpr void    operator += (const Vector3& v)                { x += v.x; y += v.y; z += v.z; }
 
-    Vector3  operator -  (const Vector3&) const;
-    Vector3& operator -= (const Vector3&);
+    constexpr Vector3 operator -  (const Vector3& v) const { return { x -  v.x, y -  v.y, z -  v.z }; }
+    constexpr void    operator -= (const Vector3& v)                { x -= v.x; y -= v.y; z -= v.z; }
 
-    Vector3  operator *  (const Vector3&) const;
-    Vector3& operator *= (const Vector3&);
+    constexpr Vector3 operator +  (float v) const { return { x +  v, y +  v, z +  v }; }
+    constexpr void    operator += (float v)                { x += v; y += v; z += v; }
 
-    Vector3  operator *  (float) const;
-    Vector3& operator *= (float);
+    constexpr Vector3 operator -  (float v) const { return { x -  v, y -  v, z -  v }; }
+    constexpr void    operator -= (float v)                { x -= v; y -= v; z -= v; }
 
-    Vector3  operator /  (float) const;
-    Vector3& operator /= (float);
+    constexpr Vector3 operator *  (float v) const { return { x *  v, y *  v, z *  v }; }
+    constexpr void    operator *= (float v)                { x *= v; y *= v; z *= v; }
 
-    Vector3  operator +  (float) const;
-    Vector3& operator += (float);
-
-    Vector3  operator -  (float) const;
-    Vector3& operator -= (float);
+    constexpr Vector3 operator /  (float v) const { return { x /  v, y /  v, z /  v }; }
+    constexpr void    operator /= (float v)                { x /= v; y /= v; z /= v; }
 
     constexpr float distance_to(const Vector3& vec) const {
         const auto _x = x - vec.x;

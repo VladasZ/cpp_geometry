@@ -53,121 +53,18 @@ float Vector3::dot(const Vector3& vec) const {
 }
 
 Vector3& Vector3::normalize() {
-    return *this *= 1 / length();
+    *this *= 1 / length();
+    return *this;
 }
 
 Vector3 Vector3::normalized() const {
     Vector3 result = *this;
-    return result *= 1 / length();
+    result *= 1 / length();
+    return result;
 }
 
 Vector3& Vector3::flip_height() {
     std::swap(y, z);
-    return *this;
-}
-
-Vector3 Vector3::operator + (const Vector3& vec) const {
-    return {
-            x + vec.x,
-            y + vec.y,
-            z + vec.z
-    };
-}
-
-Vector3& Vector3::operator += (const Vector3& vec) {
-    x += vec.x;
-    y += vec.y;
-    z += vec.z;
-    return *this;
-}
-
-Vector3 Vector3::operator - (const Vector3& vec) const {
-    return {
-            x - vec.x,
-            y - vec.y,
-            z - vec.z
-    };
-}
-
-Vector3& Vector3::operator -= (const Vector3& vec) {
-    x -= vec.x;
-    y -= vec.y;
-    z -= vec.z;
-    return *this;
-}
-
-Vector3 Vector3::operator * (const Vector3& vec) const {
-    return {
-            x * vec.x,
-            y * vec.y,
-            z * vec.z
-    };
-}
-
-Vector3& Vector3::operator *= (const Vector3& vec) {
-    x *= vec.x;
-    y *= vec.y;
-    z *= vec.z;
-    return *this;
-}
-
-Vector3 Vector3::operator * (float value) const {
-    return {
-            x * value,
-            y * value,
-            z * value
-    };
-}
-
-Vector3& Vector3::operator *= (float value) {
-    x *= value;
-    y *= value;
-    z *= value;
-    return *this;
-}
-
-Vector3 Vector3::operator / (float value) const {
-    return {
-            x / value,
-            y / value,
-            z / value
-    };
-}
-
-Vector3& Vector3::operator /= (float value) {
-    x /= value;
-    y /= value;
-    z /= value;
-    return *this;
-}
-
-Vector3 Vector3::operator + (float value) const {
-    return {
-            x + value,
-            y + value,
-            z + value
-    };
-}
-
-Vector3& Vector3::operator += (float value) {
-    x += value;
-    y += value;
-    z += value;
-    return *this;
-}
-
-Vector3 Vector3::operator - (float value) const {
-    return {
-            x - value,
-            y - value,
-            z - value
-    };
-}
-
-Vector3& Vector3::operator -= (float value) {
-    x /= value;
-    y /= value;
-    z /= value;
     return *this;
 }
 
