@@ -6,11 +6,13 @@
 //  Copyright © 2019 VladasZ. All rights reserved.
 //
 
+#include <cmath>
+
 #include "Ray.hpp"
 
 using namespace gm;
 
-std::pair<Vector3, Vector3> Ray::spes(const Ray& ray) const {
+std::pair<Vector3, Vector3> Ray::closest_points_with(const Ray& ray) const {
 
     const auto u = direction();
     const auto v = ray.direction();
@@ -39,6 +41,20 @@ std::pair<Vector3, Vector3> Ray::spes(const Ray& ray) const {
     const auto b_pos = relative_b + ray.begin;
 
     return { a_pos, b_pos };
+}
+
+bool Ray::intersects_plane(const LineSegment& plane) const {
+    return distance_to_plane(plane) >= 0;
+}
+
+float Ray::distance_to_plane(const LineSegment& plane) const {
+    return plane.end.dot(plane.begin - begin) / plane.end.dot(direction());
+}
+
+Vector3 Ray::plane_intersection(const LineSegment& plane) const {
+    const auto distance = distance_to_plane(plane);
+    if (distance < 0) return { };
+    return _direction * distance;
 }
 
 std::string Ray::to_string() const {

@@ -11,5 +11,5 @@
 using namespace gm;
 
 std::string LineSegment::to_string() const {
-    return std::string() + "\n" + begin.to_string() + "\n" + end.to_string();
+    return std::string() + "Begin: " + begin.to_string() + " End: " + end.to_string();
 }

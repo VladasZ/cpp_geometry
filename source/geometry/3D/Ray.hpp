@@ -22,6 +22,7 @@ namespace gm {
 
         constexpr Ray(const Vector3& origin, const Vector3& end) : LineSegment(origin, end) {
             _direction = end - origin;
+            _direction.normalize();
             _dirfrac.x = 1.0f / _direction.x;
             _dirfrac.y = 1.0f / _direction.y;
             _dirfrac.z = 1.0f / _direction.z;
@@ -30,7 +31,11 @@ namespace gm {
         constexpr Vector3 direction() const { return _direction; }
         constexpr Vector3 dirfrac()   const { return _dirfrac;   }
 
-        std::pair<Vector3, Vector3> spes(const Ray&) const;
+        std::pair<Vector3, Vector3> closest_points_with(const Ray&) const;
+
+        bool intersects_plane(const LineSegment&) const;
+        float distance_to_plane(const LineSegment&) const;
+        Vector3 plane_intersection(const LineSegment&) const;
 
         std::string to_string() const override;
 
