@@ -55,7 +55,7 @@ public:
 
     const Point& point() const;
 
-    float length() const;
+    constexpr float length() const { return math::sqrt(x * x + y * y + z * z); }
     void set_length(float);
 
     Vector3 with_length(float) const;
@@ -66,7 +66,8 @@ public:
     Vector3 cross(const Vector3&) const;
     float     dot(const Vector3&) const;
 
-    Vector3& normalize();
+    constexpr void normalize() { *this *= 1 / length(); }
+
     Vector3 normalized() const;
 
     Vector3& flip_height();

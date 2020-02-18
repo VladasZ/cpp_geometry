@@ -20,10 +20,6 @@ const Point& Vector3::point() const {
     return reinterpret_cast<const Point&>(x);
 }
 
-float Vector3::length() const {
-    return sqrt(x * x + y * y + z * z);
-}
-
 void Vector3::set_length(float _length) {
     *this *= _length / length();
 }
@@ -50,11 +46,6 @@ Vector3 Vector3::cross(const Vector3& vec) const {
 
 float Vector3::dot(const Vector3& vec) const {
     return x * vec.x + y * vec.y + z * vec.z;
-}
-
-Vector3& Vector3::normalize() {
-    *this *= 1 / length();
-    return *this;
 }
 
 Vector3 Vector3::normalized() const {
