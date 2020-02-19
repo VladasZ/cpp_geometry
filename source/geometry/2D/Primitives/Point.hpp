@@ -13,7 +13,7 @@
 
 namespace gm {
 
-    enum Direction {
+    enum class Direction {
         Right,
         Left,
         Up,

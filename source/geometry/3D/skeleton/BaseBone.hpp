@@ -37,9 +37,9 @@ namespace gm {
         BaseBone(float length) : _length(length) { }
 
         virtual ~BaseBone() {
-            for (auto child : _childred) {
-                delete child;
-            }
+//            for (auto child : _childred) {
+//                delete child;
+//            }
         }
 
     public:
