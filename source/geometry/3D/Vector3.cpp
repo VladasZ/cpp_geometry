@@ -16,6 +16,7 @@
 
 using namespace gm;
 
+
 const Point& Vector3::point() const {
     return reinterpret_cast<const Point&>(x);
 }

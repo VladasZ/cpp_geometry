@@ -23,7 +23,7 @@ namespace gm {
     };
 
 class Vector3 : public cu::ForceInitializable<Vector3> {
-    
+
 public:
 
     using ValueType = float;
