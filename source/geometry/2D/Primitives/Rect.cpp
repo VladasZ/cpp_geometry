@@ -6,26 +6,26 @@
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
-#include "stdint.h"
 #include <string>
 
 #include "Rect.hpp"
 
 using namespace gm;
 
+
 Rect::Rect(const Size& _size) : size(_size) {
 
 }
 
-Rect::Rect(float size) : size({ size, size }) {
+Rect::Rect(Float size) : size({ size, size }) {
 
 }
 
-Rect::Rect(float width, float height) : size({ width, height }) { 
+Rect::Rect(Float width, Float height) : size({ width, height }) {
 
 }
 
-Rect::Rect(float x, float y, float width, float height) : origin({ x, y }), size({ width, height }) {
+Rect::Rect(Float x, Float y, Float width, Float height) : origin({ x, y }), size({ width, height }) {
 
 }
 
@@ -56,19 +56,19 @@ void Rect::set_edge(Edge edge, Point point) {
     }
 }
 
-float Rect::min_x() const {
+Float Rect::min_x() const {
 	return origin.x;
 }
 
-float Rect::min_y() const {
+Float Rect::min_y() const {
 	return origin.y;
 }
 
-float Rect::max_x() const { 
+Float Rect::max_x() const {
     return origin.x + size.width;
 }
 
-float Rect::max_y() const { 
+Float Rect::max_y() const {
     return origin.y + size.height;
 }
 
@@ -91,7 +91,7 @@ bool Rect::contains(const Point& point) const {
            point.y <= origin.y + size.height;
 }
 
-bool Rect::contains_with_edge(const Point& point, float edge) const {
+bool Rect::contains_with_edge(const Point& point, Float edge) const {
     return point.x >= origin.x               - edge &&
            point.y >= origin.y               - edge &&
            point.x <= origin.x + size.width  + edge &&
@@ -100,7 +100,7 @@ bool Rect::contains_with_edge(const Point& point, float edge) const {
 
 Size Rect::fit_size(const Size& size) const {
 
-    float ratio;
+    Float ratio;
 
     if (size.width > size.height) {
         ratio = this->size.width / size.width;
@@ -115,7 +115,6 @@ Size Rect::fit_size(const Size& size) const {
 Rect Rect::with_zero_origin() const {
     return { size };
 }
-
 
 std::array<Rect, 4> Rect::edges() const {
     return std::array<Rect, 4> {

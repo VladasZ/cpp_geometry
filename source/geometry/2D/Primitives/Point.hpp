@@ -9,7 +9,9 @@
 #pragma once
 
 #include <string>
-#include <type_traits>
+
+#include "Geometry.hpp"
+
 
 namespace gm {
 
@@ -24,31 +26,31 @@ namespace gm {
 
     public:
 
-        float x = 0;
-        float y = 0;
+        Float x = 0;
+        Float y = 0;
 
         Point() = default;
 
         template <class T>
-        Point(T x, T y) : x(static_cast<float>(x)), y(static_cast<float>(y)) { }
+        Point(T x, T y) : x(static_cast<Float>(x)), y(static_cast<Float>(y)) { }
 
-        Point(Direction direction, float length = 1);
+        Point(Direction direction, Float length = 1);
 
-        float angle()   const;
+        Float angle()   const;
         bool  is_zero() const;
-        float length()  const;
+        Float length()  const;
 
         void invert();
         void invert_x();
         void invert_y();
 
-        Point with_length(float length) const;
+        Point with_length(Float length) const;
 
-        void set_length(float length);
-        void add_length(float value);
+        void set_length(Float length);
+        void add_length(Float value);
 
-        void trim(float max_lenght);
-        Point trimmed(float max_length) const;
+        void trim(Float max_lenght);
+        Point trimmed(Float max_length) const;
 
         Direction directionX() const;
 
@@ -58,11 +60,11 @@ namespace gm {
         Point operator -  (const Point& point) const;
         void  operator -= (const Point& point);
 
-        Point operator *  (float value) const;
-        void  operator *= (float value);
+        Point operator *  (Float value) const;
+        void  operator *= (Float value);
 
-        Point operator /  (float value) const;
-        void  operator /= (float value);
+        Point operator /  (Float value) const;
+        void  operator /= (Float value);
 
         template<class T>
         void append_to_container(T& container) {
@@ -74,11 +76,11 @@ namespace gm {
 
     public:
 
-        static Point on_circle(float radius, float angle, const Point& center);
+        static Point on_circle(Float radius, Float angle, const Point& center);
 
         template <class T>
         static Point convert(const T& object) {
-            return { static_cast<float>(object.x), static_cast<float>(object.y) };
+            return { static_cast<Float>(object.x), static_cast<Float>(object.y) };
         }
 
     };

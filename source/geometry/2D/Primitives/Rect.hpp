@@ -13,6 +13,7 @@
 #include "Size.hpp"
 #include "Point.hpp"
 
+
 namespace gm {
 
 enum class Edge {
@@ -39,22 +40,22 @@ public:
 
     Rect() = default;
     Rect(const Size&);
-    Rect(float size);
-    Rect(float width, float height);
-    Rect(float x, float y, float width, float height);
+    Rect(Float size);
+    Rect(Float width, Float height);
+    Rect(Float x, Float y, Float width, Float height);
 
     void set_edge(Edge, Point);
 
-	float min_x() const;
-	float min_y() const;
-    float max_x() const;
-    float max_y() const;
+    Float min_x() const;
+    Float min_y() const;
+    Float max_x() const;
+    Float max_y() const;
 
     Point center() const;
     void set_center(const Point&);
 
     bool contains(const Point&) const;
-    bool contains_with_edge(const Point&, float) const;
+    bool contains_with_edge(const Point&, Float) const;
 
     Size fit_size(const Size&) const;
 

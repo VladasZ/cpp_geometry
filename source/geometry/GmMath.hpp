@@ -12,6 +12,9 @@
 #include <cstdint>
 #include <algorithm>
 
+#include "Geometry.hpp"
+
+
 namespace gm::math {
 
     template <class T = float> constexpr T pi       = static_cast<T>(3.14159265358979323846);
@@ -56,6 +59,11 @@ namespace gm::math {
     template <class T>
     constexpr static auto sqrt(T x) {
         return x >= 0 && x < std::numeric_limits<T>::infinity() ? _helpers::sqrt<T>(x, x, T { 0 }) : std::numeric_limits<T>::quiet_NaN();
+    }
+
+    template <class T>
+    constexpr static Float half(const T& x) {
+        return x / Float { 2 };
     }
 
 }

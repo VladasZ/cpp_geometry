@@ -10,30 +10,31 @@
 
 #include "Point.hpp"
 
+
 namespace gm {
 
     class Size {
 
     public:
 
-        float width  = 0;
-        float height = 0;
+        Float width  = 0;
+        Float height = 0;
 
         Size() = default;
 
         template <class T>
-        Size(T width, T height) : width(static_cast<float>(width)), height(static_cast<float>(height)) { }
+        Size(T width, T height) : width(static_cast<Float>(width)), height(static_cast<Float>(height)) { }
 
         Point center() const;
-        float ratio()  const;
+        Float ratio()  const;
 
         bool is_negative() const;
 
-        Size  operator /  (float value) const;
-        Size  operator *  (float value) const;
-        Size& operator *= (float value);
+        Size  operator /  (Float value) const;
+        Size  operator *  (Float value) const;
+        Size& operator *= (Float value);
 
-        const char* to_string() const;
+        std::string to_string() const;
     };
 
 }

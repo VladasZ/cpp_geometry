@@ -7,21 +7,23 @@
 //
 
 #include <cmath>
-#include <string>
 
+#include "GmMath.hpp"
 #include "Vector4.hpp"
 
 using namespace gm;
+using namespace gm::math;
 
-Vector4::Vector4(const Vector3& vec3, float w) : Vector4(vec3.x, vec3.y, vec3.z, w) {
 
-}
-
-Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {
+Vector4::Vector4(const Vector3& vec3, Float w) : Vector4(vec3.x, vec3.y, vec3.z, w) {
 
 }
 
-float Vector4::length() const {
+Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) {
+
+}
+
+Float Vector4::length() const {
     return sqrt(x * x + y * y + z * z + w * w);
 }
 
@@ -34,7 +36,7 @@ const Vector3& Vector4::vector3() const {
     return reinterpret_cast<const Vector3&>(*this);
 }
 
-Vector4& Vector4::operator *= (float value) {
+Vector4& Vector4::operator *= (Float value) {
     x *= value;
     y *= value;
     z *= value;
@@ -42,7 +44,7 @@ Vector4& Vector4::operator *= (float value) {
     return *this;
 }
 
-Vector4& Vector4::operator /= (float value) {
+Vector4& Vector4::operator /= (Float value) {
     x /= value;
     y /= value;
     z /= value;
@@ -63,18 +65,18 @@ Vector4 Vector4::operator*(const Vector4& other) const {
     return { x, y, z, w };
 }
 
-Vector4 Vector4::transform::quaternion_rotating_x(float angle) {
-    Vector4 result { sin(angle / 2.0f), 0, 0, cos(angle / 2.0f) };
+Vector4 Vector4::transform::quaternion_rotating_x(Float angle) {
+    Vector4 result { sin(half(angle)), 0, 0, cos(half(angle)) };
     result.normalize();
     return result;}
 
-Vector4 Vector4::transform::quaternion_rotating_y(float angle) {
-    Vector4 result { 0, sin(angle / 2.0f), 0, cos(angle / 2.0f) };
+Vector4 Vector4::transform::quaternion_rotating_y(Float angle) {
+    Vector4 result { 0, sin(half(angle)), 0, cos(half(angle)) };
     result.normalize();
     return result;}
 
-Vector4 Vector4::transform::quaternion_rotating_z(float angle) {
-    Vector4 result { 0, 0, sin(angle / 2.0f), cos(angle / 2.0f) };
+Vector4 Vector4::transform::quaternion_rotating_z(Float angle) {
+    Vector4 result { 0, 0, sin(half(angle)), cos(half(angle)) };
     result.normalize();
     return result;
 }

@@ -7,7 +7,6 @@
 //
 
 #include <cmath>
-#include <string>
 
 #include "Log.hpp"
 #include "Vector3.hpp"
@@ -21,19 +20,19 @@ const Point& Vector3::point() const {
     return reinterpret_cast<const Point&>(x);
 }
 
-void Vector3::set_length(float _length) {
+void Vector3::set_length(Float _length) {
     *this *= _length / length();
 }
 
-Vector3 Vector3::with_length(float _length) const  {
+Vector3 Vector3::with_length(Float _length) const  {
     return *this * _length / length();
 }
 
-float Vector3::xy_angle() const {
+Float Vector3::xy_angle() const {
     return std::atan2(y, x);
 }
 
-float Vector3::xz_angle() const {
+Float Vector3::xz_angle() const {
     return std::atan2(z, x);
 }
 
@@ -45,7 +44,7 @@ Vector3 Vector3::cross(const Vector3& vec) const {
     };
 }
 
-float Vector3::dot(const Vector3& vec) const {
+Float Vector3::dot(const Vector3& vec) const {
     return x * vec.x + y * vec.y + z * vec.z;
 }
 
@@ -68,14 +67,14 @@ void Vector3::orbit_shift(const Point& shift) {
     set_length(_length);
 }
 
-float Vector3::get_axis(Axis axis) const {
+Float Vector3::get_axis(Axis axis) const {
     if (axis == Axis::None)  Fatal("Cant get None axis");
     if (axis == Axis::X) return x;
     if (axis == Axis::Y) return y;
     if (axis == Axis::Z) return z;
 }
 
-void Vector3::set_axis(Axis axis, float value) {
+void Vector3::set_axis(Axis axis, Float value) {
     if (axis == Axis::None)           return;
     if (axis == Axis::X) { x = value; return; }
     if (axis == Axis::Y) { y = value; return; }
@@ -84,7 +83,7 @@ void Vector3::set_axis(Axis axis, float value) {
 
 std::string Vector3::to_string() const {
     return std::string() +
-           "x: " + cu::String::from_float(x) +
+            "x: " + cu::String::from_float(x) +
            " y: " + cu::String::from_float(y) +
            " z: " + cu::String::from_float(z);
 }

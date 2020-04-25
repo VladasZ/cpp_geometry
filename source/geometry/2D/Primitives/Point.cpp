@@ -7,13 +7,13 @@
 //
 
 #include <cmath>
-#include <string>
 
 #include "Point.hpp"
 
 using namespace gm;
 
-Point::Point(Direction direction, float length) {
+
+Point::Point(Direction direction, Float length) {
     switch (direction) {
         case Direction::Left:  x = -length; y =  0;      break;
         case Direction::Right: x =  length; y =  0;      break;
@@ -22,7 +22,7 @@ Point::Point(Direction direction, float length) {
     }
 }
 
-float Point::angle() const {
+Float Point::angle() const {
     return std::atan2(y, x);
 }
 
@@ -30,8 +30,8 @@ bool Point::is_zero() const {
 	return x == 0 && y == 0;
 }
 
-float Point::length() const {
-    return static_cast<float>(std::sqrt(x * x + y * y));
+Float Point::length() const {
+    return static_cast<Float>(std::sqrt(x * x + y * y));
 }
 
 void Point::invert() {
@@ -47,29 +47,29 @@ void Point::invert_y() {
 	y = -y;
 }
 
-Point Point::with_length(float length) const {
-    const float ratio = length / this->length();
+Point Point::with_length(Float length) const {
+    const auto ratio = length / this->length();
 	return { x * ratio, y * ratio };
 }
 
-void Point::set_length(float length) {
-	const float ratio = length / this->length();
+void Point::set_length(Float length) {
+	const auto ratio = length / this->length();
 	x *= ratio;
 	y *= ratio;
 }
 
-void Point::add_length(float value) {
+void Point::add_length(Float value) {
 	set_length(length() + value);
 }
 
-void Point::trim(float max_lenght) {
+void Point::trim(Float max_lenght) {
     if (length() < max_lenght) {
         return;
     }
     set_length(max_lenght);
 }
 
-Point Point::trimmed(float max_length) const {
+Point Point::trimmed(Float max_length) const {
     Point result = *this;
     result.trim(max_length);
     return result;
@@ -97,20 +97,20 @@ void Point::operator -= (const Point &point) {
     y -= point.y;
 }
 
-Point Point::operator * (float value) const {
+Point Point::operator * (Float value) const {
 	return { x * value, y * value };
 }
 
-void Point::operator *= (float value) {
+void Point::operator *= (Float value) {
     x *= value;
     y *= value;
 }
 
-Point Point::operator / (float value) const {
+Point Point::operator / (Float value) const {
     return { x / value, y / value };
 }
 
-void Point::operator /= (float value) {
+void Point::operator /= (Float value) {
     x /= value;
     y /= value;
 }
@@ -119,6 +119,6 @@ std::string Point::to_string() const {
     return std::string() + "x: " + std::to_string(x) + " y: " + std::to_string(y);
 }
 
-Point Point::on_circle(float radius, float angle, const Point& center) {
+Point Point::on_circle(Float radius, Float angle, const Point& center) {
     return { (radius / 2) * std::cos(angle) + center.x, (radius / 2) * std::sin(angle) + center.y };
 }
