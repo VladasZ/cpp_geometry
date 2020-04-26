@@ -6,11 +6,10 @@
 //  Copyright © 2019 VladasZ. All rights reserved.
 //
 
-#include <cmath>
-
 #include "Ray.hpp"
 
 using namespace gm;
+
 
 std::pair<Vector3, Vector3> Ray::closest_points_with(const Ray& ray) const {
 
@@ -24,7 +23,7 @@ std::pair<Vector3, Vector3> Ray::closest_points_with(const Ray& ray) const {
     const auto d = u.dot(w);
     const auto e = v.dot(w);
     const auto D = a * c - b * b;
-    float sc, tc;
+    Float sc, tc;
 
     if (D < 1e-5f) {
         sc = 0.0;
@@ -47,7 +46,7 @@ bool Ray::intersects_plane(const LineSegment& plane) const {
     return distance_to_plane(plane) >= 0;
 }
 
-float Ray::distance_to_plane(const LineSegment& plane) const {
+Float Ray::distance_to_plane(const LineSegment& plane) const {
     return plane.end.dot(plane.begin - begin) / plane.end.dot(direction());
 }
 

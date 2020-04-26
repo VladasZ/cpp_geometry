@@ -10,26 +10,27 @@
 
 #include "Vector3.hpp"
 
+
 namespace gm {
 
-class LineSegment {
+    class LineSegment {
 
-public:
+    public:
 
-    Vector3 begin;
-    Vector3 end;
+        Vector3 begin;
+        Vector3 end;
 
-    constexpr LineSegment(const Vector3& begin, const Vector3& end) : begin(begin), end(end) { }
+        constexpr LineSegment(const Vector3& begin, const Vector3& end) : begin(begin), end(end) { }
 
-    constexpr float length() const {
-        return begin.distance_to(end);
-    }
+        constexpr Float length() const {
+            return begin.distance_to(end);
+        }
 
-    constexpr Vector3 direction_vector() const {
-        return end - begin;
-    }
+        constexpr Vector3 direction_vector() const {
+            return end - begin;
+        }
 
-    virtual std::string to_string() const;
-};
+        virtual std::string to_string() const;
+    };
 
 }

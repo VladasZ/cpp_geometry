@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "Log.hpp"
 #include "LineSegment.hpp"
+
 
 namespace gm {
 
@@ -34,7 +34,7 @@ namespace gm {
         std::pair<Vector3, Vector3> closest_points_with(const Ray&) const;
 
         bool intersects_plane(const LineSegment&) const;
-        float distance_to_plane(const LineSegment&) const;
+        Float distance_to_plane(const LineSegment&) const;
         Vector3 plane_intersection(const LineSegment&) const;
 
         std::string to_string() const override;

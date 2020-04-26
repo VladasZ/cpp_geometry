@@ -10,29 +10,30 @@
 
 #include "Ray.hpp"
 
+
 namespace gm {
 
-class Box {
+    class Box {
 
-public:
+    public:
 
-    const float length;
-    const float width;
-    const float height;
+        const Float length;
+        const Float width;
+        const Float height;
 
-    const Vector3 min_bound;
-    const Vector3 max_bound;
+        const Vector3 min_bound;
+        const Vector3 max_bound;
 
-    Box(float size = 1);
-    Box(float, float, float);
-    Box(const Vector3& min, const Vector3& max);
+        Box(Float size = 1);
+        Box(Float, Float, Float);
+        Box(const Vector3& min, const Vector3& max);
 
-    bool intersects_ray(const Ray&) const;
+        bool intersects_ray(const Ray&) const;
 
-    Vector3 dimensions() const;
+        Vector3 dimensions() const;
 
-    std::string to_string() const;
+        std::string to_string() const;
 
-};
+    };
 
 }

@@ -10,6 +10,7 @@
 
 using namespace gm;
 
+
 std::string LineSegment::to_string() const {
     return std::string() + "Begin: " + begin.to_string() + " End: " + end.to_string();
 }
