@@ -9,6 +9,7 @@
 #pragma once
 
 #include <array>
+#include <cstring>
 #include <initializer_list>
 
 #include "Vector4.hpp"
