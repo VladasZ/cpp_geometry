@@ -72,6 +72,7 @@ Float Vector3::get_axis(Axis axis) const {
     if (axis == Axis::X) return x;
     if (axis == Axis::Y) return y;
     if (axis == Axis::Z) return z;
+    Fatal("Invalid axis");
 }
 
 void Vector3::set_axis(Axis axis, Float value) {

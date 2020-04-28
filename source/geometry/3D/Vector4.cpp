@@ -66,17 +66,17 @@ Vector4 Vector4::operator*(const Vector4& other) const {
 }
 
 Vector4 Vector4::transform::quaternion_rotating_x(Float angle) {
-    Vector4 result { sin(half(angle)), 0, 0, cos(half(angle)) };
+    Vector4 result { std::sin(half(angle)), 0, 0, std::cos(half(angle)) };
     result.normalize();
     return result;}
 
 Vector4 Vector4::transform::quaternion_rotating_y(Float angle) {
-    Vector4 result { 0, sin(half(angle)), 0, cos(half(angle)) };
+    Vector4 result { 0, std::sin(half(angle)), 0, std::cos(half(angle)) };
     result.normalize();
     return result;}
 
 Vector4 Vector4::transform::quaternion_rotating_z(Float angle) {
-    Vector4 result { 0, 0, sin(half(angle)), cos(half(angle)) };
+    Vector4 result { 0, 0, std::sin(half(angle)), std::cos(half(angle)) };
     result.normalize();
     return result;
 }
