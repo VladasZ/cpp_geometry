@@ -27,7 +27,7 @@ namespace gm {
 
     public:
 
-        Vector4 rotation_quat = { 1, 0, 0, 0 };
+        Vector4 rotation_quat { 1, 0, 0, 0 };
 
     protected:
 

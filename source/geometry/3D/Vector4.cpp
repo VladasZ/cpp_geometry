@@ -8,20 +8,12 @@
 
 #include <cmath>
 
-#include "GmMath.hpp"
 #include "Vector4.hpp"
 
 using namespace gm;
-using namespace gm::math;
 
 
-Vector4::Vector4(const Vector3& vec3, Float w) : Vector4(vec3.x, vec3.y, vec3.z, w) {
-
-}
-
-Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) {
-
-}
+Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) { }
 
 Float Vector4::length() const {
     return sqrt(x * x + y * y + z * z + w * w);
@@ -66,17 +58,17 @@ Vector4 Vector4::operator*(const Vector4& other) const {
 }
 
 Vector4 Vector4::transform::quaternion_rotating_x(Float angle) {
-    Vector4 result { std::sin(half(angle)), 0, 0, std::cos(half(angle)) };
+    Vector4 result { std::sin(angle / 2), 0, 0, std::cos(angle / 2) };
     result.normalize();
     return result;}
 
 Vector4 Vector4::transform::quaternion_rotating_y(Float angle) {
-    Vector4 result { 0, std::sin(half(angle)), 0, std::cos(half(angle)) };
+    Vector4 result { 0, std::sin(angle / 2), 0, std::cos(angle / 2) };
     result.normalize();
     return result;}
 
 Vector4 Vector4::transform::quaternion_rotating_z(Float angle) {
-    Vector4 result { 0, 0, std::sin(half(angle)), std::cos(half(angle)) };
+    Vector4 result { 0, 0, std::sin(angle / 2), std::cos(angle / 2) };
     result.normalize();
     return result;
 }

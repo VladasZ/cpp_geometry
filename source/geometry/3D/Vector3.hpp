@@ -31,25 +31,16 @@ namespace gm {
         Float z = 0;
 
         constexpr Vector3() = default;
-        constexpr Vector3(Float value)                   : x(value),   y(value),   z(value) { }
-        constexpr Vector3(const Point& point)            : x(point.x), y(point.y), z(0)     { }
+        constexpr explicit Vector3(Float value)          : x(value),   y(value),   z(value) { }
+        constexpr explicit Vector3(const Point& point)   : x(point.x), y(point.y), z(0)     { }
         constexpr Vector3(Float x, Float y, Float z = 0) : x(x),       y(y),       z(z)     { }
 
-        template <class T>
-        constexpr explicit Vector3(const T& value) {
-            x = value.x;
-            y = value.y;
-            z = value.z;
-        }
-
-        template <class CompatibleClass>
-        CompatibleClass to_compatible() const {
-            CompatibleClass result { };
-            result.x = x;
-            result.y = y;
-            result.z = z;
-            return result;
-        }
+//        template <class T>
+//        constexpr explicit Vector3(const T& value) {
+//            x = value.x;
+//            y = value.y;
+//            z = value.z;
+//        }
 
         const Point& point() const;
 
@@ -108,16 +99,6 @@ namespace gm {
         }
 
         std::string to_string() const;
-
-        template <class T>
-        static auto to_string(const T& points) {
-            std::string result;
-            for (auto& point : points) {
-                result += std::string() + point.to_string() + "\n";
-            }
-            result.pop_back();
-            return result;
-        }
 
         template <class T>
         static auto average_point(const T& points) {

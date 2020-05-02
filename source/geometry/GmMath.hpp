@@ -29,22 +29,15 @@ namespace gm::math {
 
     template <class T>
     constexpr static auto clamped(T value, T min = T { 0 }, T max = T { 1 }) {
-        if (value < min) {
-            return min;
-        }
-        if (value > max) {
-            return max;
-        }
-        return value;
+        if (value < min) return min;
+        if (value > max) return max;
+                         return value;
     }
 
     template <class T>
     constexpr static void clamp(T &value, T min = T { 0 }, T max = T { 1 }) {
-        if (value < min) {
-            value = min;
-        } else if (value > max) {
-            value = max;
-        }
+             if (value < min) value = min;
+        else if (value > max) value = max;
     }
 
     namespace _helpers {
@@ -59,11 +52,6 @@ namespace gm::math {
     template <class T>
     constexpr static auto sqrt(T x) {
         return x >= 0 && x < std::numeric_limits<T>::infinity() ? _helpers::sqrt<T>(x, x, T { 0 }) : std::numeric_limits<T>::quiet_NaN();
-    }
-
-    template <class T>
-    constexpr static Float half(const T& x) {
-        return x / Float { 2 };
     }
 
 }
