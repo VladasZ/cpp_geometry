@@ -32,7 +32,7 @@ namespace gm {
         Point() = default;
 
         template <class T>
-        Point(T x, T y) : x(static_cast<Float>(x)), y(static_cast<Float>(y)) { }
+        constexpr Point(T x, T y) : x(static_cast<Float>(x)), y(static_cast<Float>(y)) { }
 
         Point(Direction direction, Float length = 1);
 

@@ -10,9 +10,9 @@
 
 using namespace gm;
 
-Vertex::Vertex(const Vector3& position, const Vector3& normal, const Point& uv) : position(position), normal(normal), uv(uv) {
 
-}
+Vertex::Vertex(const Vector3& position, const Vector3& normal, const Point& uv)
+    : position(position), normal(normal), uv(uv) { }
 
 std::string Vertex::to_string() const {
     return position.to_string();

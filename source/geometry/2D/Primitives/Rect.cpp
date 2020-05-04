@@ -25,10 +25,6 @@ Rect::Rect(Float width, Float height) : size({ width, height }) {
 
 }
 
-Rect::Rect(Float x, Float y, Float width, Float height) : origin({ x, y }), size({ width, height }) {
-
-}
-
 void Rect::set_edge(Edge edge, Point point) {
 
     if (edge == Edge::None) {

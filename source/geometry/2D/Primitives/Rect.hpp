@@ -42,7 +42,8 @@ namespace gm {
         Rect(const Size&);
         Rect(Float size);
         Rect(Float width, Float height);
-        Rect(Float x, Float y, Float width, Float height);
+
+        constexpr Rect(Float x, Float y, Float width, Float height) : origin({ x, y }), size({ width, height }) { }
 
         void set_edge(Edge, Point);
 

@@ -10,23 +10,25 @@
 
 #include "Vector3.hpp"
 
+
 namespace gm {
 
-class Vertex {
+    class Vertex {
 
-public:
+    public:
 
-    using Index   = unsigned short;
-    using Indices = std::vector<Index>;
-    using Array   = std::vector<Vertex>;
+        using Index   = unsigned short;
+        using Indices = std::vector<Index>;
+        using Array   = std::vector<Vertex>;
 
-    const Vector3 position;
-    const Vector3 normal;
-    const Point uv;
+        const Vector3 position;
+        const Vector3 normal;
+        const Point uv;
 
-    Vertex(const Vector3& position, const Vector3& normal = { 0, 0, 1 }, const Point& uv = { });
+        Vertex(const Vector3&, const Vector3& = { 0, 0, 1 }, const Point& = { });
 
-    std::string to_string() const;
-};
+        std::string to_string() const;
+
+    };
 
 }
