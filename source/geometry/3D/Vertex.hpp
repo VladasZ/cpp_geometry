@@ -27,6 +27,8 @@ namespace gm {
 
         Vertex(const Vector3&, const Vector3& = { 0, 0, 1 }, const Point& = { });
 
+        const Float* data() const;
+
         std::string to_string() const;
 
     };

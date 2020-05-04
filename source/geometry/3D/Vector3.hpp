@@ -35,13 +35,6 @@ namespace gm {
         constexpr explicit Vector3(const Point& point)   : x(point.x), y(point.y), z(0)     { }
         constexpr Vector3(Float x, Float y, Float z = 0) : x(x),       y(y),       z(z)     { }
 
-//        template <class T>
-//        constexpr explicit Vector3(const T& value) {
-//            x = value.x;
-//            y = value.y;
-//            z = value.z;
-//        }
-
         const Point& point() const;
 
         constexpr Float length() const { return math::sqrt(x * x + y * y + z * z); }
