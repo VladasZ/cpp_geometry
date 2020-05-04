@@ -39,13 +39,10 @@ namespace gm {
         PointsPath(Points&&);
         PointsPath(const Rect&);
 
-        void add_point(float x, float y);
         void add_point(const Point& point);
 
         size_t size() const;
-        Points& points();
-        const Float* data() const;
-        size_t data_size() const;
+        const Points& points();
 
         void clear();
 

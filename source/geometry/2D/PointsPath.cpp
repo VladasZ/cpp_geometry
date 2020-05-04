@@ -7,8 +7,8 @@
 //
 
 
-#include "PointsPath.hpp"
 #include "GmMath.hpp"
+#include "PointsPath.hpp"
 
 using namespace gm;
 
@@ -26,10 +26,6 @@ PointsPath::PointsPath(const Rect& rect) {
     };
 }
 
-void PointsPath::add_point(float x, float y) {
-    _points.emplace_back(x, y);
-}
-
 void PointsPath::add_point(const Point& point) {
     _points.push_back(point);
 }
@@ -38,17 +34,8 @@ size_t PointsPath::size() const {
     return _points.size();
 }
 
-PointsPath::Points& PointsPath::points() {
+const PointsPath::Points& PointsPath::points() {
     return _points;
-}
-
-const Float* PointsPath::data() const {
-    return _points.front().data();
-}
-
-size_t PointsPath::data_size() const {
-    static constexpr auto multiplier = sizeof(Point) / sizeof(Float);
-    return _points.size() * multiplier;
 }
 
 void PointsPath::clear() {
