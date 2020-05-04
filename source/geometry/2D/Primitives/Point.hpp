@@ -54,6 +54,8 @@ namespace gm {
 
         Direction directionX() const;
 
+        const Float* data() const;
+
         Point operator +  (const Point& point) const;
         void  operator += (const Point& point);
 
@@ -66,22 +68,11 @@ namespace gm {
         Point operator /  (Float value) const;
         void  operator /= (Float value);
 
-        template<class T>
-        void append_to_container(T& container) {
-            container.push_back(x);
-            container.push_back(y);
-        }
-
         std::string to_string() const;
 
     public:
 
         static Point on_circle(Float radius, Float angle, const Point& center);
-
-        template <class T>
-        static Point convert(const T& object) {
-            return { static_cast<Float>(object.x), static_cast<Float>(object.y) };
-        }
 
     };
 

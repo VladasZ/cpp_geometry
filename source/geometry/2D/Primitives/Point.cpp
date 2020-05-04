@@ -79,6 +79,10 @@ Direction Point::directionX() const {
     return x > 0 ? Direction::Right : Direction::Left;
 }
 
+const Float* Point::data() const {
+    return &x;
+}
+
 Point Point::operator + (const Point &point) const {
 	return { x + point.x, y + point.y };
 }

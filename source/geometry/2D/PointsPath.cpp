@@ -42,12 +42,13 @@ PointsPath::Points& PointsPath::points() {
     return _points;
 }
 
-const float* PointsPath::data() const {
-    return reinterpret_cast<const float*>(_points.data());
+const Float* PointsPath::data() const {
+    return _points.front().data();
 }
 
-const std::vector<float> PointsPath::floats_vector() const {
-    return { data(), data() + _points.size() * sizeof(Point) / sizeof(float) };
+size_t PointsPath::data_size() const {
+    static constexpr auto multiplier = sizeof(Point) / sizeof(Float);
+    return _points.size() * multiplier;
 }
 
 void PointsPath::clear() {
@@ -57,15 +58,17 @@ void PointsPath::clear() {
 PointsPath* PointsPath::circle_with(const Point &center, float radius, int precision) {
     auto path = new PointsPath();
     float angle_step = math::tau<float> / precision;
-    for (int i = 0; i < precision; i++)
+    for (int i = 0; i < precision; i++) {
         path->add_point(Point::on_circle(radius, angle_step * i, center));
+    }
     return path;
 }
 
 std::string PointsPath::to_string() const {
     std::string result;
-    for (const auto& point : _points)
+    for (const auto& point : _points) {
         result += std::string() + point.to_string() + "\n";
+    }
     result.pop_back();
     return result;
 }
