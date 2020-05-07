@@ -88,11 +88,22 @@ bool Rect::contains(const Point& point) const {
 }
 
 bool Rect::contains_with_edge(const Point& point, Float edge) const {
-    return false;
-//    return point.x >= origin.x               - edge &&
-//           point.y >= origin.y               - edge &&
-//           point.x <= origin.x + size.width  + edge &&
-//           point.y <= origin.y + size.height + edge;
+
+    bool contains = point.x >= origin.x               - edge &&
+                    point.y >= origin.y               - edge &&
+                    point.x <= origin.x + size.width  + edge &&
+                    point.y <= origin.y + size.height + edge;
+
+    if (!contains) return false;
+
+    Rect inside =
+            { origin.x + edge,
+              origin.y + edge,
+              size.width - edge * 2,
+              size.height - edge * 2
+            };
+
+    return !inside.contains(point);
 }
 
 Size Rect::fit_size(const Size& size) const {
