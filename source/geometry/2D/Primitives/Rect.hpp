@@ -52,6 +52,9 @@ namespace gm {
         Float max_x() const;
         Float max_y() const;
 
+        Rect with_x(Float) const;
+        Rect with_y(Float) const;
+
         Point center() const;
         void set_center(const Point&);
 

@@ -68,6 +68,18 @@ Float Rect::max_y() const {
     return origin.y + size.height;
 }
 
+Rect Rect::with_x(Float x) const {
+    Rect copy = *this;
+    copy.origin.x = x;
+    return copy;
+}
+
+Rect Rect::with_y(Float y) const {
+    Rect copy = *this;
+    copy.origin.y = y;
+    return copy;
+}
+
 Point Rect::center() const {
     return {
         origin.x + size.width  / 2,
