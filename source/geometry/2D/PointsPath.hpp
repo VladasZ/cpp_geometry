@@ -12,15 +12,14 @@
 #include <string>
 
 #include "Rect.hpp"
+#include "NonCopyable.hpp"
 
 
 namespace gm {
 
-    class PointsPath {
+    class PointsPath : cu::NonCopyable {
 
     public:
-
-        using Points = std::vector<Point>;
 
         enum DrawMode {
             Lines,
@@ -29,20 +28,20 @@ namespace gm {
 
     private:
 
-        Points _points;
+        std::vector<Point> _points;
 
     public:
 
         DrawMode draw_mode = LineStrip;
 
         PointsPath() = default;
-        PointsPath(Points&&);
-        PointsPath(const Rect&);
+
+        explicit PointsPath(const Rect&);
 
         void add_point(const Point& point);
 
         size_t size() const;
-        const Points& points();
+        const std::vector<Point>& points();
 
         void clear();
 

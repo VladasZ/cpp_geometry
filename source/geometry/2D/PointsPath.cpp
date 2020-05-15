@@ -13,10 +13,6 @@
 using namespace gm;
 
 
-PointsPath::PointsPath(Points&& points) : _points(points) {
-
-}
-
 PointsPath::PointsPath(const Rect& rect) {
     _points = {
           rect.origin,
@@ -34,7 +30,7 @@ size_t PointsPath::size() const {
     return _points.size();
 }
 
-const PointsPath::Points& PointsPath::points() {
+const std::vector<Point>& PointsPath::points() {
     return _points;
 }
 
@@ -44,7 +40,7 @@ void PointsPath::clear() {
 
 PointsPath* PointsPath::circle_with(const Point &center, float radius, int precision) {
     auto path = new PointsPath();
-    float angle_step = math::tau<float> / precision;
+    auto angle_step = math::tau<float> / precision;
     for (int i = 0; i < precision; i++) {
         path->add_point(Point::on_circle(radius, angle_step * i, center));
     }
@@ -54,7 +50,7 @@ PointsPath* PointsPath::circle_with(const Point &center, float radius, int preci
 std::string PointsPath::to_string() const {
     std::string result;
     for (const auto& point : _points) {
-        result += std::string() + point.to_string() + "\n";
+        result += point.to_string() + "\n";
     }
     result.pop_back();
     return result;
