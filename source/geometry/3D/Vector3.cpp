@@ -83,8 +83,8 @@ void Vector3::set_axis(Axis axis, Float value) {
 }
 
 std::string Vector3::to_string() const {
-    return std::string() +
-            "x: " + cu::String::from_float(x) +
-           " y: " + cu::String::from_float(y) +
-           " z: " + cu::String::from_float(z);
+    return std::string() + "[ "
+        + std::to_string(x) + ", "
+        + std::to_string(y) + ", "
+        + std::to_string(z) + "]";
 }

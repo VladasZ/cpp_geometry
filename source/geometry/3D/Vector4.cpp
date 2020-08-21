@@ -75,10 +75,10 @@ Vector4 Vector4::transform::quaternion_rotating_z(Float angle) {
 
 std::string Vector4::to_string() const {
     return std::string() + "[ "
-           + std::to_string(x) + ", "
-           + std::to_string(y) + ", "
-           + std::to_string(z) + ", "
-           + std::to_string(w) +
-           " ] " +
-           "Length: " + std::to_string(length());
+        + std::to_string(x) + ", "
+        + std::to_string(y) + ", "
+        + std::to_string(z) + ", "
+        + std::to_string(w) + "]";
+           /*" ] " +
+           "Length: " + std::to_string(length());*/
 }
