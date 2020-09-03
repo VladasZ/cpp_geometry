@@ -54,6 +54,10 @@ Vector3 Vector3::normalized() const {
     return result;
 }
 
+Vector3 Vector3::with_fliped_height() const {
+    return { x, z, y };
+}
+
 Vector3& Vector3::flip_height() {
     std::swap(y, z);
     return *this;

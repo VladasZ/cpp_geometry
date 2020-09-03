@@ -52,6 +52,7 @@ namespace gm {
 
         Vector3 normalized() const;
 
+        Vector3 with_fliped_height() const;
         Vector3& flip_height();
 
         constexpr Vector3 operator +  (const Vector3& v) const { return { x +  v.x, y +  v.y, z +  v.z }; }
