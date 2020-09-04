@@ -174,29 +174,29 @@ Matrix4 Matrix4::inversed() const {
 
 Matrix4 Matrix4::operator *(const Matrix4& in) const {
 
-    const auto& data = in.data;
+    const auto& _data = in.data;
     const auto& mat = *this;
 
     Matrix4 res;
-    res.data[0][0] = data[0][0] * mat.data[0][0] + data[0][1] * mat.data[1][0] + data[0][2] * mat.data[2][0] + data[0][3] * mat.data[3][0];
-    res.data[0][1] = data[0][0] * mat.data[0][1] + data[0][1] * mat.data[1][1] + data[0][2] * mat.data[2][1] + data[0][3] * mat.data[3][1];
-    res.data[0][2] = data[0][0] * mat.data[0][2] + data[0][1] * mat.data[1][2] + data[0][2] * mat.data[2][2] + data[0][3] * mat.data[3][2];
-    res.data[0][3] = data[0][0] * mat.data[0][3] + data[0][1] * mat.data[1][3] + data[0][2] * mat.data[2][3] + data[0][3] * mat.data[3][3];
+    res.data[0][0] = _data[0][0] * mat.data[0][0] + _data[0][1] * mat.data[1][0] + _data[0][2] * mat.data[2][0] + _data[0][3] * mat.data[3][0];
+    res.data[0][1] = _data[0][0] * mat.data[0][1] + _data[0][1] * mat.data[1][1] + _data[0][2] * mat.data[2][1] + _data[0][3] * mat.data[3][1];
+    res.data[0][2] = _data[0][0] * mat.data[0][2] + _data[0][1] * mat.data[1][2] + _data[0][2] * mat.data[2][2] + _data[0][3] * mat.data[3][2];
+    res.data[0][3] = _data[0][0] * mat.data[0][3] + _data[0][1] * mat.data[1][3] + _data[0][2] * mat.data[2][3] + _data[0][3] * mat.data[3][3];
 
-    res.data[1][0] = data[1][0] * mat.data[0][0] + data[1][1] * mat.data[1][0] + data[1][2] * mat.data[2][0] + data[1][3] * mat.data[3][0];
-    res.data[1][1] = data[1][0] * mat.data[0][1] + data[1][1] * mat.data[1][1] + data[1][2] * mat.data[2][1] + data[1][3] * mat.data[3][1];
-    res.data[1][2] = data[1][0] * mat.data[0][2] + data[1][1] * mat.data[1][2] + data[1][2] * mat.data[2][2] + data[1][3] * mat.data[3][2];
-    res.data[1][3] = data[1][0] * mat.data[0][3] + data[1][1] * mat.data[1][3] + data[1][2] * mat.data[2][3] + data[1][3] * mat.data[3][3];
+    res.data[1][0] = _data[1][0] * mat.data[0][0] + _data[1][1] * mat.data[1][0] + _data[1][2] * mat.data[2][0] + _data[1][3] * mat.data[3][0];
+    res.data[1][1] = _data[1][0] * mat.data[0][1] + _data[1][1] * mat.data[1][1] + _data[1][2] * mat.data[2][1] + _data[1][3] * mat.data[3][1];
+    res.data[1][2] = _data[1][0] * mat.data[0][2] + _data[1][1] * mat.data[1][2] + _data[1][2] * mat.data[2][2] + _data[1][3] * mat.data[3][2];
+    res.data[1][3] = _data[1][0] * mat.data[0][3] + _data[1][1] * mat.data[1][3] + _data[1][2] * mat.data[2][3] + _data[1][3] * mat.data[3][3];
 
-    res.data[2][0] = data[2][0] * mat.data[0][0] + data[2][1] * mat.data[1][0] + data[2][2] * mat.data[2][0] + data[2][3] * mat.data[3][0];
-    res.data[2][1] = data[2][0] * mat.data[0][1] + data[2][1] * mat.data[1][1] + data[2][2] * mat.data[2][1] + data[2][3] * mat.data[3][1];
-    res.data[2][2] = data[2][0] * mat.data[0][2] + data[2][1] * mat.data[1][2] + data[2][2] * mat.data[2][2] + data[2][3] * mat.data[3][2];
-    res.data[2][3] = data[2][0] * mat.data[0][3] + data[2][1] * mat.data[1][3] + data[2][2] * mat.data[2][3] + data[2][3] * mat.data[3][3];
+    res.data[2][0] = _data[2][0] * mat.data[0][0] + _data[2][1] * mat.data[1][0] + _data[2][2] * mat.data[2][0] + _data[2][3] * mat.data[3][0];
+    res.data[2][1] = _data[2][0] * mat.data[0][1] + _data[2][1] * mat.data[1][1] + _data[2][2] * mat.data[2][1] + _data[2][3] * mat.data[3][1];
+    res.data[2][2] = _data[2][0] * mat.data[0][2] + _data[2][1] * mat.data[1][2] + _data[2][2] * mat.data[2][2] + _data[2][3] * mat.data[3][2];
+    res.data[2][3] = _data[2][0] * mat.data[0][3] + _data[2][1] * mat.data[1][3] + _data[2][2] * mat.data[2][3] + _data[2][3] * mat.data[3][3];
 
-    res.data[3][0] = data[3][0] * mat.data[0][0] + data[3][1] * mat.data[1][0] + data[3][2] * mat.data[2][0] + data[3][3] * mat.data[3][0];
-    res.data[3][1] = data[3][0] * mat.data[0][1] + data[3][1] * mat.data[1][1] + data[3][2] * mat.data[2][1] + data[3][3] * mat.data[3][1];
-    res.data[3][2] = data[3][0] * mat.data[0][2] + data[3][1] * mat.data[1][2] + data[3][2] * mat.data[2][2] + data[3][3] * mat.data[3][2];
-    res.data[3][3] = data[3][0] * mat.data[0][3] + data[3][1] * mat.data[1][3] + data[3][2] * mat.data[2][3] + data[3][3] * mat.data[3][3];
+    res.data[3][0] = _data[3][0] * mat.data[0][0] + _data[3][1] * mat.data[1][0] + _data[3][2] * mat.data[2][0] + _data[3][3] * mat.data[3][0];
+    res.data[3][1] = _data[3][0] * mat.data[0][1] + _data[3][1] * mat.data[1][1] + _data[3][2] * mat.data[2][1] + _data[3][3] * mat.data[3][1];
+    res.data[3][2] = _data[3][0] * mat.data[0][2] + _data[3][1] * mat.data[1][2] + _data[3][2] * mat.data[2][2] + _data[3][3] * mat.data[3][2];
+    res.data[3][3] = _data[3][0] * mat.data[0][3] + _data[3][1] * mat.data[1][3] + _data[3][2] * mat.data[2][3] + _data[3][3] * mat.data[3][3];
     return res;
 }
 
@@ -356,6 +356,7 @@ Matrix4 Matrix4::transform::quaternion_rotation(const Vector4& quat) {
     auto glm_quat = quat.force_convert<glm::quat>();
     return Matrix4::force_create(glm::toMat4(glm_quat));
 #else
+	Log << "Not implemented without glm:" << quat;
     return { };
 #endif
 }

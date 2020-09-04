@@ -118,18 +118,18 @@ bool Rect::contains_with_edge(const Point& point, Float edge) const {
     return !inside.contains(point);
 }
 
-Size Rect::fit_size(const Size& size) const {
+Size Rect::fit_size(const Size& _size) const {
 
     Float ratio;
 
-    if (size.width > size.height) {
-        ratio = this->size.width / size.width;
+    if (_size.width > _size.height) {
+        ratio = this->size.width / _size.width;
     }
     else {
-        ratio = this->size.height / size.height;
+        ratio = this->size.height / _size.height;
     }
 
-    return { size * ratio };
+    return { _size * ratio };
 }
 
 Rect Rect::with_zero_origin() const {
