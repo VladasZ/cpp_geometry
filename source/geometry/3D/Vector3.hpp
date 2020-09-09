@@ -12,28 +12,41 @@
 
 #include "Point.hpp"
 #include "GmMath.hpp"
-#include "ForceInitializable.hpp"
 
 
 namespace gm {
 
     enum class Axis {
-        None,
-        X, Y, Z
+        X = 0, 
+        Y = 1, 
+        Z = 2,
+        None
     };
 
-    class Vector3 : public cu::ForceInitializable<Vector3> {
+    template <class T>
+    class V3 {
 
     public:
 
-        Float x = 0;
-        Float y = 0;
-        Float z = 0;
+        T x = 0;
+        T y = 0;
+        T z = 0;
 
-        constexpr Vector3() = default;
-        constexpr explicit Vector3(Float value)          : x(value),   y(value),   z(value) { }
-        constexpr explicit Vector3(const Point& point)   : x(point.x), y(point.y), z(0)     { }
-        constexpr Vector3(Float x, Float y, Float z = 0) : x(x),       y(y),       z(z)     { }
+        constexpr V3() = default;
+        constexpr explicit V3(T value)            : x(value),   y(value),   z(value) { }
+        constexpr explicit V3(const Point& point) : x(point.x), y(point.y), z(0)     { }
+        constexpr V3(T x, T y, T z = 0)           : x(x),       y(y),       z(z)     { }
+
+        std::string to_string() const {
+            return std::string() + "[ " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + "]";
+        }
+    };
+
+    class Vector3 : public V3<Float> {
+
+    public:
+
+        using V3<Float>::V3;
 
         const Point& point() const;
 
@@ -54,6 +67,8 @@ namespace gm {
 
         Vector3 with_fliped_height() const;
         Vector3& flip_height();
+
+        Float* data() { return &x; }
 
         constexpr Vector3 operator +  (const Vector3& v) const { return { x +  v.x, y +  v.y, z +  v.z }; }
         constexpr void    operator += (const Vector3& v)                { x += v.x; y += v.y; z += v.z; }
@@ -82,8 +97,13 @@ namespace gm {
 
         void orbit_shift(const Point&);
 
-        Float get_axis(Axis axis) const;
-        void set_axis(Axis axis, Float value);
+        Float get_axis(Axis axis) const {
+            return (&x)[(int)axis];
+        }
+
+        void set_axis(Axis axis, Float value) {
+            data()[(int)axis] = value;
+        }
 
         template<class T>
         void append_to_container(T& container) const {
@@ -92,7 +112,9 @@ namespace gm {
             container.push_back(z);
         }
 
-        std::string to_string() const;
+        std::string to_string() const {
+            return std::string() + "[ " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + "]";
+        }
 
         template <class T>
         static auto average_point(const T& points) {

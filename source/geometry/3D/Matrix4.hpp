@@ -17,7 +17,7 @@
 
 namespace gm {
 
-    class Matrix4 : public cu::ForceInitializable<Matrix4> {
+    class Matrix4 {
 
     public:
 

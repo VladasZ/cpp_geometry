@@ -16,6 +16,7 @@
 
 #include "Log.hpp"
 #include "Matrix4.hpp"
+#include "ForceInitializable.hpp"
 
 using namespace gm;
 
@@ -353,8 +354,8 @@ Matrix4 Matrix4::transform::model_look_at(const Vector3& target) {
 
 Matrix4 Matrix4::transform::quaternion_rotation(const Vector4& quat) {
 #ifdef USING_GLM
-    auto glm_quat = quat.force_convert<glm::quat>();
-    return Matrix4::force_create(glm::toMat4(glm_quat));
+    auto glm_quat = cu::force_convert<glm::quat>(quat);
+    return cu::force_convert<Matrix4>(glm::toMat4(glm_quat));
 #else
 	Log << "Not implemented without glm:" << quat;
     return { };

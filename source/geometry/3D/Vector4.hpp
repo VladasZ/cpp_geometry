@@ -13,7 +13,7 @@
 
 namespace gm {
 
-    class Vector4 : public cu::ForceInitializable<Vector4> {
+    class Vector4 {
 
     public:
 

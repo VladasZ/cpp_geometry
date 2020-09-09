@@ -70,25 +70,3 @@ void Vector3::orbit_shift(const Point& shift) {
     z += shift.y * step;
     set_length(_length);
 }
-
-Float Vector3::get_axis(Axis axis) const {
-    if (axis == Axis::None)  Fatal("Cant get None axis");
-    if (axis == Axis::X) return x;
-    if (axis == Axis::Y) return y;
-    if (axis == Axis::Z) return z;
-    Fatal("Invalid axis");
-}
-
-void Vector3::set_axis(Axis axis, Float value) {
-    if (axis == Axis::None)           return;
-    if (axis == Axis::X) { x = value; return; }
-    if (axis == Axis::Y) { y = value; return; }
-    if (axis == Axis::Z) { z = value; return; }
-}
-
-std::string Vector3::to_string() const {
-    return std::string() + "[ "
-        + std::to_string(x) + ", "
-        + std::to_string(y) + ", "
-        + std::to_string(z) + "]";
-}
