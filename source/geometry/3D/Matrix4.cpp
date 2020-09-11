@@ -8,12 +8,7 @@
 
 #include <cmath>
 #include <algorithm>
-
-#ifndef NO_GLM
-#pragma warning(disable : 4201)
-#include <glm/gtc/quaternion.hpp>
-#include <glm/gtx/quaternion.hpp>
-#endif
+#include <GLMInclude.hpp>
 
 #include "Log.hpp"
 #include "Matrix4.hpp"
@@ -354,7 +349,7 @@ Matrix4 Matrix4::transform::model_look_at(const Vector3& target) {
 }
 
 Matrix4 Matrix4::transform::quaternion_rotation(const Vector4& quat) {
-#ifndef NO_GLM
+#ifdef USING_GLM
 	auto glm_quat = cu::force_convert<glm::quat>(quat);
     return cu::force_convert<Matrix4>(glm::toMat4(glm_quat));
 #else
