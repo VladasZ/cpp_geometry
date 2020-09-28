@@ -63,7 +63,7 @@ namespace gm {
         Vector3 cross(const Vector3&) const;
         Float     dot(const Vector3&) const;
 
-        void normalize() { *this *= 1 / length(); }
+        constexpr void normalize() { *this *= 1 / length(); }
 
         Vector3 normalized() const;
 
