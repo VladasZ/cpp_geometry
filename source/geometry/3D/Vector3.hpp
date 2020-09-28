@@ -37,6 +37,8 @@ namespace gm {
         constexpr explicit V3(const Point& point) : x(point.x), y(point.y), z(0)     { }
         constexpr V3(T x, T y, T z = 0)           : x(x),       y(y),       z(z)     { }
 
+		T length() const { return std::sqrt(x * x + y * y + z * z); }
+
         std::string to_string() const {
             return std::string() + "[ " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + "]";
         }
@@ -50,7 +52,6 @@ namespace gm {
 
         const Point& point() const;
 
-        constexpr Float length() const { return math::sqrt(x * x + y * y + z * z); }
         void set_length(Float);
 
         Vector3 with_length(Float) const;

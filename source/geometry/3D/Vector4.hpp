@@ -20,7 +20,7 @@ namespace gm {
         Float x = 0;
         Float y = 0;
         Float z = 0;
-        Float w = 0;
+        Float w = 1;
 
         Vector4() = default;
         Vector4(Float x, Float y, Float z, Float w);
