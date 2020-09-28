@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <cmath>
 #include <vector>
 
 #include "Point.hpp"
@@ -62,7 +63,7 @@ namespace gm {
         Vector3 cross(const Vector3&) const;
         Float     dot(const Vector3&) const;
 
-        constexpr void normalize() { *this *= 1 / length(); }
+        void normalize() { *this *= 1 / length(); }
 
         Vector3 normalized() const;
 
