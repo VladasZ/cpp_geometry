@@ -44,6 +44,9 @@ namespace gm {
 
         Vector4 operator * (const Vector4&) const;
 
+		void rotation_flip_height();
+		Vector4 rotation_flipped_height() const;
+
         std::string to_string() const;
 
         struct transform {
