@@ -73,12 +73,12 @@ Vector4 Vector4::transform::quaternion_rotating_z(Float angle) {
     return result;
 }
 
-void Vector4::rotation_flip_height() {
-	*this = rotation_flipped_height();
+Vector4 Vector4::change_hand() const {
+	return { z, y, x, -w };
 }
 
-Vector4 Vector4::rotation_flipped_height() const {
-	return { z, y, x, w };
+Vector4 Vector4::flip_height() const {
+	return { x, z, y, -w };
 }
 
 std::string Vector4::to_string() const {
