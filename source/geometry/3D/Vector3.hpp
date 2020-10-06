@@ -149,6 +149,9 @@ namespace gm {
             };
         }
 
+		static Vector3 from_json(const std::string&);
+		std::string to_json() const;
+
     };
 
 }

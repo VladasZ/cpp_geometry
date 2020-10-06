@@ -7,10 +7,12 @@
 //
 
 #include <cmath>
+#include <nlohmann/json.hpp>
 
 #include "Vector4.hpp"
 
 using namespace gm;
+using namespace std;
 
 
 Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) { }
@@ -87,4 +89,23 @@ std::string Vector4::to_string() const {
         + std::to_string(y) + ", "
         + std::to_string(z) + ", "
         + std::to_string(w) + "]";
+}
+
+Vector4 Vector4::from_json(const string& json_string) {
+	auto json = nlohmann::json::parse(json_string);
+	Vector4 result;
+	result.x = json["x"].get<float>();
+	result.y = json["y"].get<float>();
+	result.z = json["z"].get<float>();
+	result.w = json["w"].get<float>();
+	return result;
+}
+
+string Vector4::to_json() const {
+	return nlohmann::json{
+		{ "x", x },
+		{ "y", y },
+		{ "z", z },
+		{ "w", w }
+	}.dump();
 }
