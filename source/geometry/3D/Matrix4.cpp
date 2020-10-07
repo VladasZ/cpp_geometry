@@ -12,7 +12,7 @@
 
 #include "Log.hpp"
 #include "Matrix4.hpp"
-#include "ForceInitializable.hpp"
+#include "ForceConvert.hpp"
 
 using namespace gm;
 
