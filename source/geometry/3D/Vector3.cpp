@@ -7,12 +7,12 @@
 //
 
 #include <cmath>
-#include <nlohmann/json.hpp>
 
 #include "Log.hpp"
 #include "Vector3.hpp"
 #include "Matrix4.hpp"
 #include "StringUtils.hpp"
+#include "JsonInclude.hpp"
 
 using namespace gm;
 using namespace std;
@@ -74,18 +74,26 @@ void Vector3::orbit_shift(const Point& shift) {
 }
 
 Vector3 Vector3::from_json(const string& json_string) {
+#ifdef USING_JSON
 	auto json = nlohmann::json::parse(json_string);
 	Vector3 result;
 	result.x = json["x"].get<float>();
 	result.y = json["y"].get<float>();
 	result.z = json["z"].get<float>();
 	return result;
+#else
+    return { };
+#endif
 }
 
 string Vector3::to_json() const {
+#ifdef USING_JSON
 	return nlohmann::json {
 		{ "x", x },
 		{ "y", y },
 		{ "z", z }
 	}.dump();
+#else
+    return "Built without JSON";
+#endif
 }

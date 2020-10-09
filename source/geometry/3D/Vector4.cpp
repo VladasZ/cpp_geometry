@@ -7,9 +7,9 @@
 //
 
 #include <cmath>
-#include <nlohmann/json.hpp>
 
 #include "Vector4.hpp"
+#include "JsonInclude.hpp"
 
 using namespace gm;
 using namespace std;
@@ -92,6 +92,7 @@ std::string Vector4::to_string() const {
 }
 
 Vector4 Vector4::from_json(const string& json_string) {
+#ifdef USING_JSON
 	auto json = nlohmann::json::parse(json_string);
 	Vector4 result;
 	result.x = json["x"].get<float>();
@@ -99,13 +100,20 @@ Vector4 Vector4::from_json(const string& json_string) {
 	result.z = json["z"].get<float>();
 	result.w = json["w"].get<float>();
 	return result;
+#else
+    return { };
+#endif
 }
 
 string Vector4::to_json() const {
+#ifdef USING_JSON
 	return nlohmann::json{
 		{ "x", x },
 		{ "y", y },
 		{ "z", z },
 		{ "w", w }
 	}.dump();
+#else
+    return "Built without JSON";
+#endif
 }
