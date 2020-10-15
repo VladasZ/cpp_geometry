@@ -8,6 +8,10 @@
 
 #pragma once
 
+#undef min
+#undef max
+
+
 namespace gm {
 
     using Float = float;
