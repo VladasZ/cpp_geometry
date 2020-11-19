@@ -22,8 +22,8 @@ namespace gm {
 
         Size() = default;
 
-        template <class T>
-        constexpr Size(T width, T height) : width(static_cast<Float>(width)), height(static_cast<Float>(height)) { }
+        template <class X, class Y>
+        constexpr Size(X width, Y height) : width(static_cast<Float>(width)), height(static_cast<Float>(height)) { }
 
         Point center() const;
         Float ratio()  const;
