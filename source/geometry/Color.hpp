@@ -45,7 +45,7 @@ public:
 
     std::string to_string() const;
 
-    static Color random();
+    static const Color& random();
 
     static const Color black;
     static const Color white;

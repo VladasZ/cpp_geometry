@@ -28,7 +28,7 @@ std::string Color::to_string() const {
             " a: " + std::to_string(a);
 }
 
-Color Color::random() {
+const Color& Color::random() {
     static const std::vector<Color> all = {
         black,
         white,
