@@ -6,6 +6,8 @@
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
+#include <cmath>
+
 #include "Size.hpp"
 
 using namespace gm;
@@ -21,6 +23,10 @@ Float Size::ratio() const {
 
 bool Size::is_negative() const {
     return width < 0 || height < 0;
+}
+
+float Size::diagonal() const {
+    return std::sqrt(width * width + height * height);
 }
 
 Size Size::operator / (Float value) const {

@@ -30,6 +30,8 @@ namespace gm {
 
         bool is_negative() const;
 
+        float diagonal() const;
+
         Size  operator /  (Float value) const;
         Size  operator *  (Float value) const;
         Size& operator *= (Float value);

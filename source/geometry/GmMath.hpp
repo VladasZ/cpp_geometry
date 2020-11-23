@@ -54,4 +54,8 @@ namespace gm::math {
         return x >= 0 && x < std::numeric_limits<T>::infinity() ? _helpers::sqrt<T>(x, x, T { 0 }) : std::numeric_limits<T>::quiet_NaN();
     }
 
+    constexpr static float mm_to_inch(float mm) {
+        return mm * 0.0393701f;
+    }
+
 }
