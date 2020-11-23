@@ -58,4 +58,8 @@ namespace gm::math {
         return mm * 0.0393701f;
     }
 
+    constexpr static float inch_to_mm(float inch) {
+        return inch * 25.4f;
+    }
+
 }
