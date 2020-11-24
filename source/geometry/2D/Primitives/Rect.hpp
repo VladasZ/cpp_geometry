@@ -67,6 +67,9 @@ namespace gm {
 
         std::array<Rect, 4> edges() const;
 
+        Rect operator *(float) const;
+        Rect operator /(float) const;
+
         std::string to_string() const;
     };
 

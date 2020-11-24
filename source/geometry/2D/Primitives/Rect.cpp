@@ -145,6 +145,14 @@ std::array<Rect, 4> Rect::edges() const {
     };
 }
 
+Rect Rect::operator *(float v) const {
+    return { origin.x * v, origin.y * v, size.width * v, size.height * v };
+}
+
+Rect Rect::operator /(float v) const {
+    return { origin.x / v, origin.y / v, size.width / v, size.height / v };
+}
+
 std::string Rect::to_string() const {
     return std::string() + origin.to_string() + " " + size.to_string();
 }
