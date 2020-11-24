@@ -17,17 +17,17 @@ namespace gm {
 
     public:
 
-        Float x = 0;
-        Float y = 0;
-        Float z = 0;
-        Float w = 1;
+        float x = 0;
+        float y = 0;
+        float z = 0;
+        float w = 1;
 
         Vector4() = default;
-        Vector4(Float x, Float y, Float z, Float w);
+        Vector4(float x, float y, float z, float w);
 
         const Vector3& vector3() const;
 
-        Float length() const;
+        float length() const;
 
         Vector4& normalize();
 
@@ -39,8 +39,8 @@ namespace gm {
             container.push_back(w);
         }
 
-        Vector4& operator *= (Float);
-        Vector4& operator /= (Float);
+        Vector4& operator *= (float);
+        Vector4& operator /= (float);
 
         Vector4 operator * (const Vector4&) const;
 
@@ -50,9 +50,9 @@ namespace gm {
         std::string to_string() const;
 
         struct transform {
-            static Vector4 quaternion_rotating_x(Float);
-            static Vector4 quaternion_rotating_y(Float);
-            static Vector4 quaternion_rotating_z(Float);
+            static Vector4 quaternion_rotating_x(float);
+            static Vector4 quaternion_rotating_y(float);
+            static Vector4 quaternion_rotating_z(float);
         };
 
 

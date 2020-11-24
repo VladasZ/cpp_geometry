@@ -15,9 +15,9 @@ using namespace gm;
 using namespace std;
 
 
-Vector4::Vector4(Float x, Float y, Float z, Float w) : x(x), y(y), z(z), w(w) { }
+Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) { }
 
-Float Vector4::length() const {
+float Vector4::length() const {
     return sqrt(x * x + y * y + z * z + w * w);
 }
 
@@ -30,7 +30,7 @@ const Vector3& Vector4::vector3() const {
     return reinterpret_cast<const Vector3&>(*this);
 }
 
-Vector4& Vector4::operator *= (Float value) {
+Vector4& Vector4::operator *= (float value) {
     x *= value;
     y *= value;
     z *= value;
@@ -38,7 +38,7 @@ Vector4& Vector4::operator *= (Float value) {
     return *this;
 }
 
-Vector4& Vector4::operator /= (Float value) {
+Vector4& Vector4::operator /= (float value) {
     x /= value;
     y /= value;
     z /= value;
@@ -59,17 +59,17 @@ Vector4 Vector4::operator*(const Vector4& other) const {
     return { _x, _y, _z, _w };
 }
 
-Vector4 Vector4::transform::quaternion_rotating_x(Float angle) {
+Vector4 Vector4::transform::quaternion_rotating_x(float angle) {
     Vector4 result { std::sin(angle / 2), 0, 0, std::cos(angle / 2) };
     result.normalize();
     return result;}
 
-Vector4 Vector4::transform::quaternion_rotating_y(Float angle) {
+Vector4 Vector4::transform::quaternion_rotating_y(float angle) {
     Vector4 result { 0, std::sin(angle / 2), 0, std::cos(angle / 2) };
     result.normalize();
     return result;}
 
-Vector4 Vector4::transform::quaternion_rotating_z(Float angle) {
+Vector4 Vector4::transform::quaternion_rotating_z(float angle) {
     Vector4 result { 0, 0, std::sin(angle / 2), std::cos(angle / 2) };
     result.normalize();
     return result;

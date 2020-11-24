@@ -23,11 +23,11 @@ namespace gm {
 
         static const size_t size = 16;
 
-        Float data[4][4];
+        float data[4][4];
 
         Matrix4();
-        Matrix4(Float value);
-        Matrix4(const std::initializer_list<Float>&);
+        Matrix4(float value);
+        Matrix4(const std::initializer_list<float>&);
 
         template <class CompatibleClass>
         explicit Matrix4(const CompatibleClass& obj) {
@@ -48,13 +48,13 @@ namespace gm {
         std::string to_string() const;
 
         struct transform {
-            static Matrix4 scale(Float);
+            static Matrix4 scale(float);
             static Matrix4 scale(const Vector3&);
             static Matrix4 translation(const Vector3&);
-            static Matrix4 rotation_x(Float);
-            static Matrix4 rotation_y(Float);
-            static Matrix4 rotation_z(Float);
-            static Matrix4 perspective(Float fovy, Float aspect, Float z_near, Float z_far);
+            static Matrix4 rotation_x(float);
+            static Matrix4 rotation_y(float);
+            static Matrix4 rotation_z(float);
+            static Matrix4 perspective(float fovy, float aspect, float z_near, float z_far);
             static Matrix4 look_at(const Vector3& eye, const Vector3& center, const Vector3& up);
             static Matrix4 model_look_at(const Vector3& target);
             static Matrix4 quaternion_rotation(const Vector4& quat);

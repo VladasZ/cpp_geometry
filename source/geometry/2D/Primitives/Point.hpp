@@ -10,8 +10,6 @@
 
 #include <string>
 
-#include "Geometry.hpp"
-
 
 namespace gm {
 
@@ -26,35 +24,35 @@ namespace gm {
 
     public:
 
-        Float x = 0;
-        Float y = 0;
+        float x = 0;
+        float y = 0;
 
         Point() = default;
 
         template <class T, class U>
-        constexpr Point(T x, U y) : x(static_cast<Float>(x)), y(static_cast<Float>(y)) { }
+        constexpr Point(T x, U y) : x(static_cast<float>(x)), y(static_cast<float>(y)) { }
 
-        Point(Direction direction, Float length = 1);
+        Point(Direction direction, float length = 1);
 
-        Float angle()   const;
+        float angle()   const;
         bool  is_zero() const;
-        Float length()  const;
+        float length()  const;
 
         void invert();
         void invert_x();
         void invert_y();
 
-        Point with_length(Float length) const;
+        Point with_length(float length) const;
 
-        void set_length(Float length);
-        void add_length(Float value);
+        void set_length(float length);
+        void add_length(float value);
 
-        void trim(Float max_lenght);
-        Point trimmed(Float max_length) const;
+        void trim(float max_lenght);
+        Point trimmed(float max_length) const;
 
         Direction directionX() const;
 
-        const Float* data() const;
+        const float* data() const;
 
         Point operator +  (const Point& point) const;
         void  operator += (const Point& point);
@@ -62,17 +60,17 @@ namespace gm {
         Point operator -  (const Point& point) const;
         void  operator -= (const Point& point);
 
-        Point operator *  (Float value) const;
-        void  operator *= (Float value);
+        Point operator *  (float value) const;
+        void  operator *= (float value);
 
-        Point operator /  (Float value) const;
-        void  operator /= (Float value);
+        Point operator /  (float value) const;
+        void  operator /= (float value);
 
         std::string to_string() const;
 
     public:
 
-        static Point on_circle(Float radius, Float angle, const Point& center);
+        static Point on_circle(float radius, float angle, const Point& center);
 
     };
 

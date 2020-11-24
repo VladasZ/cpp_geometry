@@ -12,8 +12,6 @@
 #include <cstdint>
 #include <algorithm>
 
-#include "Geometry.hpp"
-
 
 namespace gm::math {
 

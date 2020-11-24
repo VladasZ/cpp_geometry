@@ -23,13 +23,13 @@ Matrix4::Matrix4() : Matrix4 {
                          0, 0, 1, 0,
                          0, 0, 0, 1  } { }
 
-Matrix4::Matrix4(Float value) {
+Matrix4::Matrix4(float value) {
     for (size_t i = 0; i < Matrix4::size; i++) {
         *(&data[0][0] + i) = value;
     }
 }
 
-Matrix4::Matrix4(const std::initializer_list<Float>& list) {
+Matrix4::Matrix4(const std::initializer_list<float>& list) {
     if (list.size() != Matrix4::size) {
         Fatal("Matrix4 invalid initializer");
     }
@@ -44,8 +44,8 @@ Matrix4::Matrix4(const std::initializer_list<Float>& list) {
 Matrix4 Matrix4::inversed() const {
     Matrix4 result = *this;
 
-    Float inv[16];
-    Float* m = reinterpret_cast<Float*>(&result);
+    float inv[16];
+    auto m = reinterpret_cast<float*>(&result);
 
     inv[ 0] =  m[ 5] * m[10] * m[15] -
                m[ 5] * m[11] * m[14] -
@@ -241,7 +241,7 @@ std::string Matrix4::to_string() const {
     return result;
 }
 
-Matrix4 Matrix4::transform::scale(Float scale) {
+Matrix4 Matrix4::transform::scale(float scale) {
     return  {
         scale,     0,     0, 0,
             0, scale,     0, 0,
@@ -268,9 +268,9 @@ Matrix4 Matrix4::transform::translation(const Vector3& location) {
     };
 }
 
-Matrix4 Matrix4::transform::rotation_x(Float angle) {
-    const auto cos_x = static_cast<Float>(cos(angle));
-    const auto sin_x = static_cast<Float>(sin(angle));
+Matrix4 Matrix4::transform::rotation_x(float angle) {
+    const auto cos_x = static_cast<float>(cos(angle));
+    const auto sin_x = static_cast<float>(sin(angle));
     return {
         1,      0,     0, 0,
         0,  cos_x, sin_x, 0,
@@ -279,9 +279,9 @@ Matrix4 Matrix4::transform::rotation_x(Float angle) {
     };
 }
 
-Matrix4 Matrix4::transform::rotation_y(Float angle) {
-    const auto cos_y = static_cast<Float>(cos(angle));
-    const auto sin_y = static_cast<Float>(sin(angle));
+Matrix4 Matrix4::transform::rotation_y(float angle) {
+    const auto cos_y = static_cast<float>(cos(angle));
+    const auto sin_y = static_cast<float>(sin(angle));
     return {
         cos_y, 0, -sin_y, 0,
             0, 1,      0, 0,
@@ -290,9 +290,9 @@ Matrix4 Matrix4::transform::rotation_y(Float angle) {
     };
 }
 
-Matrix4 Matrix4::transform::rotation_z(Float angle) {
-    const auto cos_z = static_cast<Float>(cos(angle));
-    const auto sin_z = static_cast<Float>(sin(angle));
+Matrix4 Matrix4::transform::rotation_z(float angle) {
+    const auto cos_z = static_cast<float>(cos(angle));
+    const auto sin_z = static_cast<float>(sin(angle));
     return {
         cos_z, sin_z, 0, 0,
        -sin_z, cos_z, 0, 0,
@@ -301,9 +301,9 @@ Matrix4 Matrix4::transform::rotation_z(Float angle) {
     };
 }
 
-Matrix4 Matrix4::transform::perspective(Float fovy, Float aspect, Float z_near, Float z_far) {
+Matrix4 Matrix4::transform::perspective(float fovy, float aspect, float z_near, float z_far) {
 
-    const auto tan_half_fovy = static_cast<Float>(tan(fovy / 2.0f));
+    const auto tan_half_fovy = static_cast<float>(tan(fovy / 2.0f));
 
     Matrix4 result(0.0f);
     result.data[0][0] =  1.0f / (aspect * tan_half_fovy);
@@ -357,5 +357,3 @@ Matrix4 Matrix4::transform::quaternion_rotation(const Vector4& quat) {
     return { };
 #endif
 }
-
-

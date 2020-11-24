@@ -17,24 +17,24 @@ namespace gm {
 
     public:
 
-        Float width  = 0;
-        Float height = 0;
+        float width  = 0;
+        float height = 0;
 
         Size() = default;
 
         template <class X, class Y>
-        constexpr Size(X width, Y height) : width(static_cast<Float>(width)), height(static_cast<Float>(height)) { }
+        constexpr Size(X width, Y height) : width(static_cast<float>(width)), height(static_cast<float>(height)) { }
 
         Point center() const;
-        Float ratio()  const;
+        float ratio()  const;
 
         bool is_negative() const;
 
         float diagonal() const;
 
-        Size  operator /  (Float value) const;
-        Size  operator *  (Float value) const;
-        Size& operator *= (Float value);
+        Size  operator /  (float value) const;
+        Size  operator *  (float value) const;
+        Size& operator *= (float value);
 
         std::string to_string() const;
     };

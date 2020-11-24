@@ -17,7 +17,7 @@ Point Size::center() const {
     return { width / 2, height / 2 };
 }
 
-Float Size::ratio() const {
+float Size::ratio() const {
     return width / height;
 }
 
@@ -29,15 +29,15 @@ float Size::diagonal() const {
     return std::sqrt(width * width + height * height);
 }
 
-Size Size::operator / (Float value) const {
+Size Size::operator / (float value) const {
     return { width / value, height / value };
 }
 
-Size Size::operator * (Float value) const {
+Size Size::operator * (float value) const {
     return { width * value, height * value };
 }
 
-Size& Size::operator *= (Float value) {
+Size& Size::operator *= (float value) {
     width  *= value;
     height *= value;
     return *this;

@@ -40,26 +40,26 @@ namespace gm {
 
         Rect() = default;
         Rect(const Size&);
-        Rect(Float size);
-        Rect(Float width, Float height);
+        Rect(float size);
+        Rect(float width, float height);
 
-        constexpr Rect(Float x, Float y, Float width, Float height) : origin({ x, y }), size({ width, height }) { }
+        constexpr Rect(float x, float y, float width, float height) : origin({ x, y }), size({ width, height }) { }
 
         void set_edge(Edge, Point);
 
-        Float min_x() const;
-        Float min_y() const;
-        Float max_x() const;
-        Float max_y() const;
+        float min_x() const;
+        float min_y() const;
+        float max_x() const;
+        float max_y() const;
 
-        Rect with_x(Float) const;
-        Rect with_y(Float) const;
+        Rect with_x(float) const;
+        Rect with_y(float) const;
 
         Point center() const;
         void set_center(const Point&);
 
         bool contains(const Point&) const;
-        bool contains_with_edge(const Point&, Float) const;
+        bool contains_with_edge(const Point&, float) const;
 
         Size fit_size(const Size&) const;
 

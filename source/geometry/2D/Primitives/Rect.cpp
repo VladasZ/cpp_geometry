@@ -17,11 +17,11 @@ Rect::Rect(const Size& _size) : size(_size) {
 
 }
 
-Rect::Rect(Float size) : size({ size, size }) {
+Rect::Rect(float size) : size({ size, size }) {
 
 }
 
-Rect::Rect(Float width, Float height) : size({ width, height }) {
+Rect::Rect(float width, float height) : size({ width, height }) {
 
 }
 
@@ -52,29 +52,29 @@ void Rect::set_edge(Edge edge, Point point) {
     }
 }
 
-Float Rect::min_x() const {
+float Rect::min_x() const {
 	return origin.x;
 }
 
-Float Rect::min_y() const {
+float Rect::min_y() const {
 	return origin.y;
 }
 
-Float Rect::max_x() const {
+float Rect::max_x() const {
     return origin.x + size.width;
 }
 
-Float Rect::max_y() const {
+float Rect::max_y() const {
     return origin.y + size.height;
 }
 
-Rect Rect::with_x(Float x) const {
+Rect Rect::with_x(float x) const {
     Rect copy = *this;
     copy.origin.x = x;
     return copy;
 }
 
-Rect Rect::with_y(Float y) const {
+Rect Rect::with_y(float y) const {
     Rect copy = *this;
     copy.origin.y = y;
     return copy;
@@ -99,7 +99,7 @@ bool Rect::contains(const Point& point) const {
            point.y <= origin.y + size.height;
 }
 
-bool Rect::contains_with_edge(const Point& point, Float edge) const {
+bool Rect::contains_with_edge(const Point& point, float edge) const {
 
     bool contains = point.x >= origin.x               - edge &&
                     point.y >= origin.y               - edge &&
@@ -120,7 +120,7 @@ bool Rect::contains_with_edge(const Point& point, Float edge) const {
 
 Size Rect::fit_size(const Size& _size) const {
 
-    Float ratio;
+    float ratio;
 
     if (_size.width > _size.height) {
         ratio = this->size.width / _size.width;

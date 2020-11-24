@@ -13,19 +13,19 @@
 using namespace gm;
 
 
-static Vector3 get_max(Float length, Float width, Float height) {
+static Vector3 get_max(float length, float width, float height) {
     return { length / 2, width / 2, height / 2 };
 }
 
-static Vector3 get_min(Float length, Float width, Float height) {
+static Vector3 get_min(float length, float width, float height) {
     return { -length / 2, -width / 2, -height / 2 };
 }
 
-Box::Box(Float size) : Box(size, size, size) {
+Box::Box(float size) : Box(size, size, size) {
 
 }
 
-Box::Box(Float length, Float width, Float height)
+Box::Box(float length, float width, float height)
     :
         length(length),
         width(width),

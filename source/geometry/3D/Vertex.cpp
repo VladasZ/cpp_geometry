@@ -14,7 +14,7 @@ using namespace gm;
 Vertex::Vertex(const Vector3& position, const Vector3& normal, const Point& uv)
     : position(position), normal(normal), uv(uv) { }
 
-const Float *Vertex::data() const {
+const float*Vertex::data() const {
     return &position.x;
 }
 

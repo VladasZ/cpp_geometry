@@ -29,6 +29,8 @@ namespace gm {
 
     public:
 
+        using Value = T;
+
         T x = 0;
         T y = 0;
         T z = 0;
@@ -45,23 +47,23 @@ namespace gm {
         }
     };
 
-    class Vector3 : public V3<Float> {
+    class Vector3 : public V3<float> {
 
     public:
 
-        using V3<Float>::V3;
+        using V3<float>::V3;
 
         const Point& point() const;
 
-        void set_length(Float);
+        void set_length(float);
 
-        Vector3 with_length(Float) const;
+        Vector3 with_length(float) const;
 
-        Float xy_angle() const;
-        Float xz_angle() const;
+        Value xy_angle() const;
+        Value xz_angle() const;
 
         Vector3 cross(const Vector3&) const;
-        Float     dot(const Vector3&) const;
+        Value     dot(const Vector3&) const;
 
         constexpr void normalize() { *this *= 1 / length(); }
 
@@ -70,7 +72,7 @@ namespace gm {
         Vector3 with_fliped_height() const;
         Vector3& flip_height();
 
-        Float* data() { return &x; }
+        Value* data() { return &x; }
 
         constexpr Vector3 operator +  (const Vector3& v) const { return { x +  v.x, y +  v.y, z +  v.z }; }
         constexpr void    operator += (const Vector3& v)                { x += v.x; y += v.y; z += v.z; }
@@ -78,19 +80,19 @@ namespace gm {
         constexpr Vector3 operator -  (const Vector3& v) const { return { x -  v.x, y -  v.y, z -  v.z }; }
         constexpr void    operator -= (const Vector3& v)                { x -= v.x; y -= v.y; z -= v.z; }
 
-        constexpr Vector3 operator +  (Float v) const { return { x +  v, y +  v, z +  v }; }
-        constexpr void    operator += (Float v)                { x += v; y += v; z += v; }
+        constexpr Vector3 operator +  (float v) const { return { x +  v, y +  v, z +  v }; }
+        constexpr void    operator += (float v)                { x += v; y += v; z += v; }
 
-        constexpr Vector3 operator -  (Float v) const { return { x -  v, y -  v, z -  v }; }
-        constexpr void    operator -= (Float v)                { x -= v; y -= v; z -= v; }
+        constexpr Vector3 operator -  (float v) const { return { x -  v, y -  v, z -  v }; }
+        constexpr void    operator -= (float v)                { x -= v; y -= v; z -= v; }
 
-        constexpr Vector3 operator *  (Float v) const { return { x *  v, y *  v, z *  v }; }
-        constexpr void    operator *= (Float v)                { x *= v; y *= v; z *= v; }
+        constexpr Vector3 operator *  (float v) const { return { x *  v, y *  v, z *  v }; }
+        constexpr void    operator *= (float v)                { x *= v; y *= v; z *= v; }
 
-        constexpr Vector3 operator /  (Float v) const { return { x /  v, y /  v, z /  v }; }
-        constexpr void    operator /= (Float v)                { x /= v; y /= v; z /= v; }
+        constexpr Vector3 operator /  (float v) const { return { x /  v, y /  v, z /  v }; }
+        constexpr void    operator /= (float v)                { x /= v; y /= v; z /= v; }
 
-        constexpr Float distance_to(const Vector3& vec) const {
+        constexpr float distance_to(const Vector3& vec) const {
             const auto _x = x - vec.x;
             const auto _y = y - vec.y;
             const auto _z = z - vec.z;
@@ -99,11 +101,11 @@ namespace gm {
 
         void orbit_shift(const Point&);
 
-        Float get_axis(Axis axis) const {
+        Value get_axis(Axis axis) const {
             return (&x)[(int)axis];
         }
 
-        void set_axis(Axis axis, Float value) {
+        void set_axis(Axis axis, Value value) {
             data()[(int)axis] = value;
         }
 

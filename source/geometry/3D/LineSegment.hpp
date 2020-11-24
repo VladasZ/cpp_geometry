@@ -22,7 +22,7 @@ namespace gm {
 
         constexpr LineSegment(const Vector3& begin, const Vector3& end) : begin(begin), end(end) { }
 
-        constexpr Float length() const {
+        constexpr float length() const {
             return begin.distance_to(end);
         }
 

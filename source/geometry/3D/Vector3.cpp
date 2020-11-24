@@ -22,19 +22,19 @@ const Point& Vector3::point() const {
 	return reinterpret_cast<const Point&>(x);
 }
 
-void Vector3::set_length(Float _length) {
+void Vector3::set_length(float _length) {
 	*this *= _length / length();
 }
 
-Vector3 Vector3::with_length(Float _length) const {
+Vector3 Vector3::with_length(float _length) const {
 	return *this * _length / length();
 }
 
-Float Vector3::xy_angle() const {
+float Vector3::xy_angle() const {
 	return std::atan2(y, x);
 }
 
-Float Vector3::xz_angle() const {
+float Vector3::xz_angle() const {
 	return std::atan2(z, x);
 }
 
@@ -46,7 +46,7 @@ Vector3 Vector3::cross(const Vector3& vec) const {
 	};
 }
 
-Float Vector3::dot(const Vector3& vec) const {
+float Vector3::dot(const Vector3& vec) const {
 	return x * vec.x + y * vec.y + z * vec.z;
 }
 
