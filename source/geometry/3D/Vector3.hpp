@@ -126,13 +126,13 @@ namespace gm {
             for (const auto& point : points) {
                 result += point;
             }
-            return result / static_cast<Float>(points.size());
+            return result / static_cast<float>(points.size());
         }
 
         template <class ArrayT>
         static Vector3 middle_point(const ArrayT& points) {
-            static const auto max_value = std::numeric_limits<Float>::max();
-            static const auto min_value = std::numeric_limits<Float>::min();
+            static const auto max_value = std::numeric_limits<float>::max();
+            static const auto min_value = std::numeric_limits<float>::min();
 
             auto max_x = min_value, min_x = max_value;
             auto max_y = min_value, min_y = max_value;
