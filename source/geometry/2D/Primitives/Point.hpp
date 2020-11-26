@@ -52,6 +52,8 @@ namespace gm {
 
         Direction directionX() const;
 
+        float distanceTo(const Point&) const;
+
         const float* data() const;
 
         Point operator +  (const Point& point) const;
@@ -70,6 +72,7 @@ namespace gm {
 
     public:
 
+        static const Point zero;
         static Point on_circle(float radius, float angle, const Point& center);
 
     };

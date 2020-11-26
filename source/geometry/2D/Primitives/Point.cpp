@@ -12,6 +12,7 @@
 
 using namespace gm;
 
+const Point Point::zero;
 
 Point::Point(Direction direction, float length) {
     switch (direction) {
@@ -77,6 +78,12 @@ Point Point::trimmed(float max_length) const {
 
 Direction Point::directionX() const {
     return x > 0 ? Direction::Right : Direction::Left;
+}
+
+float Point::distanceTo(const Point& p) const {
+    const auto _x = x - p.x;
+    const auto _y = y - p.y;
+    return std::sqrt(_x * _x + _y * _y);
 }
 
 const float* Point::data() const {
