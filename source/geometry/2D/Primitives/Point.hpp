@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <cmath>
 #include <string>
 
 
@@ -34,46 +35,56 @@ namespace gm {
 
         Point(Direction direction, float length = 1);
 
-        float angle()   const;
-        bool  is_zero() const;
-        float length()  const;
+        float angle()   const { return std::atan2(y, x); }
+        bool  is_zero() const { return x == 0 && y == 0; }
+        float length()  const { return std::sqrt(x * x + y * y); }
 
-        void invert();
-        void invert_x();
-        void invert_y();
+        void invert()   { x = -x; y = -y; }
+        void invert_x() { x = -x; }
+        void invert_y() { y = -y; }
 
-        Point with_length(float length) const;
+        Point with_length(float l) const {
+            const auto ratio = l / length();
+            return { x * ratio, y * ratio };
+        }
 
-        void set_length(float length);
-        void add_length(float value);
+        void set_length(float l) {
+            const auto ratio = l / length();
+            x *= ratio;
+            y *= ratio;
+        }
 
         void trim(float max_lenght);
         Point trimmed(float max_length) const;
 
-        Direction directionX() const;
+        Direction directionX() const { return x > 0 ? Direction::Right : Direction::Left; }
 
-        float distanceTo(const Point&) const;
+        float distanceTo(const Point& p) const {
+            const auto _x = x - p.x;
+            const auto _y = y - p.y;
+            return std::sqrt(_x * _x + _y * _y);
+        }
 
-        const float* data() const;
+        Point operator + (const Point& point) const { return { x + point.x, y + point.y }; }
+        Point operator - (const Point& point) const { return { x - point.x, y - point.y }; }
 
-        Point operator +  (const Point& point) const;
-        void  operator += (const Point& point);
+        Point operator * (float value) const { return { x * value, y * value }; }
+        Point operator / (float value) const { return { x / value, y / value }; }
 
-        Point operator -  (const Point& point) const;
-        void  operator -= (const Point& point);
-
-        Point operator *  (float value) const;
-        void  operator *= (float value);
-
-        Point operator /  (float value) const;
-        void  operator /= (float value);
+        void operator += (const Point& point) { x += point.x; y += point.y; }
+        void operator -= (const Point& point) { x -= point.x; y -= point.y; }
+    
+        void operator *= (float value) { x *= value; y *= value; }
+        void operator /= (float value) { x /= value; y /= value; }
 
         std::string to_string() const;
 
     public:
 
         static const Point zero;
-        static Point on_circle(float radius, float angle, const Point& center);
+        static Point on_circle(float radius, float angle, const Point& center) {
+            return { (radius / 2) * std::cos(angle) + center.x, (radius / 2) * std::sin(angle) + center.y };
+        }
 
     };
 
