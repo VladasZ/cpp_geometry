@@ -12,6 +12,7 @@
 
 using namespace gm;
 
+
 void Color::set_alpha(float alpha) {
     this->a = alpha;
 }
@@ -28,23 +29,22 @@ std::string Color::to_string() const {
             " a: " + std::to_string(a);
 }
 
-const Color& Color::random() {
-    static const std::vector<Color> all = {
-        black,
-        white,
-        red,
-        green,
-        blue,
-        light_blue,
-        yellow,
-        orange,
-        purple,
-        turquoise,
-        gray,
-        light_gray,
-        clear
-    };
+static const std::vector<Color> all = {
+    Color::black,
+    Color::white,
+    Color::red,
+    Color::green,
+    Color::blue,
+    Color::light_blue,
+    Color::yellow,
+    Color::orange,
+    Color::purple,
+    Color::turquoise,
+    Color::gray,
+    Color::light_gray
+};
 
+const Color& Color::random() {
     return all[static_cast<unsigned long>(std::rand()) % all.size()];
 }
 
