@@ -12,6 +12,9 @@
 #include <cstdint>
 #include <algorithm>
 
+#undef min
+#undef max
+
 
 namespace gm::math {
 
