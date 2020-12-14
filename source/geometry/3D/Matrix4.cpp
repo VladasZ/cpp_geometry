@@ -350,8 +350,7 @@ Matrix4 Matrix4::transform::model_look_at(const Vector3& target) {
 
 Matrix4 Matrix4::transform::quaternion_rotation(const Vector4& quat) {
 #ifdef USING_GLM
-	auto glm_quat = cu::force_convert<glm::quat>(quat);
-    return cu::force_convert<Matrix4>(glm::toMat4(glm_quat));
+    return cu::cast<Matrix4>(glm::toMat4(cu::cast<glm::quat>(quat)));
 #else
 	Log << "Not implemented without glm:" << quat;
     return { };

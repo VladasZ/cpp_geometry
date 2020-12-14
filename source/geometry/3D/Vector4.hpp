@@ -55,7 +55,6 @@ namespace gm {
             static Vector4 quaternion_rotating_z(float);
         };
 
-
 		static Vector4 from_json(const std::string&);
 		std::string to_json() const;
 
