@@ -1,19 +1,13 @@
 
 #include "Log.hpp"
 #include "Matrix4.hpp"
+#include "GmMapping.hpp"
+
+using namespace gm;
 
 int main() {
 
-    auto spes  = gm::Vector4::transform::quaternion_rotating_x(1);
-    auto spes2 = gm::Vector4::transform::quaternion_rotating_y(0.5);
-
-    Log << spes;
-    Log << spes.length();
-
-    auto spes3 = spes * spes2;
-
-    Log << spes3;
-    Log << spes3.length();
+    Log << json_mapper.to_json(Rect(345, 434, 17, 434));
 
     return 0;
 }
