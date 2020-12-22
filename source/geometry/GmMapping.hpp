@@ -17,18 +17,18 @@
 namespace gm {
 
     MAKE_CLASS_INFO(Point,
-        MAKE_PROPERTY("x", &Point::x),
-        MAKE_PROPERTY("y", &Point::y)
+        MAKE_PROPERTY(Point, x),
+        MAKE_PROPERTY(Point, y)
     );
 
     MAKE_CLASS_INFO(Size,
-        MAKE_PROPERTY("width",  &Size::width),
-        MAKE_PROPERTY("height", &Size::height)
+        MAKE_PROPERTY(Size, width),
+        MAKE_PROPERTY(Size, height)
     );
 
     MAKE_CLASS_INFO(Rect,
-        MAKE_PROPERTY("origin", &Rect::origin),
-        MAKE_PROPERTY("size",   &Rect::size)
+        MAKE_PROPERTY(Rect, origin),
+        MAKE_PROPERTY(Rect, size)
     );
 
     MAKE_MAPPER(mapper,
