@@ -6,30 +6,14 @@
 //  Copyright © 2017 VladasZ. All rights reserved.
 //
 
-#include <vector>
+#include <array>
 
 #include "Color.hpp"
 
 using namespace gm;
 
 
-void Color::set_alpha(float alpha) {
-    this->a = alpha;
-}
-
-const float* Color::data() const {
-    return &r;
-}
-
-std::string Color::to_string() const {
-    return std::string() +
-             "r: " + std::to_string(r) +
-            " g: " + std::to_string(g) +
-            " b: " + std::to_string(b) +
-            " a: " + std::to_string(a);
-}
-
-static const std::vector<Color> all = {
+static const std::array all = {
     Color::black,
     Color::white,
     Color::red,
@@ -43,6 +27,15 @@ static const std::vector<Color> all = {
     Color::gray,
     Color::light_gray
 };
+
+
+std::string Color::to_string() const {
+    return std::string() +
+             "r: " + std::to_string(r) +
+            " g: " + std::to_string(g) +
+            " b: " + std::to_string(b) +
+            " a: " + std::to_string(a);
+}
 
 const Color& Color::random() {
     return all[static_cast<unsigned long>(std::rand()) % all.size()];

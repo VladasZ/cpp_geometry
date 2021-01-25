@@ -10,6 +10,7 @@
 
 #include <string>
 
+
 namespace gm {
 
 class Color {
@@ -24,24 +25,14 @@ public:
     constexpr Color() = default;
     constexpr Color(float r, float g, float b, float a = 1.0f) : r(r), g(g), b(b), a(a) { }
 
-    void set_alpha(float);
+    void set_alpha(float alpha) { a = alpha; }
 
     constexpr Color with_alpha(float alpha) const { return { r, g, b, alpha }; }
 
     constexpr bool is_clear () const { return a <= 0.02f; }
     constexpr bool is_opaque() const { return a >= 1;     }
 
-    const float* data() const;
-
-    template<class T>
-    void append_to_container(T& container, bool with_alpha = false) {
-        container.push_back(r);
-        container.push_back(g);
-        container.push_back(b);
-        if (with_alpha) {
-            container.push_back(a);
-        }
-    }
+    const float* data() const { return &r; }
 
     std::string to_string() const;
 

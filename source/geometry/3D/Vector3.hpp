@@ -109,13 +109,6 @@ namespace gm {
             data()[(int)axis] = value;
         }
 
-        template<class T>
-        void append_to_container(T& container) const {
-            container.push_back(x);
-            container.push_back(y);
-            container.push_back(z);
-        }
-
         std::string to_string() const {
             return std::string() + "[ " + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + "]";
         }

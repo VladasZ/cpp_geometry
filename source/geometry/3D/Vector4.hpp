@@ -31,14 +31,6 @@ namespace gm {
 
         Vector4& normalize();
 
-        template<class T>
-        void append_to_container(T& container) {
-            container.push_back(x);
-            container.push_back(y);
-            container.push_back(z);
-            container.push_back(w);
-        }
-
         Vector4& operator *= (float);
         Vector4& operator /= (float);
 
