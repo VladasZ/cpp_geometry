@@ -35,13 +35,16 @@ namespace gm {
 
         Point(Direction direction, float length = 1);
 
-        float angle()   const { return std::atan2(y, x); }
+        float angle() const { return std::atan2(y, x); }
+
         bool  is_zero() const { return x == 0 && y == 0; }
         float length()  const { return std::sqrt(x * x + y * y); }
 
         void invert()   { x = -x; y = -y; }
         void invert_x() { x = -x; }
         void invert_y() { y = -y; }
+
+        Point normalized() const { return with_length(1); }
 
         Point with_length(float l) const {
             const auto ratio = l / length();
