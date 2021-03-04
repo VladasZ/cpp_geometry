@@ -46,13 +46,15 @@ namespace gm {
 
         Point normalized() const { return with_length(1); }
 
+        void normalize() { set_length(1); }
+
         Point with_length(float l) const {
-            const auto ratio = l / length();
+            auto ratio = l / length();
             return { x * ratio, y * ratio };
         }
 
         void set_length(float l) {
-            const auto ratio = l / length();
+            auto ratio = l / length();
             x *= ratio;
             y *= ratio;
         }
@@ -63,8 +65,8 @@ namespace gm {
         Direction directionX() const { return x > 0 ? Direction::Right : Direction::Left; }
 
         float distanceTo(const Point& p) const {
-            const auto _x = x - p.x;
-            const auto _y = y - p.y;
+            auto _x = x - p.x;
+            auto _y = y - p.y;
             return std::sqrt(_x * _x + _y * _y);
         }
 
