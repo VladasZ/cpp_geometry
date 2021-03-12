@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Rect.hpp"
+#include "Color.hpp"
 #include "Vector3.hpp"
 #include "Vector4.hpp"
 #include "JsonMapper.hpp"
@@ -31,10 +32,19 @@ namespace gm {
         MAKE_PROPERTY(Rect, size)
     );
 
+    MAKE_CLASS_INFO(Color,
+        MAKE_PROPERTY(Color, r),
+        MAKE_PROPERTY(Color, g),
+        MAKE_PROPERTY(Color, b),
+        MAKE_PROPERTY(Color, a)
+    );
+
     MAKE_MAPPER(mapper,
         InfoOfPoint,
         InfoOfSize,
-        InfoOfRect);
+        InfoOfRect,
+        InfoOfColor
+    );
 
     inline constexpr auto json_mapper = mapping::JSONMapper<mapper>();
 
